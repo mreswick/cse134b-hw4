@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Home | Misha Reswick's Portfolio Site</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Misha Reswick">
+    <meta name="description" content="Misha Reswick's personal portfolio website. Learn more
+    about his interests, experiences, and current going-ons here at his home page.">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+    <link rel="stylesheet" href="Assets/styles/head_foot.css">
+    <link rel="stylesheet" href="Assets/styles/index.css">
+  </head>
+  <body>
+
+    <header>
+      <!--Main navigation menu.-->
+      <nav class="mainNavigation" title="Menu for main navigation.">
+        <!-- <div class="emptyMainSpacer"></div> -->
+        <a class="homeMain" href="index.html" title="Click to go to Home.">M/</a>
+        <ul class="mainNavigation">
+          <li id="mainnavHome"><a href="index.html" title="Click to stay on the Home.">Home</a></li>
+          <li id="mainnavBio"><a href="bio.html" title="Click to stay on my Bio page.">Bio</a></li>
+          <li id="mainnavExp"><a href="experience.html" title="Click to go to my Experience page.">Experience</a></li>
+          <li id="mainnavProj" class="projects" title="Click to open my Projects submenu.">Projects
+            <ul class="subMainNav">
+              <li id="submainnav1"><a href="pastProjects.html" title="Click to go to my Past Projects' page.">Past Projects</a></li>
+              <li id="submainnav2"><a href="experiments.html" title="Click to go to my Experiments' page.">Experiments</a></li>
+            </ul>
+          </li>
+          <li id="mainnavTouch"><a href="getInTouch.html" title="Click to go to my Get in Touch page to contact me.">Get in Touch</a></li>
+          <li id="mainnavHam">
+            <!--Hamburger menu-->
+            <input id="lab" type="checkbox">
+            <label class="hamMenu" for="lab">
+              <span id="di"></span>
+            </label>
+            <!-- <nav class="downNav">
+              <nav>
+                <div>This</div>
+                <div>is</div>
+                <div>the</div>
+                <div>sidebar</div>
+              </nav>
+            </nav> -->
+            <nav class="sub1mainnav">
+              <ul class="upperLevelSubNav1">
+                <li class="l1" id="mainnavExp2"><a href="experience.html" title="Click to go to my Experience page.">Experience</a></li>
+                <li class="l1">
+                  <details>
+                    <summary>Projects:</summary>
+                      <ul class="lowerLevelSubNav1">
+                        <li id="submainnav1_2"><a href="pastProjects.html" title="Click to go to my Past Projects' page.">Past Projects</a></li>
+                        <li id="submainnav2_2"><a href="experiments.html" title="Click to go to my Experiments' page.">Experiments</a></li>
+                      </ul>
+                  </details>
+                </li>
+                <li id="mainnavTouch_2" class="l1"><a href="getInTouch.html" title="Click to go to my Get in Touch page to contact me.">Get in Touch</a></li>
+              </ul>
+            </nav>
+          </li>
+        </ul>
+        <hr class="navBorder">
+      </nav>
+    </header>
+
+  
+    <main>
+      <h1 title="The home page for this site.">Portfolio Home:</h1>
+      <hr id="titleHr">
+
+      <!-- Hero photo-->
+      <figure draggable="true" title="Recent picture of Misha.">
+        <picture id="mishaPicture">
+          <source srcset="Assets/images/home/misha_headshot.jpg" width="512" height="415"
+            type="image/jpeg" media="(min-width: 750px)">
+          <source srcset="Assets/images/home/misha_headshot_400_324.jpg" width="400" height="324" type="image/jpeg"
+            media="(min-width: 641px)">
+          <source srcset="Assets/images/home/misha_headshot_300_243.jpg" width="300" height="243" type="image/jpeg"
+            media="(min-width: 500px)">
+          <img src="Assets/images/home/misha_headshot_250_203.jpg" width="250" height="203" alt="A picture of Misha as a student at UCSD.">
+          <!-- <source srcset="Assets/images/home/misha_headshot_300_243.jpg" width="300" height="243"
+            type="image/jpeg" media="(max-width: 640px)"> -->
+          <!-- <img src="Assets/images/home/misha_headshot.jpg" alt="Head shot photo of Misha." width="512" height="415"> -->
+        </picture>
+        
+        <figcaption id="heroImgCapt" title="Misha Reswick."><p>Misha Reswick<br>CSE @UCSD</p></figcaption>
+      </figure>
+      <hr id="heroPhotoUnderline">
+      
+      <article title="Home page info about this site and upcoming events for Misha.">
+        <!--Welcome section-->
+        <section id="welcome" title="Welcome to this page!">
+          <h2>Welcome!</h2>
+          <p>Welcome to the site. This is my personal resume and portfolio site. Feel free to look around. Below,
+            I provide help in navigating the pages of this site, and describe any upcoming events I may have coming
+            my way.
+          </p>
+        </section>
+        <!--Navigation help section.-->
+        <section id="navigationHelp" title="Navigation help for this site.">
+          <h2>Navigation Help:</h2>
+          <p>Here's a brief overview of this site and how to navigate it:</p>
+          <ul title="Navigation help list">
+            <li title="Home page navigation help: you are here.">Home: you are here. Click either on the "M/" button 
+              in the top left or on the <a href="index.html">Home button</a>, which will both return you to this page.
+            </li>
+            <li title="Bio page navigation help.">Learn more about me and my background at the <a href="bio.html">Bio page</a>.</li>
+            <li title="Projects page navigation help.">For past projects of mine, head over to Projects > 
+              <a href="pastProjects.html" title="Previous Projects"> Previous Projects</a>. For current
+              experiments, checkout Projects > <a href="experiments.html" title="Experiments page navigation help.">Experiments</a>.
+            </li>
+          </ul>
+        </section>
+        <!--Upcoming section-->
+        <section id="upcomingEvents" title="Upcoming events for Misha.">
+          <h2>Upcoming Events:</h2>
+          <ul id="upcoming">
+            <li title="Graduation"><em class="upcomingStart">Graduation:</em> I am both happy and yet also reserved that I will be graduating
+              from UCSD in Summer 2023! It has been an incredible experience, and it is sorry to have to leave: but I look
+              forward to the opportunities that come; and who knows, perhaps I will return for graduate school.
+            </li>
+            <li title="Amazon New Hire"><em class="upcomingStart">Amazon New Hire:</em> I am excited to say that I have accepted a full-time offer with Amazon
+              in Washington state as a software developer, to start also in Summer 2023. I look forward to returning to work with 
+              a fantastic team!
+            </li>
+          </ul>
+
+        </section>
+      </article>
+      <footer id="amznOffer">
+        <p>I have accepted a full-time offer with Amazon
+              in Washington state as a software developer, to start also in Summer 2023.<br>I look forward to returning to work with 
+              a fantastic team!
+        </p>
+      </footer>
+    </main>
+
+    <hr id="footHr">
+
+    <footer id="endOfPage">
+      Misha Reswick<br>
+      <address><a id="mishaEmail" href="mailto:mreswick@ucsd.com" title="Misha's UCSD email.">mreswick@ucsd.edu</a></address>
+      Last updated: February 2023
+      <nav id="footerNav">
+        <a id="backToTop" href="#">Back to top ^</a>
+      </nav>
+    </footer>
+
+  </body>
+</html>

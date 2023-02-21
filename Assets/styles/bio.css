@@ -1,0 +1,491 @@
+/*main page content*/
+body {
+  background-color: rgb(240, 240, 245);
+}
+
+main {
+  /*flex*/
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /*style*/
+  border: 0.2rem solid black;
+  border-radius: 1rem;
+  margin: 1rem 5% 2rem;
+  background-color: white;
+  box-shadow: 0.4rem 0.5rem rgb(7, 83, 140);
+  margin-top: 1rem;
+  padding: 0 3% 0;
+  /*font*/
+  font-weight: normal;
+  font-size: 1rem;
+}
+@media only screen and (max-width: 840px) {
+  main {
+    margin-left: 2%;
+    margin-right: 2%;
+  }
+}
+
+article {
+  background-color: white;
+  border: 0.2rem solid black;
+  border-radius: 2rem;
+  padding: 1rem 5% 2rem;
+  margin: 0.5rem 1% 2rem;
+  box-shadow: 0.3rem 0.3rem rgb(7, 83, 140);
+  /*flex container*/
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+article section {
+  /*sections as flex containers*/
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  /*style*/
+  background-color: white;
+  /* background-color: rgb(252, 253, 255); */
+  border: 0.12rem solid black;
+  border-radius: 1.5rem;
+  padding: 1rem 5% 1.5rem;
+  margin: 1rem 0 0;
+  box-shadow: 0.2rem 0.2rem rgb(7, 83, 140);
+}
+article section a, section#currLastSec a {
+  font-weight: 700;
+  text-decoration: none;
+  color: rgb(0, 0, 100);
+}
+article section a:hover, section#currLastSec a:hover,
+article section a:active, section#currLastSec a:active
+{
+  color:rgb(7, 83, 150);
+}
+article figure {
+  background-color: white;
+}
+article section p {
+  text-align: start;
+  text-indent: 2rem;
+  margin-bottom: 1rem;
+}
+
+/*-figures as flex containers (for centering their images)*/
+main > article figure {
+  /*flex container*/
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  /*style*/
+  border: 0.15rem solid black;
+  border-radius: 2rem;
+  /* padding: 2rem 5% 1rem; */
+  padding: 2rem 2rem 1rem;
+  margin-top: 1rem;
+  box-shadow: 0.3rem 0.3rem rgb(7, 83, 140);
+  text-align: center;
+  max-width: 50%;
+  /* min-width: 380px; */
+}
+@media only screen and (max-width: 640px) {
+  main > article figure {
+    padding: 2rem 1rem 1rem;
+  }
+}
+main > article figure figcaption {
+  font-size: 1.1rem;
+  text-align: center;
+  margin-bottom: 0;
+}
+main > article section figure figcaption p {
+  font-size: 1.1rem; /*make smaller in sections*/
+  text-align: center;
+  font-weight: 500;
+  white-space: nowrap; /*to keep captions on a single line*/
+  margin-bottom: 0;
+}
+/* main figure > img {
+  margin-bottom: 0.5rem;
+  border-radius: 1rem;
+  text-align: center;
+} */
+main figure {
+  margin-bottom: 0.5rem;
+  border-radius: 1rem;
+  text-align: center;
+}
+main figure + p {
+  /*margin between figure and following paragraph*/
+  margin-top: 1.5rem;
+}
+
+/*headings*/
+h1 {
+  margin-top: 1.5rem;
+  margin-bottom: 0.7rem;
+  margin-left: 5%;
+  align-self: start;
+  font-size: 3rem;
+}
+h2, h3, h4 {
+  align-self: start;
+}
+h2 {
+  font-size: 2rem;
+}
+h3 {
+  font-size: 1.6rem;
+}
+h4 {
+  font-size: 1.4rem;
+}
+
+/*My background*/
+h2#myBackground {
+  align-self: start;
+  font-size: 2rem;
+  margin-bottom: 0.7rem;
+  line-height: 2rem;
+}
+
+/*paragraph after Misha robot photo*/ 
+p#backgroundP {
+  margin: 2rem 0 2rem;
+  text-align: start;
+  border: 0.15rem solid black;
+  padding: 2rem 5% 1.3rem;
+  box-shadow: 0.3rem 0.3rem rgb(7, 83, 140);
+  border-radius: 2rem;
+}
+
+/*Environment*/ 
+/* main > article figure#hill {
+  min-width: 495px;
+} */
+main {
+  min-width: fit-content;
+}
+main article figure#hill, main article figure#robFig {
+  /* min-width: 80%; */
+  /* display: block; */
+  min-width: fit-content;
+}
+/* section#environmentSection p {
+  text-align: start;
+  text-indent: 2rem;
+  margin-bottom: 1rem;
+} */
+section#environmentSection div#pWithAside {
+  background-color: rgb(215, 222, 234);
+  padding: 1.5rem 0.2rem 0.5rem;
+  border-radius: 1rem;
+  margin-bottom: 1rem;
+}
+section#environmentSection p#pNextToAside {
+  text-align: left;
+  display: block;
+}
+section#environmentSection aside {
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+  padding: 0.5rem;
+  display: block;
+  text-indent: 2rem;
+  float: right;
+  width: 30%;
+  background-color: grey;
+  border-radius: 1rem;
+}
+section#environmentSection p#envLastP {
+  background-color: rgb(215, 222, 234);
+  padding: 1.2rem 1rem;
+  border-radius: 1rem;
+  margin-bottom: 1rem;
+}
+
+/*Values*/
+section#valuesSec p#valTop {
+  margin-top: 0.5rem;
+}
+section#valuesSec p {
+  text-align: start;
+  text-indent: 2rem;
+  margin-bottom: 1rem;
+}
+section#valuesSec ol#valuesList {
+  list-style-position: inside;
+  text-align: left;
+  margin-bottom: 1rem;
+  width: 70%;
+  font-weight: 500;
+  /*light-blue rounded*/ 
+  background-color: rgb(196, 211, 236);
+  padding: 1.2rem 1rem;
+  border-radius: 1rem;
+  margin-bottom: 1rem;
+
+}
+section#valuesSec ol#valuesList li {
+  margin-bottom: 0.5rem;
+}
+/* article section#hobFamily figure#shepiImg {
+  min-width: 440px;
+} */
+
+/*Hobbies and Family*/
+article section#hobbiesSec p#hobTopP {
+  margin-top: 0.5rem;
+}
+article section#hobbiesSec ul {
+  list-style-position: inside;
+  text-align: left;
+  width: 80%;
+  font-weight: 500;
+  /*light-blue rounded*/ 
+  background-color: rgb(196, 211, 236);
+  padding: 1.2rem 1rem;
+  border-radius: 1rem;
+  margin-bottom: 1rem;
+  margin-top: 0.3rem;
+}
+article section#hobbiesSec ul li {
+  padding: 0;
+  margin-bottom: 1rem;
+  text-indent: 0;
+}
+article section#hobbiesSec ul p {
+  display: inline;
+  text-align: left;
+  text-indent: 0;
+  margin-bottom: 1rem;
+}
+
+/*Currently*/
+section h2#currentlyTitle {
+  margin: 1rem;
+}
+section p#currentlyP {
+  border: 0.12rem solid black;
+  border-radius: 1.5rem;
+  padding: 1rem 5% 1.5rem;
+  margin: 1rem 1rem 1rem;
+  box-shadow: 0.2rem 0.2rem rgb(7, 83, 140);
+}
+
+section#environmentSection h3 {
+  margin-bottom: 0.5rem;
+}
+/*animation*/
+/*make text larger in article section*/
+h1, h2, h3,h4,
+div#pWithAside,
+p#envLastP,
+ol#valuesList,
+section#hobbiesSec ul,
+p#currentlyP, 
+p#backgroundP, figure {
+  /* font-size: 1rem;
+  line-height: 1.1rem;
+  transition: font-size 4s 1s;
+  transition: line-height 4s 1s; */
+  transition: transform;
+  transition-delay: 0.2s;
+  transition-duration: 0.5s;
+}
+h1:hover, h2:hover, h3:hover,h4:hover,
+div#pWithAside:hover,
+p#envLastP:hover,
+ol#valuesList:hover,
+section#hobbiesSec ul:hover,
+p#currentlyP:hover, 
+p#backgroundP:hover,figure:hover,
+h1:active, h2:active, h3:active,h4:active,
+div#pWithAside:active,
+p#envLastP:active,
+ol#valuesList:active,
+section#hobbiesSec ul:active,
+p#currentlyP:active, 
+p#backgroundP:active,figure:active
+{
+  /* font-size: 1.5rem;
+  line-height: 1.6rem; */
+  transform: scale(1.08);
+}
+
+/*get rid of middle border for smaller screens*/
+/* @media only screen and (max-width: 1007px) {
+  article#background {
+    border-style: none;
+  }
+} */
+
+@media only screen and (min-width: 1008px) {
+  article#background section#shepiSec {
+    margin: 1rem 0 0;
+  }
+}
+
+
+/*get rid of middle border for smaller screens*/ 
+@media only screen and (max-width: 1007px) {
+  section#shepiSec, section#hobbiesSec {
+    border-style: none;
+    box-shadow: none;
+  } 
+  section#hobbiesSec {
+    margin-top: 0;
+  }
+  p#familyPara {
+    margin-bottom: 0;
+  }
+  article#background section#shepiSec {
+    margin: 0;
+  }
+}
+
+@media only screen and (max-width: 840px) {
+  figure#robFig {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+  section#shepiSec figure#shepiImg {
+    width: fit-content;
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+  }
+  section#hobFamily {
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;  
+  }
+  article section#environmentSection div#pWithAside p {
+    padding-top: 0;
+    padding-bottom: 0;
+    margin-bottom: 0;
+  }
+  section#environmentSection div#pWithAside {
+    padding-top: 0.2rem;
+    margin-top: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  /*prevent overflow of aside*/ 
+  section#environmentSection aside {
+    text-indent: 0;
+  }
+  /*remove another border, on article around most of main content*/ 
+  main article#background {
+    border-style: none;
+    box-shadow: none;
+    padding-bottom: 0.2rem;
+    margin-bottom: 0.2rem;
+  }
+  /* main article#background h2#myBackground {
+    text-align: center;
+  } */
+  main {
+    padding-left: 0.2rem;
+    padding-right: 0.2rem;
+  }
+  /*adjust heading line heights*/
+  article#background h2, h3, h4 {
+    line-height: 1.7rem;
+  }
+  article#background h3, article#background h4 {
+    margin-top: 0.3rem;
+    margin-bottom: 0.4rem;
+  }
+  article#background p#familyPara {
+    margin-bottom: 0.5rem;
+  }
+  /* article#background h3 {
+    line-height: 1.05rem;
+  }
+  article#background h4 {
+    line-height: 1.02rem;
+  }
+  */ 
+  article#background section {
+    padding: 0;
+    margin: 0;
+  }
+  article#background section#environmentSection,
+  article#background section#valuesSec,
+  article#background section#hobFamily {
+    border-style: none;
+    border-width: 0;
+    box-shadow: none;
+  }
+  article#background figure figcaption p{
+    white-space: normal;
+  }
+  /*aside after content*/ 
+  section#environmentSection div#pWithAside {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    flex-direction: column-reverse;
+  }
+  section#environmentSection p#pNextToAside {
+    display: block;
+  }
+  section#environmentSection aside {
+    margin-top: 0.5rem;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+    padding: 0.5rem;
+    display: block;
+    text-indent: 2rem;
+    background-color: grey;
+    border-radius: 1rem;
+    min-width: fit-content;
+    /* justify-self: end; */
+  }
+  /*stop shepi section border from shrinking*/
+  /* article#background section#shepiSec figure#shepiImg {
+    padding-left: 0.3rem;
+    padding-right: 0.3rem;
+    min-width: fit-content;
+  } */
+}
+
+/*stop shepi section border from shrinking*/
+article#background section#shepiSec figure#shepiImg {
+  padding-left: 5%;
+  padding-right: 5%;
+  min-width: fit-content;
+}
+
+/*animation fly-in for header photo and text,	
+but only if user does not prefer reduced motion*/	
+@media (prefers-reduced-motion: no-preference) {	
+  main {	
+    overflow: hidden;	
+  }	
+  main figure#robFig, main p#backgroundP {	
+    animation: 1.5s ease-in-out slideinhead;	
+  }	
+  article section {	
+    animation: 1.5s ease-in-out slideintext;	
+  }	
+  @keyframes slideinhead {	
+    from {	
+      transform: translateX(100vw);	
+    }	
+    to {	
+      transform: translateX(0); 	
+    }	
+  }	
+  @keyframes slideintext {	
+    from {	
+      transform: translateX(-100vw);	
+    }	
+    to {	
+      transform: translateX(0);	
+    }	
+  }	
+}

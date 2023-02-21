@@ -1,0 +1,687 @@
+/*main page content*/
+body {
+  background-color: rgb(240, 240, 245);
+}
+
+main {
+  /*flex*/
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /*style*/
+  border: 0.2rem solid black;
+  border-radius: 1rem;
+  margin: 1rem 5% 2rem;
+  background-color: white;
+  box-shadow: 0.4rem 0.5rem rgb(7, 83, 140);
+  margin-top: 1rem;
+  padding: 0 3% 0;
+  /*font*/
+  font-weight: normal;
+  font-size: 1rem;
+}
+
+article {
+  background-color: white;
+  /* border: 0.2rem solid black;
+  border-radius: 2rem;
+  padding: 1rem 5% 2rem;
+  margin: 0.5rem 1% 2rem;
+  box-shadow: 0.3rem 0.3rem rgb(7, 83, 140); */
+  /*flex container*/
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+article section {
+  /*sections as flex containers*/
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  /*style*/
+  background-color: white;
+  /* background-color: rgb(252, 253, 255); */
+  border: 0.2rem solid black;
+  border-radius: 1.5rem;
+  padding: 1rem 5% 1.5rem;
+  margin: 1rem 2rem 0;
+  box-shadow: 0.2rem 0.2rem rgb(7, 83, 140);
+}
+article section a {
+  font-weight: 700;
+  text-decoration: none;
+  color: rgb(0, 0, 100);
+}
+article section a:hover,
+article section a:active
+ {
+  color:rgb(7, 83, 150);
+}
+article figure {
+  background-color: white;
+}
+article section p {
+  text-align: start;
+  text-indent: 2rem;
+  margin-bottom: 1rem;
+}
+
+/*headings*/
+h1 {
+  margin-top: 1.5rem;
+  margin-bottom: 0.8rem;
+  margin-left: 2%;
+  align-self: start;
+  font-size: 3rem;
+}
+h2 {
+  align-self: start;
+}
+h2#hResume {
+  margin-left: 2%;
+}
+section#lessonsLearned h2 {
+  margin-left: 7%;
+}
+
+/*Resume section*/
+section#resume {
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+/*Misha info card*/
+ul#mishaInfoCardList {
+  list-style-type: none;
+  text-align: start;
+  margin: 0.3rem 0;
+  margin-left: 3%;
+}
+/*Education*/
+article section#education {
+  align-items: start;
+}
+article section#education h3 {
+  align-self: center;
+}
+section#education ul {
+  list-style-type: none;
+  margin-top: 0.5rem;
+}
+section#education ul#ucsdList {
+  margin-bottom: 0.8rem;
+}
+/*Work + Volunteer*/
+section#work, section#volunteer, section#techSkills {
+  align-items: start;
+  /* width: 80%; */
+}
+section#work ul, section#volunteer ul {
+  margin: 0.2rem 2% 0.8rem 8%;
+  /* text-align: center; */
+  /* display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center; */
+}
+section#work > ul > li.firstWorkItem, section#volunteer > ul > li.firstWorkItem {
+  list-style-type: initial;
+}
+section#work > ul > li, section#volunteer > ul > li {
+  list-style-type: none;
+  text-align: start;
+}
+section#work > ul ul, section#volunteer > ul ul {
+  list-style-position: inside;
+  /* padding-left: 0.5rem; */
+  padding-left: 1%;
+  display: block;
+}
+/*Tech Skills*/
+section#techSkills {
+  padding-bottom: 0.3rem;
+}
+section table#techSkillsTable {
+  margin: 0.5rem 0;
+  /*table as flow container*/
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: start;
+}
+section table#techSkillsTable tbody {
+    /*style*/
+    border: 0.2rem solid black;
+    border-radius: 1rem;
+    padding: 0.4rem;
+}
+
+section table#techSkillsTable > caption {
+  /* margin: 0.2rem 1rem 0.7rem; */
+  text-align: start;
+}
+section table#techSkillsTable > tr {
+  display: block;
+
+}
+section table#techSkillsTable td,
+section table#techSkillsTable th {
+  padding: 0;
+  width: fit-content;
+  font-weight: 500;
+  /* border-left: 0.3rem solid black; */
+}
+section table#techSkillsTable th {
+  font-weight: bold;
+}
+section table#techSkillsTable tr:nth-child(even) {
+  background-color: rgb(67, 122, 200);
+}
+section table#techSkillsTable tr:nth-child(odd) {
+  background-color: rgb(145, 201, 250);
+}
+/*don't display last column*/
+/* article section#techSkills table#techSkillsTable tr td.col3,
+article section#techSkills table#techSkillsTable tr th.col3
+{
+  display: none;
+} */
+
+section table#techSkillsTable td {
+  text-align: center;
+}
+section table#techSkillsTable td,
+section table#techSkillsTable th
+{
+  /* padding: 1rem; */
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+/* - rounded table corners*/
+section table#techSkillsTable th#langToolColHeader {
+  border-top-left-radius: 1rem;
+}
+section table#techSkillsTable th#moreDescripColHeader {
+  border-top-right-radius: 1rem;
+}
+section table#techSkillsTable tr#Git td.col1 {
+  border-bottom-left-radius: 1rem;
+}
+section table#techSkillsTable tr#Git td.col3 {
+  border-bottom-right-radius: 1rem;
+}
+
+@media only screen and (max-width: 640px) {
+  /*Tech Skills*/
+  section#techSkills {
+    padding-bottom: 0.3rem;
+  }
+  section table#techSkillsTable {
+    margin: 0.5rem 0;
+    /*table as flow container*/
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+  }
+  section table#techSkillsTable tbody {
+      /*style*/
+      border: 0.2rem solid black;
+      border-radius: 1rem;
+      padding: 0.4rem;
+  }
+
+  section table#techSkillsTable > caption {
+    margin: 0.2rem 1rem 0.7rem;
+    text-align: start;
+  }
+  section table#techSkillsTable > tr {
+    display: block;
+
+  }
+  /* section  col {
+    padding: 0.1rem 0.3rem;
+  } */
+  /* section#techSkills colgroup#cols col {
+    background-color: blue;
+    width: 30%;
+    border-left: 0.3rem solid black;
+  } */
+  section table#techSkillsTable td,
+  section table#techSkillsTable th {
+    padding: 0.5rem 0.3rem;
+    /* width: 35%; */
+    width: fit-content;
+    font-weight: 500;
+    /* border-left: 0.3rem solid black; */
+  }
+  section table#techSkillsTable th {
+    font-weight: bold;
+  }
+  /* section table#techSkillsTable td.col3,
+  section table#techSkillsTable th.col3 { */
+    /* width: 30%; */
+    /* border-left: 0.3rem solid black; */
+  /* } */
+  section table#techSkillsTable tr:nth-child(even) {
+    background-color: rgb(67, 122, 200);
+  }
+  section table#techSkillsTable tr:nth-child(odd) {
+    background-color: rgb(145, 201, 250);
+  }
+
+  section table#techSkillsTable td {
+    text-align: center;
+  }
+  /* - rounded table corners*/
+  section table#techSkillsTable th#langToolColHeader {
+    border-top-left-radius: 1rem;
+  }
+  section table#techSkillsTable th#moreDescripColHeader {
+    border-top-right-radius: 1rem;
+  }
+  section table#techSkillsTable tr#Git td.col1 {
+    border-bottom-left-radius: 1rem;
+  }
+  section table#techSkillsTable tr#Git td.col3 {
+    border-bottom-right-radius: 1rem;
+  }
+}
+
+/*Lessons Learned*/
+section#lessonsLearned h2 {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+section#lessonsLearned ul#lessonsLearnedList {
+  margin: 0.5rem 0.7rem 0 10%;
+}
+section#lessonsLearned ul#lessonsLearnedList li{
+  margin-bottom: 0.7rem;
+}
+
+
+section.innerCard {
+  margin: 0.5rem 1.5rem 1.6rem;
+  border: 0.2rem solid black;
+}
+section#lessonsLearned {
+  box-shadow: 0.2rem 0.2rem rgb(7, 83, 140);
+  /* background-color: rgb(178, 220, 237); */
+  font-weight: 500;
+  background-color: rgb(226, 242, 255);
+  border-radius: 1.5rem;
+  padding: 1rem;
+}
+/* section#lessonsLearned {
+  border: 0.12rem solid black;
+  border-radius: 1.5rem;
+  padding: 1rem 5% 1.5rem;
+  margin: 1rem 2rem 0;
+  box-shadow: 0.2rem 0.2rem rgb(7, 83, 140);
+} */
+h2#lessonsH {
+  margin-bottom: 2rem;
+}
+ul#lessonsLearnedList li {
+  margin: 1.5rem 1rem 1rem;
+  font-size: 1.05rem;
+}
+/*animation*/
+/*make text larger in article section*/
+h1, h2, h3,div#infoCard,article section.innerCard,
+ul#lessonsLearnedList li {
+  /* font-size: 1rem;
+  line-height: 1.1rem;
+  transition: font-size 4s 1s;
+  transition: line-height 4s 1s; */
+  transition: transform;
+  transition-delay: 0.2s;
+  transition-duration: 0.5s;
+}
+h1:hover, h2:hover, h3:hover,
+div#infoCard:hover,article section.innerCard:hover,
+ul#lessonsLearnedList li:hover,
+h1:active, h2:active, h3:active,
+div#infoCard:active,article section.innerCard:active,
+ul#lessonsLearnedList li:active {
+  /* font-size: 1.5rem;
+  line-height: 1.6rem; */
+  transform: scale(1.08);
+}
+
+main, section {
+  width: fit-content;
+}
+
+/* article section#resume,
+  article section#education,
+  article section#work,
+  article section#volunteer,
+  article section#techSkills,
+  article section#lessonsLearned {
+    margin-left: 2%;
+    margin-right: 2%;
+    padding-left: 1%;
+    padding-right: 1%;
+  } */
+h2 {
+  margin-bottom: 0.3rem;
+  line-height: 1.3rem;
+}
+article section#techSkills {
+  margin-top: 1.5rem;
+}
+@media only screen and (max-width: 1008px) and (min-width: 640px) {
+  /*Tech Skills*/
+  section#techSkills {
+    padding-bottom: 0.3rem;
+  }
+  section table#techSkillsTable {
+    margin: 0.5rem 0;
+    /*table as flow container*/
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+  }
+  section table#techSkillsTable tbody {
+      /*style*/
+      border: 0.2rem solid black;
+      border-radius: 1rem;
+      padding: 0.4rem;
+  }
+
+  section table#techSkillsTable > caption {
+    /* margin: 0.2rem 1rem 0.7rem; */
+    text-align: start;
+  }
+  section table#techSkillsTable > tr {
+    display: block;
+
+  }
+  section table#techSkillsTable td,
+  section table#techSkillsTable th {
+    padding: 0;
+    width: fit-content;
+    font-weight: 500;
+    /* border-left: 0.3rem solid black; */
+  }
+  section table#techSkillsTable th {
+    font-weight: bold;
+  }
+  section table#techSkillsTable tr:nth-child(even) {
+    background-color: rgb(67, 122, 200);
+  }
+  section table#techSkillsTable tr:nth-child(odd) {
+    background-color: rgb(145, 201, 250);
+  }
+  /*don't display last column*/
+  article section#techSkills table#techSkillsTable tr td.col3,
+  article section#techSkills table#techSkillsTable tr th.col3
+  {
+    display: none;
+  }
+
+  section table#techSkillsTable td {
+    text-align: center;
+    padding-right: 1%;
+  }
+  section table#techSkillsTable td,
+  section table#techSkillsTable th
+  {
+    /* padding: 1rem; */
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+  /* - rounded table corners*/
+  section table#techSkillsTable th#langToolColHeader {
+    border-top-left-radius: 1rem;
+  }
+  section table#techSkillsTable th#lvlMasteryColHeader {
+    border-top-right-radius: 1rem;
+  }
+  section table#techSkillsTable tr#Git td.col1 {
+    border-bottom-left-radius: 1rem;
+  }
+  section table#techSkillsTable tr#Git td.col2 {
+    border-bottom-right-radius: 1rem;
+  }
+  
+  article section#work,
+  article section#volunteer,
+  article section#techSkills {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+  }
+  section table#techSkillsTable {
+    margin: 0.5rem 0;
+    /*table as flow container*/
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+  }
+  article section#resume,
+  article section#education,
+  article section#work,
+  article section#volunteer,
+  article section#techSkills,
+  article section#lessonsLearned {
+    margin-left: 2%;
+    margin-right: 2%;
+    padding-left: 1%;
+    padding-right: 1%;
+  }
+  /*no intermediate boundary*/
+  article section#resume,
+  article section#techSkills table#techSkillsTable tbody
+  {
+    border: none;
+    box-shadow: none;
+    padding-left: 2%;
+    padding-right: 2%
+  }
+  article section#techSkills {
+    margin-top: 1.5rem;
+  }
+  
+}
+@media only screen and (max-width: 640px) {
+  /*no intermediate boundary*/
+  article section#resume,
+  article section#techSkills table#techSkillsTable tbody
+  {
+    border: none;
+    box-shadow: none;
+    padding-left: 2%;
+    padding-right: 2%
+  }
+  h1 {
+    overflow-wrap: break-word;
+    white-space: normal;
+    margin-bottom: 1.5rem;
+  }
+  h2 {
+    margin-bottom: 1.5rem;
+    line-height: 1.3rem;
+  }
+  h2#hResume {
+    padding-left: 5%;
+  }
+  article section#work,
+  article section#volunteer,
+  article section#techSkills {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+  }
+  article section#resume {
+    padding: 0;
+    margin: 0;
+  }
+  article section#resume,
+  article section#education,
+  article section#work,
+  article section#volunteer,
+  article section#techSkills,
+  article section#lessonsLearned {
+    margin-left: 2%;
+    margin-right: 2%;
+    padding-left: 1%;
+    padding-right: 1%;
+  }
+  article section#techSkills {
+    margin-top: 1.5rem;
+    margin-bottom: 2.4rem;
+  }
+  main {
+    padding: 1%;
+    width: fit-content;
+  }
+
+  /*Tech Skills*/
+  section#techSkills {
+    padding-bottom: 0.3rem;
+  }
+  section table#techSkillsTable {
+    margin: 0.5rem 0;
+    /*table as flow container*/
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+  }
+  section table#techSkillsTable tbody {
+      /*style*/
+      border: 0.2rem solid black;
+      border-radius: 1rem;
+      padding: 0.4rem;
+  }
+
+  section table#techSkillsTable > caption {
+    /* margin: 0.2rem 1rem 0.7rem; */
+    text-align: start;
+  }
+  section table#techSkillsTable > tr {
+    display: block;
+
+  }
+  section table#techSkillsTable td,
+  section table#techSkillsTable th {
+    padding: 0;
+    width: fit-content;
+    font-weight: 500;
+    /* border-left: 0.3rem solid black; */
+  }
+  section table#techSkillsTable th {
+    font-weight: bold;
+  }
+  section table#techSkillsTable tr:nth-child(even) {
+    background-color: rgb(67, 122, 200);
+  }
+  section table#techSkillsTable tr:nth-child(odd) {
+    background-color: rgb(145, 201, 250);
+  }
+  /*don't display last column*/
+  article section#techSkills table#techSkillsTable tr td.col3,
+  article section#techSkills table#techSkillsTable tr th.col3
+  {
+    display: none;
+  }
+
+  section table#techSkillsTable td {
+    text-align: center;
+  }
+  section table#techSkillsTable td,
+  section table#techSkillsTable th
+  {
+    /* padding: 1rem; */
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+  /* - rounded table corners*/
+  section table#techSkillsTable th#langToolColHeader {
+    border-top-left-radius: 1rem;
+  }
+  section table#techSkillsTable th#lvlMasteryColHeader {
+    border-top-right-radius: 1rem;
+  }
+  section table#techSkillsTable tr#Git td.col1 {
+    border-bottom-left-radius: 1rem;
+  }
+  section table#techSkillsTable tr#Git td.col2 {
+    border-bottom-right-radius: 1rem;
+  }
+
+  section#lessonsLearned h2#lessonsH {
+    margin-bottom: 0;
+    line-height: 1.3rem;
+  }
+  article,  main {
+    padding: 0;
+    margin: 1%;
+    width: fit-content;
+  }
+  ul#ucsdList, ul#canadaCollege {
+    width: fit-content;
+    overflow-wrap: break-word;
+    white-space: normal;
+  }
+  h1 {
+    margin-right: 3%;
+    overflow-wrap: break-word;
+    font-size: 1.9rem;
+  }
+  h2#hResume {
+    margin-left: 0;
+  }
+  section#techSkills table#techSkillsTable caption {
+    margin: 0;
+    margin-top: 0.2rem;
+    margin-bottom: 0.7rem;
+    width: fit-content;
+  }
+  footer#endOfPage {
+    width: 100%;
+  }
+}
+
+
+
+
+
+
+
+/*animation fly-in for header photo and text,	
+but only if user does not prefer reduced motion*/	
+@media (prefers-reduced-motion: no-preference) {	
+  main {	
+    overflow: hidden;	
+  }	
+  div#infoCard, section#work {	
+    animation: 1.5s ease-in-out slideinhead;	
+  }	
+  section#education {	
+    animation: 1.5s ease-in-out slideintext;	
+  }
+  @keyframes slideinhead {	
+    from {	
+      transform: translateX(100vw);	
+    }	
+    to {	
+      transform: translateX(0); 	
+    }	
+  }	
+  @keyframes slideintext {	
+    from {	
+      transform: translateX(-100vw);	
+    }	
+    to {	
+      transform: translateX(0);	
+    }	
+  }	
+}

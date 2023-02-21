@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Experiments | Misha Reswick's Portfolio Site</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Misha Reswick">
+    <meta name="description" content="Misha Reswick's personal portfolio website. Learn more
+    about his current works in progress and experiments here.">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+    <link rel="stylesheet" href="Assets/styles/head_foot.css">
+    <link rel="stylesheet" href="Assets/styles/experiments.css">
+
+    <!--Script to draw with canvas-->
+    <script>
+      window.addEventListener("load", function() {
+        const canvas = document.getElementById("mCanvas");
+        const ctx = canvas.getContext("2d");
+        console.log(ctx);
+
+        ctx.font = "20px serif";
+        ctx.strokeText("M/", "40", "50");
+        ctx.strokeText("Welcome to this experiments page.", "40", "85");
+      });
+    </script>
+    <style>
+      ul + p {
+        text-align: center;
+      }
+    </style>
+    <template>
+      <p>Samplel Content #2</p>
+    </template>
+  </head>
+  <body>
+
+    <header>
+      <!--Main navigation menu.-->
+      <nav class="mainNavigation" title="Menu for main navigation.">
+        <!-- <div class="emptyMainSpacer"></div> -->
+        <a class="homeMain" href="index.html" title="Click to go to Home.">M/</a>
+        <ul class="mainNavigation">
+          <li id="mainnavHome"><a href="index.html" title="Click to go to Home.">Home</a></li>
+          <li id="mainnavBio"><a href="bio.html" title="Click to go to my Bio page.">Bio</a></li>
+          <li id="mainnavExp"><a href="experience.html" title="Click to go to my Experience page.">Experience</a></li>
+          <li id="mainnavProj" class="projects" title="Click to go to my Projects.">Projects
+            <ul class="subMainNav">
+              <li id="submainnav1"><a href="pastProjects.html" title="Click to go to my Past Projects' page.">Past Projects</a></li>
+              <li id="submainnav2"><a href="experiments.html" title="Click to stay on my Experiments' page.">Experiments</a></li>
+            </ul>
+          </li>
+          <li id="mainnavTouch"><a href="getInTouch.html" title="Click to go to my Get in Touch page to contact me.">Get in Touch</a></li>
+          <li id="mainnavHam">
+            <!--Hamburger menu-->
+            <input id="lab" type="checkbox">
+            <label class="hamMenu" for="lab">
+              <span id="di"></span>
+            </label>
+            <!-- <nav class="downNav">
+              <nav>
+                <div>This</div>
+                <div>is</div>
+                <div>the</div>
+                <div>sidebar</div>
+              </nav>
+            </nav> -->
+            <nav class="sub1mainnav">
+              <ul class="upperLevelSubNav1">
+                <li class="l1" id="mainnavExp2"><a href="experience.html" title="Click to go to my Experience page.">Experience</a></li>
+                <li class="l1">
+                  <details>
+                    <summary title="Click for my Projects.">Projects:</summary>
+                      <ul class="lowerLevelSubNav1">
+                        <li id="submainnav1_2"><a href="pastProjects.html" title="Click to go to my Past Projects' page.">Past Projects</a></li>
+                        <li id="submainnav2_2"><a href="experiments.html" title="Click to stay on my Experiments' page.">Experiments</a></li>
+                      </ul>
+                  </details>
+                </li>
+                <li id="mainnavTouch_2" class="l1"><a href="getInTouch.html" title="Click to go to my Get in Touch page to contact me.">Get in Touch</a></li>
+              </ul>
+            </nav>
+          </li>
+        </ul>
+        <hr class="navBorder">
+      </nav>
+    </header>
+
+    <main>
+     
+      
+      <article id="theart" title="Sample experiments.">
+         <!--Header for top "Experiments:" portion of page-->
+        <header id="experimentsHeader">
+          <h1 title="The experiments page for this site.">Experiments:</h1>
+          <p id="headP">
+            This page is a place for <strong>current experiments</strong> and notes of mine: it is a place for me to try
+            things out. As a result, <b>not all</b> features of this page be the most comprehensible; and some
+            may still be works in progress. This page is a place to jot things down and see what happens.
+            You can try playing around here, if you like, with any user interaction that may be
+            enabled below. 
+          </p>
+        </header>
+        <!--Coding and Styles section-->
+        <section id="codingStyles" title="Coding and Styles Comments.">
+          <h2>Coding and Styles</h2>
+          <p class="oldPre">
+            Here, I would like to jot down a few notes in regards to coding. For instance, one pain point that I often
+            find when reading code is a difficulty in matching curly braces, such as based on indentation. I am 
+            therefore often one of the proponents for the perhaps unfavorable approach of doing the following
+            practice for code blocks:</p>
+            <pre>
+              <code>
+    function myFunc()
+    {
+      ...
+    }
+              </code>
+            </pre>
+          <p id="oldPre2" class="oldPre">
+            where the curly braces thus line up with each other. This, I believe, makes reading code noticeably easier,
+            even if at the expense of an extra line.
+
+            This too, I think gets at something fundamental: the code we write should be treated as being part of a
+            maintainable system. That should therefore be prioritized over potentially stylizing of it, such as to
+            fit things on one less line, for example. I am thus also a big proponent of using whitespace to make
+            one's code more readable. 
+          </p>
+        </section>
+
+        <!--Canvas Experimentation section.-->
+        <section id="canvasExperimentation" title="Experimenting with a canvas to draw on.">
+          <h2>Canvas Experimentation:</h2>
+          <figure title="Canvas to draw on.">
+            <!--Border added via CSS style here only so that the canvas is visible on the page (as enclosed).-->
+            <canvas id="mCanvas" style="border: 0.5em solid black;" width="400" height="150"></canvas>
+            <figcaption>A canvas element to display the result of JavaScript drawing.</figcaption>
+          </figure>
+           <p>A <i>canvas</i> element is used here just above. It currently draws some sample text, including
+          the logo of this site. In the future, however, this may be adapted to draw based on user input.
+          Toward this end, for instance, a few circles are included below as buttons that may later be used
+            to trigger/manipulate drawing here. They are as follows:
+          </p>
+          <ul title="List of colored circle buttons.">
+            <li title="Red filled circle button.">
+              <button id="redCircleButton" type="button">
+                <svg width="50" height="50">
+                  <circle cx="25" cy="25" r="20" stroke="red" fill="red"></circle>
+                </svg>
+              </button>
+            </li>
+            <li>
+              <button id="yellowCircleButton" type="button">
+                <svg width="50" height="50">
+                  <circle cx="25" cy="25" r="20" stroke="yellow" fill="yellow"></circle>
+                </svg>
+              </button>
+            </li>
+            <li>
+              <button id="greenCircleButton" type="button">
+                <svg width="50" height="50">
+                  <circle cx="25" cy="25" r="20" stroke="green" fill="green"></circle>
+                </svg>
+              </button>
+            </li>
+          </ul> 
+          <p>
+            When the above buttons are implemented, this will serve as a place to provide
+            instructions on how to use them to manipulate the canvas.
+          </p>
+        </section>
+      </article>      
+    </main>
+
+    <hr id="footHr">
+    <footer id="endOfPage">
+      Misha Reswick<br>
+      <address><a id="mishaEmail" href="mailto:mreswick@ucsd.com" title="Misha's UCSD email.">mreswick@ucsd.edu</a></address>
+      Last updated: February 2023
+      <nav id="footerNav">
+        <a id="backToTop" href="#">Back to top ^</a>
+      </nav>
+    </footer>
+
+  </body>
+</html>

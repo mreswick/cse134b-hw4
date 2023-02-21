@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Bio | Misha Reswick's Portfolio Site</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Misha Reswick">
+    <meta name="description" content="Misha Reswick's personal portfolio website. Learn more
+    about his backgrounds and interests at this bio page for him.">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+    <link rel="stylesheet" type="text/css" href="Assets/styles/bio.css">
+    <link rel="stylesheet" type="text/css" href="Assets/styles/head_foot.css">
+  </head>
+  <body>
+    <header>
+      <!--Main navigation menu.-->
+      <nav class="mainNavigation" title="Menu for main navigation.">
+        <!-- <div class="emptyMainSpacer"></div> -->
+        <a class="homeMain" href="index.html" title="Click to go to Home.">M/</a>
+        <ul class="mainNavigation">
+          <li id="mainnavHome"><a href="index.html" title="Click to go to Home.">Home</a></li>
+          <li id="mainnavBio"><a href="bio.html" title="Click to stay on my Bio page.">Bio</a></li>
+          <li id="mainnavExp"><a href="experience.html" title="Click to go to my Experience page.">Experience</a></li>
+          <li id="mainnavProj" class="projects" title="Click to open my Projects submenu.">Projects
+            <ul class="subMainNav">
+              <li id="submainnav1"><a href="pastProjects.html" title="Click to go to my Past Projects' page.">Past Projects</a></li>
+              <li id="submainnav2"><a href="experiments.html" title="Click to go to my Experiments' page.">Experiments</a></li>
+            </ul>
+          </li>
+          <li id="mainnavTouch"><a href="getInTouch.html" title="Click to go to my Get in Touch page to contact me.">Get in Touch</a></li>
+          <li id="mainnavHam">
+            <!--Hamburger menu-->
+            <input id="lab" type="checkbox">
+            <label class="hamMenu" for="lab">
+              <span id="di"></span>
+            </label>
+            <!-- <nav class="downNav">
+              <nav>
+                <div>This</div>
+                <div>is</div>
+                <div>the</div>
+                <div>sidebar</div>
+              </nav>
+            </nav> -->
+            <nav class="sub1mainnav">
+              <ul class="upperLevelSubNav1">
+                <li class="l1" id="mainnavExp2"><a href="experience.html" title="Click to go to my Experience page.">Experience</a></li>
+                <li class="l1">
+                  <details>
+                    <summary>Projects:</summary>
+                      <ul class="lowerLevelSubNav1">
+                        <li id="submainnav1_2"><a href="pastProjects.html" title="Click to go to my Past Projects' page.">Past Projects</a></li>
+                        <li id="submainnav2_2"><a href="experiments.html" title="Click to go to my Experiments' page.">Experiments</a></li>
+                      </ul>
+                  </details>
+                </li>
+                <li id="mainnavTouch_2" class="l1"><a href="getInTouch.html" title="Click to go to my Get in Touch page to contact me.">Get in Touch</a></li>
+              </ul>
+            </nav>
+          </li>
+        </ul>
+        <hr class="navBorder">
+      </nav>
+    </header>
+
+    <main>
+      <h1 title="My Bio: About Me:">Bio:</h1>
+
+      <article id="background">
+        <h2 id="myBackground" title="My background and upbringing.">My background:</h2>
+        <!-- Robot photo-->
+        <figure id="robFig">
+          <picture id="mishaPicture">
+            <source id="robotPhoto" srcset="Assets/images/bio/MishaRobot_370_294_orig.jpg" width="370" height="294" type="image/jpeg"
+              media="(min-width: 840px)">
+            <source srcset="Assets/images/bio/MishaRobot_300_238.jpg" width="300" height="238" type="image/jpeg"
+              media="(min-width: 641px)">
+            <img src="Assets/images/bio/MishaRobot_250_198.jpg" width="250" height="198" alt="Misha working on Tetrix Robots before college.">
+            <!-- <source srcset="Assets/images/home/misha_headshot_300_243.jpg" width="300" height="243"
+              type="image/jpeg" media="(max-width: 640px)"> -->
+            <!-- <img src="Assets/images/home/misha_headshot.jpg" alt="Head shot photo of Misha." width="512" height="415"> -->
+          </picture>
+          <figcaption id="robotCaption" title="Misha examininng his newly-buily robot."><p>Me pre-college, working on motor controllers.</p></figcaption>
+        </figure>
+          <p id="backgroundP" class="textContent">
+          I have always been interested in tinkering, creating, and engineering. When there is a dull moment, I will be sure to think up something
+          that I can get my hands dirty with and apply my mind to. Before college, this was often with robots and drones. Now, it is more so with 
+          the software. In either case, however, I have always loved being able to think through problems, and arrive at solutions.
+          </p>
+      
+        <!--Background environment section. -->
+        <section id="environmentSection" title="My environment growing up">
+          <h3>Environment:</h3>
+          <!-- Shot of hill-->
+          <figure id="hill" title="Shot of hillside near home.">
+            <picture id="hillPic">
+              <source srcset="Assets/images/bio/Hill_515_265_orig.jpg" width="515" height="265"
+                type="image/jpeg" media="(min-width: 840px)">
+              <source srcset="Assets/images/bio/Hill_515_265_orig.PNG" width="515" height="265"
+                type="image/png" media="(min-width: 840px)">
+                <!-- type="image/PNG" media="(min-width: 750px)"> -->
+              <source srcset="Assets/images/bio/Hill_400_206.jpg" width="400" height="206" type="image/jpeg"
+                media="(min-width: 641px)">
+              <source srcset="Assets/images/bio/Hill_400_206.PNG" width="400" height="206" type="image/png"
+                media="(min-width: 641px)">
+              <source srcset="Assets/images/bio/Hill_300_154.jpg" width="300" height="154" type="image/jpeg"
+                media="(min-width: 500px)">
+              <source srcset="Assets/images/bio/Hill_300_154.PNG" width="300" height="154" type="image/png"
+                media="(min-width: 500px)">
+              <source srcset="Assets/images/bio/Hill_300_154.jpg" width="250" height="129" type="image/jpeg">
+              <img src="Assets/images/bio/Hill_250_129.PNG" width="250" height="129" alt="Picture of hillside in the mountains near Misha's home town.">
+            </picture>
+            <figcaption id="hillCaption" title="A photo Misha took of a nearby hill in the mountains.">A nearby hill in the mountains of the bay.</figcaption>
+          </figure>
+          <p title="Inspiring people">
+            I have been fortunate to be surrounded by inspiring people, regardless of circumstance, and even if from backgrounds that may seem
+            unexpected. 
+          </p>
+          <div id="pWithAside" title="Different family backgrounds.">
+            <aside id="musicBackgrounds">Interestingly, music actually plays a large role with multiple of my family members. My aunt is a professional 
+              songwriter, my dad played country with both vocals and bass, and my mom is a trained classical (piano and violin) musician, having 
+              attended conservatories since her childhood.
+            </aside>
+              <p id="pNextToAside"> Growing up, for example, was a split experience for me. My parents, for example, come from distinct backgrounds: my dad was raised
+                in the U.S., born in Boston, while my mom is from the Ural Mountains in Russia. While my dad's dad was a graduate student at MIT and later
+                a professor at what is now Case Western Reserve University, my mom's dad was working in the tank factories of World War II, building
+                the infamous T-34's. But these differences continued on after their marriage, for before I was old enough to remember, they divorced
+                and proceeded to live in separate spheres. With my dad, we lived on the semi-rural coast (the photo above, for example, was taken overlooking
+                a nearby hillside, and our community only has about a thousand residents or so), whereas my mom lived "over-the-hill" in the 
+                mainstay of the suburbs of Silicon Valley. And while my dad had transitioned into tech from administration, my mom worked (and still does)
+                as a self-employed music teacher.</p>
+    
+            </div>
+            <p title="Varied upbringing">
+              The result was a varied upbringing. Where I attended school, for example, would often fluctuate. Sometimes I would be attending
+              a school with a surf team within walking distance of the beach, while others, at least an hour or more away. This experience
+              of the city, and the country, if you will, helped provide a broadened view of what opportunities lay before me. 
+            </p> 
+            <p title="Concurrent enrollment">
+              As one example, I effectively transferred during high school to a community college (by transferring to a separate high school 
+              so I could take concurrent enrollment courses full-time). This would expose me to the realms of the likes of multi-variable calculus,
+              physics, and computer coding, in which I became fascinated. It all came at once: again I was fortunate to have amazing professors
+              and be surrounded by highly-motivated students with similar interests.  
+            </p>
+            <p id="envLastP" title="Living workshop at home">
+              All-the-meanwhile, I could always count on returning home to a living workshop. Having grown up with my dad has similarly exposed
+              me to the passion and joy that comes with exercising creativity. At home, his dining room is often filled with audio equipment;
+              his garage is a woodshop with electronics bench; two sheds outside the house have been allocated for photography and more
+              electronics; the basement is devoted to photography, with printers taking up rooms, and an enlarging camera going through a wall;
+              and my room had turned into a robotics bench of its own. Around us, too, were always works in progress, be it a truck reworked
+              to run on alcohol (with dials covering the dash), and whatever else. 
+            </p>
+        </section>
+        
+          <!-- Values -->
+          <section id="valuesSec" title="Values">
+            <h3>Values:</h3>
+            <p id="valTop">
+              From my time being raised through college, then, I have been privileged to have taken away a number of values that guide 
+              me day-to-day. These have been as follows, in the order they build upon each other.
+            </p>
+            <ol id="valuesList" title="Values learned.">
+              <li title="Curiosity"><i>Be curious:</i> it all starts with this. Gaining intrinsic reward from learning and utilizing
+                the tools around us is what lays the foundation
+              </li>
+              <li title="Ownership"><i>Have ownership:</i> once you feel inspired, put the extra effort in to really master what
+                comes your way. Further, take responsibility for what is yours, and be both practical but dedicated to
+                tasks at hand.
+              </li>
+              <li title="Have fun."><i>Have fun:</i> creating things is enjoyable, and is what circles this list back to fuel the first
+                item. It is a feedback-cycle, then, that helps me to continue to develop and feel gratified.
+              </li>
+            </ol>
+            <p>
+              I also am of the belief that the above values go a long way toward improving my own software development. Indeed, I 
+              believe that coding should be treated as an engineering discipline. In that way, for example, users should be able
+              to trust it, just as they would for physical public infrastructure, for example. It is thus my view that there is still
+              much work to be done in the realm of software development to achieve this, but that if the above three principles can
+              could be emphasized for the code that we write (particularly
+              that of the second above), that the technical landscape would be improved. 
+            </p>
+          </section>
+
+          <!-- Hobbies and Family -->
+          <section id="hobFamily" title="Hobbies and Family">
+            <h3>Hobbies and Family:</h3>
+
+            <!--Shepi and Family-->
+            <section id="shepiSec" title="Shepi">
+              <h4>Family:</h4>
+              <figure id="shepiImg" title="Shepi Photo">
+                <picture id="shepiPic">
+                  <source srcset="Assets/images/bio/Pooch.jpg" width="420" height="315"
+                    type="image/png" media="(min-width: 840px)">
+                    <!-- type="image/PNG" media="(min-width: 750px)"> -->
+                  <source srcset="Assets/images/bio/Pooch_400_300.jpg" width="400" height="300" type="image/png"
+                    media="(min-width: 750px)">
+                  <source srcset="Assets/images/bio/Pooch_300_225.jpg" width="300" height="225" type="image/png"
+                    media="(min-width: 641px)">
+                  <img src="Assets/images/bio/Pooch_250_188.jpg" alt="A picture of my dad's and my golden retriever, Shepi, an amazing dog."  
+                    width="250" height="188">
+                </picture>
+                <figcaption id="shepiCaption">Shepi the wonder dog.</figcaption>
+              </figure>
+              <p>
+                Of my amazing family members, I feel the particular need to honor <i>Shepi</i>, our golden retriever at home. I have
+                always been raised with dogs in the household, but <em>she</em>is something else: her energy and puppy-nature, even at
+                8 years of age, never ceases to surprise. 
+              </p>
+              <p id="familyPara">
+                In addition, I owe my family a tremendous amount. They have largely shaped who I am today, and continue
+                to provide their support at every turn.
+              </p>
+            </section>
+
+            <!--Hobbies-->
+            <section id="hobbiesSec" title="Hobbies">
+              <h4>Hobbies:</h4>
+              <p id="hobTopP">When some spare time comes my way, some things I love to do beyond coding and tinkering include:</p>
+              <ul title="Things I do in my spare time.">
+                <li title="The outdoors."><i>Heading outdoors:</i> at this point I am sure it has become spiritual. There is nothing like standing
+                  at the foot of a redwood tree that towers hundreds of feet above you, and has been there for decade upon
+                  decade, to be reminded of what vastness lays beyond oneself.
+                </li>
+                <li title="Photography and Videography."><i>Photography and Videography:</i> this stems partly from being engulfed in nature, but also comes from 
+                  fascinations I have about other elements, such as light and scale. I am always amazed with how
+                  something small can become a world in and of itself as well, and play with our understanding of size or otherwise
+                  with our comprehension of the physical world. (Head over to 
+                  my <a href="pastProjects.html" title="Previous Projects Page">Previous Projects</a> page, for example, to see some photos I have taken.)
+                <li title="Chess."><i>Chess:</i> one of my favorite quick recreational activities remains as chess. The game has always been an integral
+                  part of my life. In elementary and middle school, I received choaching weekly and compete in tournaments; and it remains
+                  something I can often go to when down-time is of the essence. (Check out a page I link to from my <a href="pastProjects.html" title="Previous Projects Page">Previous Projects</a> page,
+                  at <a href="chessforall.space">chessforall.space</a>, which is a site I created for a previous course to express my love for the game.)
+                </li>
+                <li title="Music."><i>Music:</i> this often goes very well with chess, by the way.</li>
+                </ul>
+            </section>
+          </section>
+      </article>
+
+      <!-- Current events for me: further description-->
+      <section id="currLastSec" title="Current events for Misha.">
+        <h2 id="currentlyTitle" title="Current happenings for me.">Currently:</h2>
+        <p id="currentlyP">As mentioned also on the <a href="index.html" title="home page link">Home</a> page, but here in more detail, I am
+        thrilled to accept my full-time offer at Amazon as a full-time software developer engineer. After the completion of my
+        12-week internship (more about that on my <a href="experience.html" title="Misha's experiences' link">Experience</a> page), I am 
+        happy to say that I will be able to return to the same team with which I had the pleasure to work with. This job being on
+        the horizon, though being out-of-state for me currently, is exciting to think of. It will involve not only a change 
+        of scenery, but also hopefully a development of me as a more skilled and capable engineer.
+        </p>
+      </section>
+    </main>
+
+    <hr id="footHr">
+    <footer id="endOfPage">
+      Misha Reswick<br>
+      <address><a id="mishaEmail" href="mailto:mreswick@ucsd.com" title="Misha's UCSD email.">mreswick@ucsd.edu</a></address>
+      Last updated: February 2023
+      <nav id="footerNav">
+        <a id="backToTop" href="#">Back to top ^</a>
+      </nav>
+    </footer>
+
+  </body>
+</html>

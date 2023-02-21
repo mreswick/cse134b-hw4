@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Get in Touch | Misha Reswick's Portfolio Site</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Misha Reswick">
+    <meta name="description" content="Misha Reswick's personal portfolio website. Contact 
+    him here.">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+    <link rel="stylesheet" href="Assets/styles/head_foot.css">
+    <link rel="stylesheet" href="Assets/styles/get_in_touch.css">
+  </head>
+  <body>
+
+    <header>
+      <!--Main navigation menu.-->
+      <nav class="mainNavigation" title="Menu for main navigation.">
+        <!-- <div class="emptyMainSpacer"></div> -->
+        <a class="homeMain" href="index.html" title="Click to go to Home.">M/</a>
+        <ul class="mainNavigation">
+          <li id="mainnavHome"><a href="index.html" title="Click to go to Home.">Home</a></li>
+          <li id="mainnavBio"><a href="bio.html" title="Click to go to my Bio page.">Bio</a></li>
+          <li id="mainnavExp"><a href="experience.html" title="Click to go to my Experience page.">Experience</a></li>
+          <li id="mainnavProj" class="projects" title="Click to go to my Projects.">Projects
+            <ul class="subMainNav">
+              <li id="submainnav1"><a href="pastProjects.html" title="Click to go to my Past Projects' page.">Past Projects</a></li>
+              <li id="submainnav2"><a href="experiments.html" title="Click to go to my Experiments' page.">Experiments</a></li>
+            </ul>
+          </li>
+          <li id="mainnavTouch"><a href="getInTouch.html" title="Click to stay on my Get in Touch page to contact me.">Get in Touch</a></li>
+          <li id="mainnavHam">
+            <!--Hamburger menu-->
+            <input id="lab" type="checkbox">
+            <label class="hamMenu" for="lab">
+              <span id="di"></span>
+            </label>
+            <!-- <nav class="downNav">
+              <nav>
+                <div>This</div>
+                <div>is</div>
+                <div>the</div>
+                <div>sidebar</div>
+              </nav>
+            </nav> -->
+            <nav class="sub1mainnav">
+              <ul class="upperLevelSubNav1">
+                <li class="l1" id="mainnavExp2"><a href="experience.html" title="Click to go to my Experience page.">Experience</a></li>
+                <li class="l1">
+                  <details>
+                    <summary title="Click for my Projects.">Projects:</summary>
+                      <ul class="lowerLevelSubNav1">
+                        <li id="submainnav1_2"><a href="pastProjects.html" title="Click to go to my Past Projects' page.">Past Projects</a></li>
+                        <li id="submainnav2_2"><a href="experiments.html" title="Click to go to my Experiments' page.">Experiments</a></li>
+                      </ul>
+                  </details>
+                </li>
+                <li id="mainnavTouch_2" class="l1"><a href="getInTouch.html" title="Click to stay on my Get in Touch page to contact me.">Get in Touch</a></li>
+              </ul>
+            </nav>
+          </li>
+        </ul>
+        <hr class="navBorder">
+      </nav>
+    </header>
+
+    <main>
+      <article title="Contact information and form to reach out to Misha.">
+        <h1 title="The contact page for this site.">Get in Touch<br>With Me:</h1>
+        <div class="contactCard" title="Misha's contact card.">
+          <p id="nameP">Misha Reswick</p>
+          <address><a href="mailto:mreswick@ucsd.com" title="Misha's UCSD email.">mreswick@ucsd.edu</a></address>
+          <p><a href="https://www.linkedin.com/in/misha-reswick-165120203/" title="Misha's LinkedIn page link.">My LinkedIn page.</a>  </p>
+        </div>
+
+        <section id="contactForm" title="Contact-Me Form">
+          <h2>Contact-Me Form:</h2>
+          <p id="headP">Use the form provided below to connect with me! Any information you enter here will be sent directly to me.</p>
+          <!--Is currently just submitting to home page: submit to somewhere else that is possibly more useful later.-->
+          <form action="index.html" method="post" target="_blank" name="contactMeForm" id="contactMeForm">
+            <fieldset form="contactMeForm" id="introFormFields" title="Introductory message info.">
+              <legend>Introductory Information For Your Message:</legend>
+              <!--Name Or Organization drop down info-->
+                <details>
+                  <summary><label for="nameOrOrg" title="Your name or organization">Name or Organization:</label></summary>
+                  <span class="detailsContent" id="nameOrOrgDetails">Please let me know your personal name, or the organization, institution, or company
+                    that you are contacting me on behalf of.</span>
+                </details>
+              <input type="text" maxlength="50" name="nameOrOrg" id="nameOrOrg" required
+                placeholder="Your name or org name here..." size="40">
+              <!--Message Subject drop down info-->
+                <details>
+                  <summary>
+                    <label for="messageSubject" title="Your message subject">Message Subject:</label>
+                  </summary>
+                  <span class="detailsContent" id="messageSubjectDetails">Please provide a brief description as the subject 
+                    header for your message.</span>
+                </details>
+              <input type="text" maxlength="150" name="messageSubject" id="messageSubject" required
+                placeholder="Message subject header here..." size="50">
+              <!--How to best Reach You drop down info, with datalist-->
+                <details>
+                  <summary>
+                    <label for="bestReachYou" title="How to Best Reach You">
+                      How to Best Reach You:
+                    </label>
+                  </summary>
+                  <span class="detailsContent" id="bestReachYouDetails">Please provide some contact information here so that I may reach back out to you.</span>
+                </details>
+              <input type="text" maxlength="150" name="bestReachYou" id="bestReachYou" list="contactMethods" required 
+                placeholder="Contact method(s) here..." size="40">
+              <datalist id="contactMethods">
+                <option value="Cell:">
+                <option value="Email:">
+                <option value="Other:">
+              </datalist>
+              <!--Let me know a little about you, with select -->
+                <details>
+                  <summary>
+                    <label for="aboutYou" title="Please give a little info about yourself.">Let Me Know A Little About You</label>
+                  </summary>
+                  <span class="detailsContent" id="aboutYouDetails">I ask for you to select one of the following that matches best with your background 
+                    so that I may best understand the content of your message.</span>
+                </details>
+              <select name="aboutYou" id="aboutYou" required>
+                <option value="">--- Please select one:</option>
+                <optgroup label="Education">
+                  <option value="faculty-staff">Faculty, staff</option>
+                  <option value="club">Club</option>
+                  <option value="org">Organization</option>
+                  <option value="student">Student</option>
+                </optgroup>
+                <optgroup label="Work">
+                  <option value="rec-hiring">Recruitment, hiring</option>
+                  <option value="advice">Advice</option>
+                  <option value="other">Other</option>
+                </optgroup>
+                <optgroup label="Other">
+                  <option value="social">Social</option>
+                </optgroup>
+              </select>
+            </fieldset>
+          
+          <!--Message-->
+          <label id="lastFormLabel" for="mainMessage" title="Provide the main body content of your message here.">
+            <span class="labelContent" id="mainMessageLabel">Please write the main body content of your message here. Note that there is a maxlength of <i>2500 characters</i>.</span>
+          </label>
+          <textarea id="mainMessage" name="mainMessage" rows="25" cols="50" maxlength="2500"
+            placeholder="Write your main message body here..." required></textarea>
+          <!--Submit button-->
+          <button type="submit">Send</button>
+          </form>
+        </section>
+      
+      </article>
+    </main>
+
+    <hr id="footHr">
+    <footer id="endOfPage">
+      Misha Reswick<br>
+      <address><a id="mishaEmail" href="mailto:mreswick@ucsd.com" title="Misha's UCSD email.">mreswick@ucsd.edu</a></address>
+      Last updated: February 2023
+      <nav id="footerNav">
+        <a id="backToTop" href="#">Back to top ^</a>
+      </nav>
+    </footer>
+
+  </body>
+</html>
