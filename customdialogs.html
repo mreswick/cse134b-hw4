@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Custom Dialogs | Misha Reswick's Portfolio Site</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Misha Reswick">
+    <meta name="description" content="Misha Reswick's personal portfolio website. Learn more
+    about his interests, experiences, and current going-ons here at his native dialogs page.">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+    <link rel="stylesheet" href="Assets/styles/head_foot.css">
+    <link rel="stylesheet" href="Assets/styles/index.css">
+    <!--Include DOM Purify-->
+    <script type="text/javascript" src="Assets/scripts/dist/purify.min.js"></script>
+    <script type="module" src="Assets/scripts/customdialog.js"></script>
+    <script type="module">
+      import { init } from './Assets/scripts/customdialog.js';
+      window.onload = (event) => {
+        init();
+        // <b onmouseover="alert('pwned')">Roll me</b>
+
+      };
+    </script>
+  </head>
+  <body>
+    <template id="dialogRep">
+      <!--Alert button dialog-->
+      <dialog open class="dialog">
+        <form method="dialog">
+          <output>Alert pressed!</output>
+          <button type="submit">Ok</button>
+        </form>
+      </dialog>
+      <!--Confirm buttion dialog-->
+      <dialog open class="dialog">
+        <form method="dialog">
+          <output>Do you confirm this?</output>
+          <button type="submit">Cancel</button>
+          <button type="submit">Ok</button>
+        </form>
+      </dialog>
+      <!--Prompt button dialog-->
+      <dialog open class="dialog">
+        <form method="dialog">
+          <output>What is your name?</output>
+          <textarea maxlength="50" cols="20" rows="1">Enter name here...</textarea>
+          <button type="submit">Cancel</button>
+          <button type="submit">Ok</button>
+        </form>
+      </dialog>
+
+    </template>
+
+    <main>
+      <h1 title="Custom Dialogs">Custom Dialogs:</h1>
+      <button id="btnAlert" type="button">Alert</button>
+      <button id="btnConfirm" type="button">Confirm</button>
+      <button id="btnPrompt" type="button">Prompt</buttoin>
+      <!-- <button id="btnSaferPrompt" type="button">Safer Prompt</button> -->
+      <!-- -->
+      <!-- <output id="confResEl" hidden style="border: 0.2rem solid black; margin: 0.5rem; padding: 0.5rem;"></output> -->
+
+    </main>
+
+
+
+
+
+    <hr id="footHr">
+    <footer id="endOfPage">
+      Misha Reswick<br>
+      <address><a id="mishaEmail" href="mailto:mreswick@ucsd.com" title="Misha's UCSD email.">mreswick@ucsd.edu</a></address>
+      Last updated: February 2023
+      <nav id="footerNav">
+        <a id="backToTop" href="#">Back to top ^</a>
+      </nav>
+    </footer>
+
+  </body>
+</html>
