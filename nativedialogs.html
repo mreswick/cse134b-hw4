@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Native Dialogs | Misha Reswick's Portfolio Site</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Misha Reswick">
+    <meta name="description" content="Misha Reswick's personal portfolio website. Learn more
+    about his interests, experiences, and current going-ons here at his native dialogs page.">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+    <link rel="stylesheet" href="Assets/styles/head_foot.css">
+    <link rel="stylesheet" href="Assets/styles/index.css">
+    <!--Include DOM Purify-->
+    <script type="text/javascript" src="Assets/scripts/dist/purify.min.js"></script>
+    <script>
+      window.onload = (event) => {
+        let btnAlert = document.getElementById('btnAlert');
+        let btnConfirm = document.getElementById('btnConfirm');
+        let btnPrompt = document.getElementById('btnPrompt');
+        let btnSaferPrompt = document.getElementById('btnSaferPrompt');
+        let confResEl = document.getElementById('confResEl');
+        //alert button
+        btnAlert.addEventListener('click', (event) => {
+          //hide confirm result print out
+          confResEl.hidden = true;
+          //alert
+          window.alert('Alert pressed!');
+        });
+        //confirm button
+        btnConfirm.addEventListener('click', (event) => {
+          const confPrefix = 'Confirm Result:';
+          let confRes = window.confirm('Do you confirm this?');
+          confResEl.innerHTML = `${confPrefix} ${confRes}`;
+          confResEl.removeAttribute('hidden');
+        });
+        //prompt button
+        btnPrompt.addEventListener('click', (event) => {
+          const promptPrefix = 'Prompt result:';
+          let promptRes = window.prompt('What is your name?');
+          let promptResDefault = 'User did not enter anything; please click again.';
+          promptRes = promptRes ? promptRes : promptResDefault; 
+          confResEl.innerHTML = `${promptPrefix} ${promptRes}`; //note to self: template literal (by) itself still unsafe to injection
+          confResEl.removeAttribute('hidden');
+        });
+        //safe prompt button
+        btnSaferPrompt.addEventListener('click', (event) => {
+          const promptPrefix = 'Safe prompt result:';
+          let promptRes = DOMPurify.sanitize(window.prompt('What is your name?'));
+          let promptResDefault = 'User did not enter anything; please click again.';
+          promptRes = promptRes ? promptRes : promptResDefault; 
+          confResEl.innerHTML = DOMPurify.sanitize(`${promptPrefix} ${promptRes}`);
+          confResEl.removeAttribute('hidden');
+        });
+
+        // <b onmouseover="alert('pwned')">Roll me</b>
+
+      }
+    </script>
+  </head>
+  <body>
+
+  
+    <main>
+      <h1 title="Native Dialogs">Native Dialogs:</h1>
+      <button id="btnAlert" type="button">Alert</button>
+      <button id="btnConfirm" type="button">Confirm</button>
+      <button id="btnPrompt" type="button">Prompt</buttoin>
+      <button id="btnSaferPrompt" type="button">Safer Prompt</button>
+      <!-- -->
+      <output id="confResEl" hidden></output>
+
+    </main>
+
+
+
+
+
+    <hr id="footHr">
+    <footer id="endOfPage">
+      Misha Reswick<br>
+      <address><a id="mishaEmail" href="mailto:mreswick@ucsd.com" title="Misha's UCSD email.">mreswick@ucsd.edu</a></address>
+      Last updated: February 2023
+      <nav id="footerNav">
+        <a id="backToTop" href="#">Back to top ^</a>
+      </nav>
+    </footer>
+
+  </body>
+</html>
