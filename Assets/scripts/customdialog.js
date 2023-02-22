@@ -1,4 +1,4 @@
-
+import { DOMPurify } from 'dompurify';
 
 function init() {
   let btnAlert = document.getElementById('btnAlert');
@@ -91,7 +91,7 @@ function init() {
     cancBtn.addEventListener('click', (event) => {
       promRes = `${promPrefix} User did not enter any input.`;
       //show output
-      outputEl.innerHTML = promRes;
+      outputEl.innerHTML = DOMPurify.sanitize(promRes);
       mainEl.appendChild(outputEl);
     });
     okBtn.addEventListener('click', (event) => {
@@ -99,7 +99,7 @@ function init() {
       promRes = textAreaEl.value ? textAreaEl.value : "User did not enter any input.";
       promRes = `${promPrefix} ${promRes}`
       //show output
-      outputEl.innerHTML = promRes;
+      outputEl.innerHTML = DOMPurify.sanitize(promRes);
       mainEl.appendChild(outputEl);
     });
   });
