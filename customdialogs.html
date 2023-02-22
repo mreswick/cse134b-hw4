@@ -35,19 +35,21 @@
       <dialog open class="dialog">
         <form method="dialog">
           <output>Do you confirm this?</output>
-          <button type="submit">Cancel</button>
-          <button type="submit">Ok</button>
+          <button id='confCbtn' type="submit">Cancel</button>
+          <button id='confOKbtn' type="submit">Ok</button>
         </form>
       </dialog>
       <!--Prompt button dialog-->
       <dialog open class="dialog">
         <form method="dialog">
           <output>What is your name?</output>
-          <textarea maxlength="50" cols="20" rows="1">Enter name here...</textarea>
-          <button type="submit">Cancel</button>
-          <button type="submit">Ok</button>
+          <textarea maxlength="50" cols="20" rows="1" placeholder="Enter name here..."></textarea>
+          <button id="promptCbtn" type="submit">Cancel</button>
+          <button id="promptOKbtn" type="submit">Ok</button>
         </form>
       </dialog>
+      <!-- Output for Confirm and Prompt-->
+      <output id="res" style="border: 0.2rem solid black; margin: 0.5rem; padding: 0.5rem;"></output>
 
     </template>
 

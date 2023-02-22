@@ -7,45 +7,102 @@ function init() {
   //let btnSaferPrompt = document.getElementById('btnSaferPrompt');
   let mainEl = document.querySelector('main');
   let tempDialEl = document.getElementById('dialogRep');
-  let tempDialClonedCont = tempDialEl.content.cloneNode(true);
+  // let tempDialClonedCont = tempDialEl.content.cloneNode(true);
+  let tempDialCont = tempDialEl.content;
   let dialogEl = "";
   let dialogToReplEl = "";
+  let outputEl = tempDialCont.children[3].cloneNode(true);
   //alert button
   btnAlert.addEventListener('click', (event) => {
-    dialogEl = tempDialClonedCont.children[0];
+    //hide output el for confirm and prompt if present
+    let outputToHideEl = document.getElementById('res');
+    if(outputToHideEl) {
+      mainEl.removeChild(outputToHideEl);
+    }
+    //show alert prompt
+    dialogEl = tempDialCont.children[0].cloneNode(true);
+    console.log("dialogEl first child: ");
+    console.log(dialogEl);
     dialogToReplEl = document.querySelector("main dialog");
     if(dialogToReplEl) {
+      console.log("removing dialogToReplEl.");
+      console.log(dialogToReplEl);
       mainEl.removeChild(dialogToReplEl);
     }
     mainEl.appendChild(dialogEl);
     console.log("dialog el: ");
     console.log(dialogEl);
   });
-  // //confirm button
-  // btnConfirm.addEventListener('click', (event) => {
-  //   const confPrefix = 'Confirm Result:';
-  //   let confRes = window.confirm('Do you confirm this?');
-  //   confResEl.innerHTML = `${confPrefix} ${confRes}`;
-  //   confResEl.removeAttribute('hidden');
-  // });
-  // //prompt button
-  // btnPrompt.addEventListener('click', (event) => {
-  //   const promptPrefix = 'Prompt result:';
-  //   let promptRes = window.prompt('What is your name?');
-  //   let promptResDefault = 'User did not enter anything; please click again.';
-  //   promptRes = promptRes ? promptRes : promptResDefault; 
-  //   confResEl.innerHTML = `${promptPrefix} ${promptRes}`; //note to self: template literal (by) itself still unsafe to injection
-  //   confResEl.removeAttribute('hidden');
-  // });
-  // //safe prompt button
-  // btnSaferPrompt.addEventListener('click', (event) => {
-  //   const promptPrefix = 'Safe prompt result:';
-  //   let promptRes = DOMPurify.sanitize(window.prompt('What is your name?'));
-  //   let promptResDefault = 'User did not enter anything; please click again.';
-  //   promptRes = promptRes ? promptRes : promptResDefault; 
-  //   confResEl.innerHTML = DOMPurify.sanitize(`${promptPrefix} ${promptRes}`);
-  //   confResEl.removeAttribute('hidden');
-  // });
+  //confirm button
+  btnConfirm.addEventListener('click', (event) => {
+    //hide output el for confirm and prompt if present
+    let outputToHideEl = document.getElementById('res');
+    if(outputToHideEl) {
+      mainEl.removeChild(outputToHideEl);
+    }
+    //show confirm prompt
+    dialogEl = tempDialCont.children[1].cloneNode(true);
+    dialogToReplEl = document.querySelector('main dialog');
+    if(dialogToReplEl) {
+      mainEl.removeChild(dialogToReplEl);
+    }
+    mainEl.appendChild(dialogEl);
+    console.log('dialog el: ');
+    console.log(dialogEl);
+    //bind logic to buttons of confirm prompt
+    let cancBtn = document.getElementById('confCbtn');
+    let okBtn = document.getElementById('confOKbtn');
+    const confPrefix = 'Confirm Result:';
+    let confRes = "";
+    cancBtn.addEventListener('click', (event) => {
+      //show output
+      confRes = `${confPrefix} False`;
+      outputEl.innerHTML = confRes;
+      mainEl.appendChild(outputEl);
+    });
+    okBtn.addEventListener('click', (event) => {
+      //show output
+      confRes = `${confPrefix} True`
+      outputEl.innerHTML = confRes;
+      mainEl.appendChild(outputEl);
+    });
+  });
+  //prompt button
+  btnPrompt.addEventListener('click', (event) => {
+    //hide output el for confirm and prompt if present
+    let outputToHideEl = document.getElementById('res');
+    if(outputToHideEl) {
+      mainEl.removeChild(outputToHideEl);
+    }
+    //show prompt's prompt
+    dialogEl = tempDialCont.children[2].cloneNode(true);
+    dialogToReplEl = document.querySelector('main dialog');
+    if(dialogToReplEl) {
+      mainEl.removeChild(dialogToReplEl);
+    }
+    mainEl.appendChild(dialogEl);
+    console.log('dialog el: ');
+    console.log(dialogEl);
+    //bind logic to buttons of confirm prompt
+    let cancBtn = document.getElementById('promptCbtn');
+    let okBtn = document.getElementById('promptOKbtn');
+    const promPrefix = 'Prompt Result:';
+    let promRes = "";
+    cancBtn.addEventListener('click', (event) => {
+      promRes = `${promPrefix} User did not enter any input.`;
+      //show output
+      outputEl.innerHTML = promRes;
+      mainEl.appendChild(outputEl);
+    });
+    okBtn.addEventListener('click', (event) => {
+      let textAreaEl = document.querySelector('main textarea');
+      promRes = textAreaEl.value ? textAreaEl.value : "User did not enter any input.";
+      promRes = `${promPrefix} ${promRes}`
+      //show output
+      outputEl.innerHTML = promRes;
+      mainEl.appendChild(outputEl);
+    });
+  });
 }
 
 export { init };
