@@ -4,6 +4,14 @@ const BLOG_POST_CONT_SELECTOR = 'main > blog-post-cont';
 const BLOG_POST_TEMPLATE_SELECTOR = 'template > blog-post';
 const ADD_BTN_SELECTOR = 'button#addPost';
 
+//get next nthBlogPost num
+export function getNextNthBlogPostNum(blogPostContSelector=BLOG_POST_CONT_SELECTOR) {
+  let blogPostContEl = document.querySelector(blogPostContSelector);
+  blogPostContEl.dataset.numPosts = parseInt(blogPostContEl.dataset.numPosts) + 1;
+  let nextInc = parseInt(blogPostContEl.dataset.numPosts); //nthBlogPost
+  return nextInc;
+}
+
 export function remDialogIfPresent(bpMainDialogSelector=BP_MAIN_DIALOG_SELECTOR) {
   let dialogElRemoved = false;
   //remove dialog element if present
@@ -85,7 +93,7 @@ export function dialogOkBtnHandler(
   modifyBlogPostFunc, blogPostContSelector=BLOG_POST_CONT_SELECTOR) 
 {
   //get input field values and set those of blog post to it
-  [bpTitle, bpDate, bpSummary] = getDialogFieldVals(dialogEl);
+  let [bpTitle, bpDate, bpSummary] = getDialogFieldVals(dialogEl);
   //only edit blog post if all entries are non-empty
   if(bpTitle && bpDate && bpSummary) {
     modifyBlogPostFunc(nthBlogPost, bpTitle, bpDate, bpSummary, blogPostContSelector);
@@ -99,7 +107,27 @@ export function dialogOkBtnHandler(
   }
 }
 
-export function addBlogPost(postTitle, postDate, postSummary, 
+//modifyBlogPostFunc is either addBlogPost or editBlogPost
+export function addDialogOkCancBtnHandlers(
+  dialogEl, 
+  mainEl, 
+  nthBlogPost, 
+  errMsg,
+  modifyBlogPostFunc, 
+  blogPostContSelector=BLOG_POST_CONT_SELECTOR) {
+  //add event listeners to dialogue element for this current blog post
+  let dialogCancEl = dialogEl.querySelector('#postCancel');
+  let dialogOkEl = dialogEl.querySelector('#postOk');
+  dialogCancEl.addEventListener('click', (event) => {
+    //remove this dialog element
+    mainEl.removeChild(dialogEl);
+  });
+  dialogOkEl.addEventListener('click', (event) => {
+    dialogOkBtnHandler(dialogEl, mainEl, nthBlogPost, errMsg, modifyBlogPostFunc, blogPostContSelector);
+  });
+}
+
+export function addBlogPost(nextInc, postTitle, postDate, postSummary, 
   bpMainDialogSelector=BP_MAIN_DIALOG_SELECTOR,
   templateSelector=TEMPLATE_SELECTOR, 
   blogPostContSelector=BLOG_POST_CONT_SELECTOR,
@@ -107,8 +135,6 @@ export function addBlogPost(postTitle, postDate, postSummary,
 {
   //blog post container
   let blogPostContEl = document.querySelector(blogPostContSelector);
-  blogPostContEl.dataset.numPosts = parseInt(blogPostContEl.dataset.numPosts) + 1;
-  let nextInc = parseInt(blogPostContEl.dataset.numPosts);
   
   //next/new blog post element
   let nextBlogEl = getNewBlogPost(nextInc, templateSelector, blogPostTemplateSelector);
@@ -178,16 +204,8 @@ export function addBlogPostButtonEventHandlers(
     //display dialog box
     mainEl.addChild(dialogEl);
     //add event listeners to dialogue element for this current blog post
-    let dialogCancEl = dialogEl.querySelector('#postCancel');
-    let dialogOkEl = dialogEl.querySelector('#postOk');
-    dialogCancEl.addEventListener('click', (event) => {
-      //remove this dialog element
-      mainEl.removeChild(dialogEl);
-    });
-    dialogOkEl.addEventListener('click', (event) => {
-      let errMsg = "Error: please fill in all input fields before submitting this edited blog post.";
-      dialogOkBtnHandler(dialogEl, mainEl, nthBlogPost, errMsg, editBlogPost, blogPostContSelector);
-    });
+    let errMsg = "Error: please fill in all input fields before submitting this edited blog post.";
+    addDialogOkCancBtnHandlers(dialogEl, mainEl, nthBlogPost, errMsg, editBlogPost, blogPostContSelector);
   });
   delBtnEl.addEventListener('click', (event) => {
     delBlogPost(nthBlogPost);
@@ -209,16 +227,9 @@ export function addBtnBlogPostEventHandler(
     //display dialog box
     mainEl.addChild(dialogEl);
     //add event listeners to dialogue element for this current blog post
-    let dialogCancEl = dialogEl.querySelector('#postCancel');
-    let dialogOkEl = dialogEl.querySelector('#postOk');
-    dialogCancEl.addEventListener('click', (event) => {
-      //remove this dialog element
-      mainEl.removeChild(dialogEl);
-    });
-    dialogOkEl.addEventListener('click', (event) => {
-      let errMsg = "Error: please fill in all input fields before submitting this new blog post.";
-      dialogOkBtnHandler(dialogEl, mainEl, nthBlogPost, errMsg, addBlogPost, blogPostContSelector);
-    });
+    let errMsg = "Error: please fill in all input fields before submitting this new blog post.";
+    let nthBlogPost = getNextNthBlogPostNum(blogPostContSelector);
+    addDialogOkCancBtnHandlers(dialogEl, mainEl, nthBlogPost, errMsg, addBlogPost, blogPostContSelector);
   });
 }
 
