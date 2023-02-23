@@ -19,7 +19,8 @@ export function remDialogIfPresent(bpMainDialogSelector=BP_MAIN_DIALOG_SELECTOR)
 export function dispDialogErrMsg(
   errorMsg, 
   bpMainDialogSelector=BP_MAIN_DIALOG_SELECTOR, 
-  dialogOutputElSelector='dialog#dialogRes') {
+  dialogOutputElSelector='dialog#dialogRes') 
+{
   let dialogEl = document.querySelector(bpMainDialogSelector);
   let dialogOutputEl = dialogEl.querySelector(dialogOutputElSelector);
   dialogOutputEl.innerHTML = errorMsg;
@@ -35,11 +36,11 @@ export function setPostFields(bpEl, postTitle, postDate, postSummary) {
   bpSummaryEl.innerHTML = postSummary;
 }
 
-//gets new blog post (clone) from template element
+//gets new blog post element (clone) from template element
 export function getNewBlogPost(
   nthBlogPost, 
   templateSelector=TEMPLATE_SELECTOR, 
-  blogPostTemplateSelector=BLOG_POST_TEMPLATE_SELECTOR)
+  blogPostTemplateSelector=BLOG_POST_TEMPLATE_SELECTOR) 
 {
   //template content
   let templateCont = document.querySelector(templateSelector).content;
@@ -47,6 +48,13 @@ export function getNewBlogPost(
   let nextBlogEl = templateCont.querySelector(blogPostTemplateSelector).cloneNode(true);
   nextBlogEl.dataset.nthPost = nthBlogPost;
   return nextBlogEl;
+}
+
+//gets new dialog element (clone) from template element
+export function getNewDialog(templateSelector=TEMPLATE_SELECTOR) {
+  let templateContEl = document.querySelector(templateSelector).content;
+  let dialogEl = templateContEl.querySelector('dialog').cloneNode(true);
+  return dialogEl;
 }
 
 export function setDialogFieldsFromPost(dialogEl, bpEl) {
@@ -72,8 +80,10 @@ export function getDialogFieldVals(dialogEl, bpMainDialogSelector=BP_MAIN_DIALOG
 }
 
 //modifyBlogPostFunc is either addBlogPost or editBlogPost
-export function dialogOkBtnHandler(dialogEl, mainEl, nthBlogPost, errorMsg, 
-  modifyBlogPostFunc, blogPostContSelector=BLOG_POST_CONT_SELECTOR) {
+export function dialogOkBtnHandler(
+  dialogEl, mainEl, nthBlogPost, errorMsg, 
+  modifyBlogPostFunc, blogPostContSelector=BLOG_POST_CONT_SELECTOR) 
+{
   //get input field values and set those of blog post to it
   [bpTitle, bpDate, bpSummary] = getDialogFieldVals(dialogEl);
   //only edit blog post if all entries are non-empty
@@ -112,7 +122,10 @@ export function addBlogPost(postTitle, postDate, postSummary,
   blogPostContEl.appendChild(nextBlogEl);
 }
 
-export function delBlogPost(nthBlogPost, blogPostContSelector=BLOG_POST_CONT_SELECTOR) {
+export function delBlogPost(
+  nthBlogPost, 
+  blogPostContSelector=BLOG_POST_CONT_SELECTOR) 
+{
   //blog post container
   let blogPostContEl = document.querySelector(blogPostContSelector);
   blogPostContEl.dataset.numPosts = parseInt(blogPostContEl.dataset.numPosts) - 1;
@@ -130,8 +143,13 @@ export function delBlogPost(nthBlogPost, blogPostContSelector=BLOG_POST_CONT_SEL
   blogPostContEl.removeChild(blogPostEl);
 }
 
-export function editBlogPost(nthBlogPost, postTitle, postDate, postSummary,
-  blogPostContSelector=BLOG_POST_CONT_SELECTOR) {
+export function editBlogPost(
+  nthBlogPost, 
+  postTitle, 
+  postDate, 
+  postSummary,
+  blogPostContSelector=BLOG_POST_CONT_SELECTOR) 
+{
   //blog post container
   let blogPostContEl = document.querySelector(blogPostContSelector);
   //edit nth blog post
@@ -144,17 +162,17 @@ export function addBlogPostButtonEventHandlers(
   nthBlogPost, 
   bpMainDialogSelector=BP_MAIN_DIALOG_SELECTOR,
   templateSelector=TEMPLATE_SELECTOR, 
-  blogPostContSelector=BLOG_POST_CONT_SELECTOR) {
+  blogPostContSelector=BLOG_POST_CONT_SELECTOR) 
+{
   let blogPostContEl = document.querySelector(blogPostContSelector);
   let bpEl = blogPostContEl.querySelector(`blog-post[data-nth-post=${nthBlogPost}]`);
   let editBtnEl = bpEl.querySelector('.editPost');
   let delBtnEl = bpEl.querySelector('.delPost');
-  let templateContEl = document.querySelector(templateSelector).content;
   editBtnEl.addEventListener('click', (event) => {
     //remove dialog box if present
     remDialogIfPresent(bpMainDialogSelector);
     //get dialog box from template
-    let dialogEl = templateContEl.querySelector('dialog').cloneNode(true);
+    let dialogEl = getNewDialog(templateSelector);
     //populate dialog box fields from blog post element
     setDialogFieldsFromPost(dialogEl, bpEl);
     //display dialog box
@@ -180,14 +198,14 @@ export function addBtnBlogPostEventHandler(
   addBtnSelector=ADD_BTN_SELECTOR,
   bpMainDialogSelector=BP_MAIN_DIALOG_SELECTOR, 
   templateSelector=TEMPLATE_SELECTOR, 
-  blogPostContSelector=BLOG_POST_CONT_SELECTOR) {
+  blogPostContSelector=BLOG_POST_CONT_SELECTOR) 
+{
   let addBtnEl = document.querySelector(addBtnSelector);
-  let templateContEl = document.querySelector(templateSelector).content;
   addBtnEl.addEventListener('click', (event) => {
     //remove dialog box if present
     remDialogIfPresent(bpMainDialogSelector);
     //clone dialog from template
-    let dialogEl = templateContEl.querySelector('dialog').cloneNode(true);
+    let dialogEl = getNewDialog(templateSelector);
     //display dialog box
     mainEl.addChild(dialogEl);
     //add event listeners to dialogue element for this current blog post
