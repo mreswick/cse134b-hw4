@@ -113,7 +113,7 @@ export function addDialogOkCancBtnHandlers(
     }
     //else display error message in dialogue box that not all fields are entered
     else {
-      dispDialogErrMsg(errorMsg);
+      dispDialogErrMsg(errMsg);
       //dialogue box not removed from main and so remains visible
     }
   });
