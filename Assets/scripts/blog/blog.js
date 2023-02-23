@@ -95,6 +95,7 @@ export function addDialogOkCancBtnHandlers(
   errMsg,
   modifyBlogPostFunc, 
   blogPostContSelector=BLOG_POST_CONT_SELECTOR) {
+  let mainEl = document.querySelector(bpMainDialogSelector);
   //add event listeners to dialogue element for this current blog post
   let dialogCancEl = dialogEl.querySelector('#postCancel');
   let dialogOkEl = dialogEl.querySelector('#postOk');
@@ -119,63 +120,6 @@ export function addDialogOkCancBtnHandlers(
   });
 }
 
-export function addBlogPost(nextInc, postTitle, postDate, postSummary, 
-  bpMainDialogSelector=BP_MAIN_DIALOG_SELECTOR,
-  templateSelector=TEMPLATE_SELECTOR, 
-  blogPostContSelector=BLOG_POST_CONT_SELECTOR,
-  blogPostTemplateSelector=BLOG_POST_TEMPLATE_SELECTOR) 
-{
-  //blog post container
-  let blogPostContEl = document.querySelector(blogPostContSelector);
-  
-  //next/new blog post element
-  let nextBlogEl = getNewBlogPost(nextInc, templateSelector, blogPostTemplateSelector);
-  //nextBlogEl.id = `${nextBlogEl.id}${nextInc}`;
-  //add "fields" for blog post
-  setPostFields(nextBlogEl, postTitle, postDate, postSummary);
-  //add event handlers for "Edit" and "Delete" buttons for blog post
-  addBlogPostButtonEventHandlers(nextInc, bpMainDialogSelector, 
-    templateSelector, blogPostContSelector);
-  //add blog post to page
-  blogPostContEl.appendChild(nextBlogEl);
-}
-
-export function delBlogPost(
-  nthBlogPost, 
-  blogPostContSelector=BLOG_POST_CONT_SELECTOR) 
-{
-  //blog post container
-  let blogPostContEl = document.querySelector(blogPostContSelector);
-  blogPostContEl.dataset.numPosts = parseInt(blogPostContEl.dataset.numPosts) - 1;
-
-  //decrement blog post number of each blog post after this one
-  let blogPosts = blogPostContEl.children;
-  for(let i = 0; i < blogPosts.length; i++) {
-    if(blogPosts[i].dataset.nthPost > parseInt(nthBlogPost)) {
-      blogPosts[i].dataset.nthPost -= 1;
-    }
-  }
-
-  //remove blog post from container
-  let blogPostEl = blogPostContEl.querySelector(`blog-post[data-nth-post=${nthBlogPost}]`);
-  blogPostContEl.removeChild(blogPostEl);
-}
-
-export function editBlogPost(
-  nthBlogPost, 
-  postTitle, 
-  postDate, 
-  postSummary,
-  blogPostContSelector=BLOG_POST_CONT_SELECTOR) 
-{
-  //blog post container
-  let blogPostContEl = document.querySelector(blogPostContSelector);
-  //edit nth blog post
-  let bpEl = blogPostContEl.querySelector(`blog-post[data-nth-post=${nthBlogPost}]`);
-  //edit "fields" for blog post
-  setPostFields(bpEl, postTitle, postDate, postSummary);
-}
-
 export function addBlogPostButtonEventHandlers(
   nthBlogPost, 
   bpMainDialogSelector=BP_MAIN_DIALOG_SELECTOR,
@@ -183,6 +127,7 @@ export function addBlogPostButtonEventHandlers(
   blogPostContSelector=BLOG_POST_CONT_SELECTOR) 
 {
   let blogPostContEl = document.querySelector(blogPostContSelector);
+  let mainEl = document.querySelector(bpMainDialogSelector);
   let bpEl = blogPostContEl.querySelector(`blog-post[data-nth-post=${nthBlogPost}]`);
   let editBtnEl = bpEl.querySelector('.editPost');
   let delBtnEl = bpEl.querySelector('.delPost');
@@ -204,6 +149,60 @@ export function addBlogPostButtonEventHandlers(
   });
 }
 
+export function addBlogPost(nextInc, postTitle, postDate, postSummary, 
+  bpMainDialogSelector=BP_MAIN_DIALOG_SELECTOR,
+  templateSelector=TEMPLATE_SELECTOR, 
+  blogPostContSelector=BLOG_POST_CONT_SELECTOR,
+  blogPostTemplateSelector=BLOG_POST_TEMPLATE_SELECTOR) 
+{
+  //blog post container
+  let blogPostContEl = document.querySelector(blogPostContSelector);
+  
+  //next/new blog post element
+  let nextBlogEl = getNewBlogPost(nextInc, templateSelector, blogPostTemplateSelector);
+  //add "fields" for blog post
+  setPostFields(nextBlogEl, postTitle, postDate, postSummary);
+  //add event handlers for "Edit" and "Delete" buttons for blog post
+  addBlogPostButtonEventHandlers(nextInc, bpMainDialogSelector, 
+    templateSelector, blogPostContSelector);
+  //add blog post to page
+  blogPostContEl.appendChild(nextBlogEl);
+}
+
+export function delBlogPost(
+  nthBlogPost, 
+  blogPostContSelector=BLOG_POST_CONT_SELECTOR) 
+{
+  //blog post container
+  let blogPostContEl = document.querySelector(blogPostContSelector);
+  blogPostContEl.dataset.numPosts = parseInt(blogPostContEl.dataset.numPosts) - 1;
+  //decrement blog post number of each blog post after this one
+  let blogPosts = blogPostContEl.children;
+  for(let i = 0; i < blogPosts.length; i++) {
+    if(blogPosts[i].dataset.nthPost > parseInt(nthBlogPost)) {
+      blogPosts[i].dataset.nthPost -= 1;
+    }
+  }
+  //remove blog post from container
+  let blogPostEl = blogPostContEl.querySelector(`blog-post[data-nth-post=${nthBlogPost}]`);
+  blogPostContEl.removeChild(blogPostEl);
+}
+
+export function editBlogPost(
+  nthBlogPost, 
+  postTitle, 
+  postDate, 
+  postSummary,
+  blogPostContSelector=BLOG_POST_CONT_SELECTOR) 
+{
+  //blog post container
+  let blogPostContEl = document.querySelector(blogPostContSelector);
+  //edit nth blog post
+  let bpEl = blogPostContEl.querySelector(`blog-post[data-nth-post=${nthBlogPost}]`);
+  //edit "fields" for blog post
+  setPostFields(bpEl, postTitle, postDate, postSummary);
+}
+
 export function addBtnBlogPostEventHandler(
   addBtnSelector=ADD_BTN_SELECTOR,
   bpMainDialogSelector=BP_MAIN_DIALOG_SELECTOR, 
@@ -211,6 +210,7 @@ export function addBtnBlogPostEventHandler(
   blogPostContSelector=BLOG_POST_CONT_SELECTOR) 
 {
   let addBtnEl = document.querySelector(addBtnSelector);
+  let mainEl = document.querySelector(bpMainDialogSelector);
   addBtnEl.addEventListener('click', (event) => {
     //remove dialog box if present
     remDialogIfPresent(bpMainDialogSelector);
