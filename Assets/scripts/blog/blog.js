@@ -88,26 +88,6 @@ export function getDialogFieldVals(dialogEl, bpMainDialogSelector=BP_MAIN_DIALOG
 }
 
 //modifyBlogPostFunc is either addBlogPost or editBlogPost
-export function dialogOkBtnHandler(
-  dialogEl, mainEl, nthBlogPost, errorMsg, 
-  modifyBlogPostFunc, blogPostContSelector=BLOG_POST_CONT_SELECTOR) 
-{
-  //get input field values and set those of blog post to it
-  let [bpTitle, bpDate, bpSummary] = getDialogFieldVals(dialogEl);
-  //only edit blog post if all entries are non-empty
-  if(bpTitle && bpDate && bpSummary) {
-    modifyBlogPostFunc(nthBlogPost, bpTitle, bpDate, bpSummary, blogPostContSelector);
-    //remove this dialog element
-    mainEl.removeChild(dialogEl);
-  }
-  //else display error message in dialogue box that not all fields are entered
-  else {
-    dispDialogErrMsg(errorMsg);
-    //dialogue box not removed from main and so remains visible
-  }
-}
-
-//modifyBlogPostFunc is either addBlogPost or editBlogPost
 export function addDialogOkCancBtnHandlers(
   dialogEl, 
   mainEl, 
@@ -123,7 +103,19 @@ export function addDialogOkCancBtnHandlers(
     mainEl.removeChild(dialogEl);
   });
   dialogOkEl.addEventListener('click', (event) => {
-    dialogOkBtnHandler(dialogEl, mainEl, nthBlogPost, errMsg, modifyBlogPostFunc, blogPostContSelector);
+    //get input field values and set those of blog post to it
+    let[bpTitle, bpDate, bpSummary] = getDialogFieldVals(dialogEl);
+    //only edit blog post if all entries are non-empty
+    if(bpTitle && bpDate && bpSummary) {
+      modifyBlogPostFunc(nthBlogPost, bpTitle, bpDate, bpSummary, blogPostContSelector);
+      //remove this dialog element
+      mainEl.removeChild(dialogEl);
+    }
+    //else display error message in dialogue box that not all fields are entered
+    else {
+      dispDialogErrMsg(errorMsg);
+      //dialogue box not removed from main and so remains visible
+    }
   });
 }
 
