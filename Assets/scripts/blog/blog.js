@@ -111,11 +111,11 @@ export function addDialogOkCancBtnHandlers(
 
     //only edit blog post if all entries are non-empty
     if(bpTitle && bpDate && bpSummary) {
-      if(modifyBlogPostFunc==addBlogPost) {
+      if(modifyBlogPostFunc == addBlogPost) {
         //addBlogPost(...)
         modifyBlogPostFunc(bpTitle, bpDate, bpSummary, bpContEl);
       }
-      else if(modifyBlogPostFunc==setPostFields) {
+      else if(modifyBlogPostFunc == setPostFields) {
         //editBlogPost(...)
         modifyBlogPostFunc(bpEl, bpTitle, bpDate, bpSummary);
       }
