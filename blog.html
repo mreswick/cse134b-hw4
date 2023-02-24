@@ -11,14 +11,12 @@
     <link rel="stylesheet" href="Assets/styles/head_foot.css">
     <link rel="stylesheet" href="Assets/styles/index.css">
     <!--Include DOM Purify-->
-    <script type="text/javascript" src="Assets/scripts/dist/purify.min.js"></script>
-    <script type="module" src="Assets/scripts/customdialog.js"></script>
+    <!-- <script type="text/javascript" src="Assets/scripts/dist/purify.min.js"></script> -->
+    <!-- <script type="module" src="Assets/scripts/blog.js"></script> -->
     <script type="module">
-      import { init } from './Assets/scripts/customdialog.js';
+      import { initBlogPost } from './Assets/scripts/blog/blog.js';
       window.onload = (event) => {
-        init();
-        // <b onmouseover="alert('pwned')">Roll me</b>
-
+        initBlogPost();
       };
     </script>
   </head>
@@ -64,6 +62,8 @@
       <h1 title="blogPosts">Blog Posts:</h1>
       <!--Container for blog post-->
       <blog-post-cont class="blogPostCont" style="display: block;" data-num-posts="0"></blog-post-cont>
+      <!--Add blog post button-->
+      <button type="button" id="addPost">Add blog post</button>
     </main>
 
 

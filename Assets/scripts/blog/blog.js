@@ -1,7 +1,7 @@
-const BP_MAIN_DIALOG_SELECTOR = 'main dialogue';
+const BP_MAIN_DIALOG_SELECTOR = 'main dialog';
 const TEMPLATE_SELECTOR = '#dialogRep';
 const BLOG_POST_CONT_SELECTOR = 'main > blog-post-cont';
-const BLOG_POST_TEMPLATE_SELECTOR = 'template > blog-post';
+const BLOG_POST_TEMPLATE_SELECTOR = 'blog-post';
 const ADD_BTN_SELECTOR = 'button#addPost';
 
 //get next nthBlogPost num
@@ -16,18 +16,23 @@ export function remDialogIfPresent(bpMainDialogSelector=BP_MAIN_DIALOG_SELECTOR)
   let dialogElRemoved = false;
   //remove dialog element if present
   let dialogEl = document.querySelector(bpMainDialogSelector);
+  console.log('In remDialogIfPresent, bpMainDialogSelector: ', bpMainDialogSelector);
+  console.log('In remDialogIfPresent, dialogEl: ', dialogEl);
+  console.log('In remDialogIfPresent, bpContEl: ', document.querySelector(BLOG_POST_CONT_SELECTOR));
   let mainEl = document.querySelector('main');
   if(dialogEl) {
     mainEl.removeChild(dialogEl);
     dialogElRemoved = true;
   }
+  console.log('In remDialogIfPresent after rem, dialogEl: ', dialogEl);
+  console.log('In remDialogIfPresent after rem, bpContEl: ', document.querySelector(BLOG_POST_CONT_SELECTOR));
   return dialogElRemoved;
 }
 
 export function dispDialogErrMsg(
   errorMsg, 
   bpMainDialogSelector=BP_MAIN_DIALOG_SELECTOR, 
-  dialogOutputElSelector='dialog#dialogRes') 
+  dialogOutputElSelector='output#dialogRes') 
 {
   let dialogEl = document.querySelector(bpMainDialogSelector);
   let dialogOutputEl = dialogEl.querySelector(dialogOutputElSelector);
@@ -52,6 +57,8 @@ export function getNewBlogPost(
 {
   //template content
   let templateCont = document.querySelector(templateSelector).content;
+  console.log("getNewBlogPost templateCont: ", templateCont);
+  console.log("getNewBlogPost bp el to clone: ", templateCont.querySelector(blogPostTemplateSelector));
   //next/new blog post element
   let nextBlogEl = templateCont.querySelector(blogPostTemplateSelector).cloneNode(true);
   nextBlogEl.dataset.nthPost = nthBlogPost;
@@ -65,25 +72,34 @@ export function getNewDialog(templateSelector=TEMPLATE_SELECTOR) {
   return dialogEl;
 }
 
-export function setDialogFieldsFromPost(dialogEl, bpEl) {
+export function setDialogFieldsFromPost(dialogEl, bpEl, 
+  bpMainDialogSelector=BP_MAIN_DIALOG_SELECTOR) {
   let bpTitleEl = bpEl.querySelector('output.outPostTitle');
   let bpDateEl = bpEl.querySelector('output.outPostDate');
   let bpSummaryEl = bpEl.querySelector('output.outPostSummary');
   let bpTitle = bpTitleEl.innerHTML;
   let bpDate = bpDateEl.innerHTML;
   let bpSummary = bpSummaryEl.innerHTML;
-  let dialogTitleEl = dialogEl.querySelector(`${bpMainDialogSelector}#postTitle`);
-  let dialogDateEl = dialogEl.querySelector(`${bpMainDialogSelector}#postDate`);
-  let dialogSummaryEl = dialogEl.querySelector(`${bpMainDialogSelector}#postSummary`);
-  dialogTitleEl.setAttribtue('value', bpTitle);
-  dialogDateEl.setAttribtue('value', bpDate);
-  dialogSummaryEl.setAttribtue('value', bpSummary);
+  console.log('dialogEl in setDialogFieldsFromPost: ', dialogEl);
+  let dialogTitleEl = dialogEl.querySelector('input#postTitle');
+  let dialogDateEl = dialogEl.querySelector('input#postDate');
+  let dialogSummaryEl = dialogEl.querySelector('textarea#postSummary');
+  console.log('In setDialogFieldsFromPost: ');
+  console.log(' dialogTitleEl: ', dialogTitleEl);
+  console.log(' dialogDateEl: ', dialogDateEl);
+  console.log(' dialogSummaryEl: ', dialogSummaryEl);
+  dialogTitleEl.setAttribute('value', bpTitle);
+  dialogDateEl.setAttribute('value', bpDate);
+  dialogSummaryEl.setAttribute('value', bpSummary);
 }
 
 export function getDialogFieldVals(dialogEl, bpMainDialogSelector=BP_MAIN_DIALOG_SELECTOR) {
-  let dialogTitleEl = dialogEl.querySelector(`${bpMainDialogSelector}#postTitle`);
-  let dialogDateEl = dialogEl.querySelector(`${bpMainDialogSelector}#postDate`);
-  let dialogSummaryEl = dialogEl.querySelector(`${bpMainDialogSelector}#postSummary`);
+  console.log("dialogEl in getDialogFieldVals: ", dialogEl);
+  console.log("dialogEl in main: ", document.querySelector(bpMainDialogSelector));
+  let dialogTitleEl = dialogEl.querySelector(`${bpMainDialogSelector} input#postTitle`);
+  let dialogDateEl = dialogEl.querySelector(`${bpMainDialogSelector} input#postDate`);
+  let dialogSummaryEl = dialogEl.querySelector(`${bpMainDialogSelector} textarea#postSummary`);
+  console.log("dialog field els: ", [dialogTitleEl, dialogDateEl, dialogSummaryEl]);
   return [dialogTitleEl.value, dialogDateEl.value, dialogSummaryEl.value];
 }
 
@@ -95,7 +111,6 @@ export function addDialogOkCancBtnHandlers(
   errMsg,
   modifyBlogPostFunc, 
   blogPostContSelector=BLOG_POST_CONT_SELECTOR) {
-  let mainEl = document.querySelector(bpMainDialogSelector);
   //add event listeners to dialogue element for this current blog post
   let dialogCancEl = dialogEl.querySelector('#postCancel');
   let dialogOkEl = dialogEl.querySelector('#postOk');
@@ -104,8 +119,11 @@ export function addDialogOkCancBtnHandlers(
     mainEl.removeChild(dialogEl);
   });
   dialogOkEl.addEventListener('click', (event) => {
+    console.log('In addDialogOkCancBtnHandlers dialogOk click event handler, blogPostContEl: ', document.querySelector(blogPostContSelector));
     //get input field values and set those of blog post to it
     let[bpTitle, bpDate, bpSummary] = getDialogFieldVals(dialogEl);
+    console.log('In addDialogOkCancBtnHandlers dialogOk click event handler after getDialogFieldVals, blogPostContEl: ', document.querySelector(blogPostContSelector));
+
     //only edit blog post if all entries are non-empty
     if(bpTitle && bpDate && bpSummary) {
       modifyBlogPostFunc(nthBlogPost, bpTitle, bpDate, bpSummary, blogPostContSelector);
@@ -126,20 +144,26 @@ export function addBlogPostButtonEventHandlers(
   templateSelector=TEMPLATE_SELECTOR, 
   blogPostContSelector=BLOG_POST_CONT_SELECTOR) 
 {
+  console.log('In addBlogPostButtonEventHandlers, bpMainDialogSelector: ', bpMainDialogSelector);
   let blogPostContEl = document.querySelector(blogPostContSelector);
-  let mainEl = document.querySelector(bpMainDialogSelector);
-  let bpEl = blogPostContEl.querySelector(`blog-post[data-nth-post=${nthBlogPost}]`);
+  console.log('In addBlogPostButtonEventHandlers: blogPostContEl: ', blogPostContEl);
+  let mainEl = document.querySelector('main');
+  let bpEl = blogPostContEl.querySelector(`blog-post[data-nth-post='${nthBlogPost}']`);
+  console.log('bpEl in addBlogPostButtonEventHandlers: ', bpEl);
   let editBtnEl = bpEl.querySelector('.editPost');
   let delBtnEl = bpEl.querySelector('.delPost');
   editBtnEl.addEventListener('click', (event) => {
+    console.log('In editBtnEl click event handler: blogPostContEl: ', document.querySelector(blogPostContSelector));
     //remove dialog box if present
     remDialogIfPresent(bpMainDialogSelector);
+    console.log('In editBtnEl click event handler after remDialogIfPresent: blogPostContEl: ', document.querySelector(blogPostContSelector));
     //get dialog box from template
     let dialogEl = getNewDialog(templateSelector);
     //populate dialog box fields from blog post element
     setDialogFieldsFromPost(dialogEl, bpEl);
     //display dialog box
-    mainEl.addChild(dialogEl);
+    mainEl.appendChild(dialogEl);
+    console.log('In editBtnEl click event handler, just before addDialogOkCancBtnHandlers.');
     //add event listeners to dialogue element for this current blog post
     let errMsg = "Error: please fill in all input fields before submitting this edited blog post.";
     addDialogOkCancBtnHandlers(dialogEl, mainEl, nthBlogPost, errMsg, editBlogPost, blogPostContSelector);
@@ -150,11 +174,12 @@ export function addBlogPostButtonEventHandlers(
 }
 
 export function addBlogPost(nextInc, postTitle, postDate, postSummary, 
+  blogPostContSelector=BLOG_POST_CONT_SELECTOR,
   bpMainDialogSelector=BP_MAIN_DIALOG_SELECTOR,
   templateSelector=TEMPLATE_SELECTOR, 
-  blogPostContSelector=BLOG_POST_CONT_SELECTOR,
   blogPostTemplateSelector=BLOG_POST_TEMPLATE_SELECTOR) 
 {
+  console.log("In addBlogPost, bpMainDialogSelector: ", bpMainDialogSelector);
   //blog post container
   let blogPostContEl = document.querySelector(blogPostContSelector);
   
@@ -162,11 +187,12 @@ export function addBlogPost(nextInc, postTitle, postDate, postSummary,
   let nextBlogEl = getNewBlogPost(nextInc, templateSelector, blogPostTemplateSelector);
   //add "fields" for blog post
   setPostFields(nextBlogEl, postTitle, postDate, postSummary);
+  console.log("post to create: ", nextBlogEl);
+  //add blog post to page
+  blogPostContEl.appendChild(nextBlogEl);
   //add event handlers for "Edit" and "Delete" buttons for blog post
   addBlogPostButtonEventHandlers(nextInc, bpMainDialogSelector, 
     templateSelector, blogPostContSelector);
-  //add blog post to page
-  blogPostContEl.appendChild(nextBlogEl);
 }
 
 export function delBlogPost(
@@ -184,7 +210,7 @@ export function delBlogPost(
     }
   }
   //remove blog post from container
-  let blogPostEl = blogPostContEl.querySelector(`blog-post[data-nth-post=${nthBlogPost}]`);
+  let blogPostEl = blogPostContEl.querySelector(`blog-post[data-nth-post='${nthBlogPost}']`);
   blogPostContEl.removeChild(blogPostEl);
 }
 
@@ -196,9 +222,11 @@ export function editBlogPost(
   blogPostContSelector=BLOG_POST_CONT_SELECTOR) 
 {
   //blog post container
+  console.log('editBlogPost blogPostContSelector: ', blogPostContSelector);
   let blogPostContEl = document.querySelector(blogPostContSelector);
+  console.log('editBlogPost blogPostContEl: ', blogPostContEl);
   //edit nth blog post
-  let bpEl = blogPostContEl.querySelector(`blog-post[data-nth-post=${nthBlogPost}]`);
+  let bpEl = blogPostContEl.querySelector(`blog-post[data-nth-post='${nthBlogPost}']`);
   //edit "fields" for blog post
   setPostFields(bpEl, postTitle, postDate, postSummary);
 }
@@ -210,14 +238,16 @@ export function addBtnBlogPostEventHandler(
   blogPostContSelector=BLOG_POST_CONT_SELECTOR) 
 {
   let addBtnEl = document.querySelector(addBtnSelector);
-  let mainEl = document.querySelector(bpMainDialogSelector);
+  let mainEl = document.querySelector('main');
   addBtnEl.addEventListener('click', (event) => {
     //remove dialog box if present
     remDialogIfPresent(bpMainDialogSelector);
     //clone dialog from template
     let dialogEl = getNewDialog(templateSelector);
+    console.log("dialogEl: ", dialogEl);
+    console.log("mainEl: ", mainEl);
     //display dialog box
-    mainEl.addChild(dialogEl);
+    mainEl.appendChild(dialogEl);
     //add event listeners to dialogue element for this current blog post
     let errMsg = "Error: please fill in all input fields before submitting this new blog post.";
     let nthBlogPost = getNextNthBlogPostNum(blogPostContSelector);
