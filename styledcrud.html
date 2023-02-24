@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Blog | Misha Reswick's Portfolio Site</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Misha Reswick">
+    <meta name="description" content="Misha Reswick's personal portfolio website. Learn more
+    about his interests, experiences, and current going-ons here at his blog page.">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+    <link rel="stylesheet" href="Assets/styles/head_foot.css">
+    <link rel="stylesheet" href="Assets/styles/index.css">
+    <!--Include DOM Purify-->
+    <!-- <script type="text/javascript" src="Assets/scripts/dist/purify.min.js"></script> -->
+    <!-- <script type="module" src="Assets/scripts/blog.js"></script> -->
+    <script type="module">
+      import { initBlogPost } from './Assets/scripts/blog/blog.js';
+      window.onload = (event) => {
+        initBlogPost();
+      };
+    </script>
+  </head>
+  <body>
+    <template id="dialogRep">
+      <!--Alert to edit/add new blog post-->
+      <dialog class="dialog" id="dialAddEdit">
+        <form method="dialog">
+          <label>Post:</label>
+          <label for="postTitle">Title:</label>
+          <input type="text" name="postTitle" id="postTitle">
+          <label for="postDate">Date:</label>
+          <input type="datetime-local" name="postDate" id="postDate">
+          <label for="postSummary"></label>
+          <textarea rows="5" cols="20" name="postSummary" id="postSummary" placeholder="Enter your post's summary here..."></textarea>
+          <input type="button" name="postCancel" id="postCancel" value="Cancel">
+          <input type="button" name="postOk" id="postOk" value="Ok">
+        </form>
+        <!-- Output for Confirm and Prompt-->
+        <output id="dialogRes" hidden style="border: 0.2rem solid black; margin: 0.5rem; padding: 0.5rem;"></output>
+      </dialog>
+      <!--Custom element to represent a blog post-->
+      <blog-post class="blogPost" style="display: block;" id="blogPost">
+        <label for="outPostTitle">Post Title:</label>
+        <output class="outPostTitle"></output>
+        <label for="outPostDate">Date:</label>
+        <output class="outPostDate"></output>
+        <label for="outPostSummary">Summary:</label>
+        <output class="outPostSummary"></output>
+        <label for="editPost">Edit:</label>
+        <input type="submit" value="Edit" name="editPost" class="editPost">
+        <label for="deletePost">Delete:</label>
+        <input type="submit" value="Delete" name="deletePost" class="delPost">
+      </blog-post>
+      <!--Add blog post button-->
+      <button type="button" id="addPost">Add blog post</button>
+      <!-- Output for Confirm and Prompt-->
+      <output id="res" style="border: 0.2rem solid black; margin: 0.5rem; padding: 0.5rem;"></output>
+
+    </template>
+
+    <main>
+      <h1 title="blogPosts">Blog Posts:</h1>
+      <!--Container for blog post-->
+      <blog-post-cont class="blogPostCont" style="display: block;" data-num-posts="0"></blog-post-cont>
+      <!--Add blog post button-->
+      <button type="button" id="addPost">Add blog post</button>
+    </main>
+
+
+    <hr id="footHr">
+    <footer id="endOfPage">
+      Misha Reswick<br>
+      <address><a id="mishaEmail" href="mailto:mreswick@ucsd.com" title="Misha's UCSD email.">mreswick@ucsd.edu</a></address>
+      Last updated: February 2023
+      <nav id="footerNav">
+        <a id="backToTop" href="#">Back to top ^</a>
+      </nav>
+    </footer>
+
+  </body>
+</html>
