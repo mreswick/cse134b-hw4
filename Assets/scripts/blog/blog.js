@@ -6,10 +6,19 @@ const ADD_BTN_SELECTOR = 'button#addPost';
 
 //get next nthBlogPost num
 export function getNextNthBlogPostNum(blogPostContSelector=BLOG_POST_CONT_SELECTOR) {
+  // let blogPostContEl = document.querySelector(blogPostContSelector);
+  // blogPostContEl.dataset.numPosts = parseInt(blogPostContEl.dataset.numPosts) + 1;
+  // let nextInc = parseInt(blogPostContEl.dataset.numPosts); //nthBlogPost
   let blogPostContEl = document.querySelector(blogPostContSelector);
-  blogPostContEl.dataset.numPosts = parseInt(blogPostContEl.dataset.numPosts) + 1;
-  let nextInc = parseInt(blogPostContEl.dataset.numPosts); //nthBlogPost
+  //blogPostContEl.dataset.numPosts = parseInt(blogPostContEl.dataset.numPosts) + 1;
+  //let nextInc = parseInt(blogPostContEl.dataset.numPosts); //nthBlogPost
+  let nextInc = parseInt(blogPostContEl.dataset.numPosts) + 1;
   return nextInc;
+}
+
+export function setNextNthBlogPostNum(nextIncToSetTo, blogPostContSelector=BLOG_POST_CONT_SELECTOR) {
+  let blogPostContEl = document.querySelector(blogPostContSelector);
+  blogPostContEl.dataset.numPosts = parseInt(nextIncToSetTo);
 }
 
 export function remDialogIfPresent(bpMainDialogSelector=BP_MAIN_DIALOG_SELECTOR) {
@@ -182,7 +191,8 @@ export function addBlogPost(nextInc, postTitle, postDate, postSummary,
   console.log("In addBlogPost, bpMainDialogSelector: ", bpMainDialogSelector);
   //blog post container
   let blogPostContEl = document.querySelector(blogPostContSelector);
-  
+  //update blog post container's inc count
+  setNextNthBlogPostNum(nextInc, blogPostContSelector);
   //next/new blog post element
   let nextBlogEl = getNewBlogPost(nextInc, templateSelector, blogPostTemplateSelector);
   //add "fields" for blog post
