@@ -23,7 +23,7 @@
   <body>
     <template id="dialogRep">
       <!--Alert to edit/add new blog post-->
-      <dialog open class="dialog" id="dialAddEdit">
+      <dialog class="dialog" id="dialAddEdit">
         <form method="dialog">
           <label>Post:</label>
           <label for="postTitle">Title:</label>
@@ -32,8 +32,8 @@
           <input type="datetime-local" name="postDate" id="postDate">
           <label for="postSummary"></label>
           <textarea rows="5" cols="20" name="postSummary" id="postSummary" placeholder="Enter your post's summary here..."></textarea>
-          <input type="submit" name="postCancel" id="postCancel" value="Cancel">
-          <input type="submit" name="postOk" id="postOk" value="Ok">
+          <input type="button" name="postCancel" id="postCancel" value="Cancel">
+          <input type="button" name="postOk" id="postOk" value="Ok">
         </form>
         <!-- Output for Confirm and Prompt-->
         <output id="dialogRes" hidden style="border: 0.2rem solid black; margin: 0.5rem; padding: 0.5rem;"></output>

@@ -4,6 +4,12 @@ const BLOG_POST_CONT_SELECTOR = 'main > blog-post-cont';
 const BLOG_POST_TEMPLATE_SELECTOR = 'blog-post';
 const ADD_BTN_SELECTOR = 'button#addPost';
 
+export function showDialogEl(mainEl, dialogEl) {
+  //display dialog box
+  mainEl.appendChild(dialogEl);
+  dialogEl.showModal();
+}
+
 //get next nthBlogPost num
 export function getNextNthBlogPostNum(bpContEl) {
   let nextInc = parseInt(bpContEl.dataset.numPosts) + 1;
@@ -102,6 +108,8 @@ export function addDialogOkCancBtnHandlers(
   let dialogCancEl = dialogEl.querySelector('#postCancel');
   let dialogOkEl = dialogEl.querySelector('#postOk');
   dialogCancEl.addEventListener('click', (event) => {
+    //hide dialog element (for use with showModal() as I use it, note to self)
+    dialogEl.close();
     //remove this dialog element
     mainEl.removeChild(dialogEl);
   });
@@ -122,14 +130,16 @@ export function addDialogOkCancBtnHandlers(
       else {
         throw "Modify function not of expected function (addBlogPost or editBlogPost).";
       }
-      
+      //hide dialog element (for use with showModal() as I use it, note to self)
+      dialogEl.close();
       //remove this dialog element
       mainEl.removeChild(dialogEl);
     }
     //else display error message in dialogue box that not all fields are entered
     else {
       dispDialogErrMsg(errMsg, dialogEl);
-      //dialogue box not removed from main and so remains visible
+      //dialogue box not removed from main and so remains visible (note: actually
+      //need to call showModal to remain open)
     }
   });
 }
@@ -150,7 +160,7 @@ export function addBlogPostButtonEventHandlers(bpEl, bpContEl) {
     let errMsg = "Error: please fill in all input fields before submitting this edited blog post.";
     addDialogOkCancBtnHandlers(dialogEl, mainEl, errMsg, setPostFields, bpContEl, bpEl);
     //display dialog box
-    mainEl.appendChild(dialogEl);
+    showDialogEl(mainEl, dialogEl);
   });
   delBtnEl.addEventListener('click', (event) => {
     delBlogPost(bpEl, bpContEl);
@@ -204,7 +214,7 @@ export function addBtnBlogPostEventHandler(
     let errMsg = "Error: please fill in all input fields before submitting this new blog post.";
     addDialogOkCancBtnHandlers(dialogEl, mainEl, errMsg, addBlogPost, bpContEl);
     //display dialog box
-    mainEl.appendChild(dialogEl);
+    showDialogEl(mainEl, dialogEl);
   });
 }
 
