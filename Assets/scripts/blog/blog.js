@@ -3,6 +3,33 @@ const TEMPLATE_SELECTOR = '#dialogRep';
 const BLOG_POST_CONT_SELECTOR = 'main > blog-post-cont';
 const BLOG_POST_TEMPLATE_SELECTOR = 'blog-post';
 const ADD_BTN_SELECTOR = 'button#addPost';
+const LOCAL_STORAGE_ARR_KEY = 'blogPostArrKey';
+
+/*
+  For use with local storage, CONCEPTUALLY define an array of:
+    {
+      nthBlogPost: ...
+      postTitle: ...
+      postDate: ...
+      postSummary: ...
+    }
+  objects representing the blog posts, and load
+  at window load/startup. 
+  NOTE that this is actually achieved below
+  (by updateLocalStorageBPs) by storing the innerHTML
+  of the blog post container element, rather than
+  an actual/explicit array. This innerHTML string
+  is later parsed as HTML children elements, however,
+  thereby achieving an array as children when (re)loading
+  the window/page.
+*/
+
+//update local storage with blog post container content (ie the blog posts:
+//assume that the only children elements of the blog post container
+//element are blog posts / blog-post elements.)
+export function updateLocalStorageBPs(bpContEl) {
+  localStorage[LOCAL_STORAGE_ARR_KEY] = bpContEl.innerHTML;
+}
 
 export function showDialogEl(mainEl, dialogEl) {
   //display dialog box
@@ -20,6 +47,7 @@ export function setNextNthBlogPostNum(nextIncToSetTo, bpContEl) {
   bpContEl.dataset.numPosts = parseInt(nextIncToSetTo);
 }
 
+//remove dialog element from page (main element) if present
 export function remDialogIfPresent(bpMainDialogSelector=BP_MAIN_DIALOG_SELECTOR) {
   let dialogElRemoved = false;
   //remove dialog element if present
@@ -32,6 +60,7 @@ export function remDialogIfPresent(bpMainDialogSelector=BP_MAIN_DIALOG_SELECTOR)
   return dialogElRemoved;
 }
 
+//display dialog error message
 export function dispDialogErrMsg(
   errorMsg, 
   dialogEl,
@@ -42,13 +71,29 @@ export function dispDialogErrMsg(
   dialogOutputEl.hidden = false;
 }
 
-export function setPostFields(bpEl, postTitle, postDate, postSummary) {
+//get blog post field elements
+export function getPostFieldEls(bpEl) {
   let bpTitleEl = bpEl.querySelector('output.outPostTitle');
-  bpTitleEl.innerHTML = postTitle;
   let bpDateEl = bpEl.querySelector('output.outPostDate');
-  bpDateEl.innerHTML = postDate;
   let bpSummaryEl = bpEl.querySelector('output.outPostSummary');
+  return [bpTitleEl, bpDateEl, bpSummaryEl];
+}
+
+//get blog post field element "values" (innerHTML's)
+export function getPostFields(bpEl) {
+  let [bpTitleEl, bpDateEl, bpSummaryEl] = getPostFieldEls(bpEl);
+  return [bpTitleEl.innerHTML, bpDateEl.innerHTML, bpSummaryEl.innerHTML];
+}
+
+//set blog post fields to corresponding arguments
+export function setPostFields(bpEl, postTitle, postDate, postSummary, bpContEl) {
+  let [bpTitleEl, bpDateEl, bpSummaryEl] = getPostFieldEls(bpEl);
+  bpTitleEl.innerHTML = postTitle;
+  bpDateEl.innerHTML = postDate;
   bpSummaryEl.innerHTML = postSummary;
+
+  //update local storage
+  updateLocalStorageBPs(bpContEl);
 }
 
 //gets new blog post element (clone) from template element
@@ -125,7 +170,7 @@ export function addDialogOkCancBtnHandlers(
       }
       else if(modifyBlogPostFunc == setPostFields) {
         //editBlogPost(...)
-        modifyBlogPostFunc(bpEl, bpTitle, bpDate, bpSummary);
+        modifyBlogPostFunc(bpEl, bpTitle, bpDate, bpSummary, bpContEl);
       }
       else {
         throw "Modify function not of expected function (addBlogPost or editBlogPost).";
@@ -167,8 +212,7 @@ export function addBlogPostButtonEventHandlers(bpEl, bpContEl) {
   });
 }
 
-export function addBlogPost(postTitle, postDate, postSummary, bpContEl) 
-{
+export function addBlogPost(postTitle, postDate, postSummary, bpContEl, updateLocalStorage=true) {
   //get next blog post number
   let nthBlogPost = getNextNthBlogPostNum(bpContEl);
   //update blog post container's inc count
@@ -176,11 +220,20 @@ export function addBlogPost(postTitle, postDate, postSummary, bpContEl)
   //next/new blog post element
   let nextBpEl = getNewBlogPost(nthBlogPost);
   //add "fields" for blog post
-  setPostFields(nextBpEl, postTitle, postDate, postSummary);
+  setPostFields(nextBpEl, postTitle, postDate, postSummary, bpContEl);
   //add event handlers for "Edit" and "Delete" buttons for blog post
   addBlogPostButtonEventHandlers(nextBpEl, bpContEl);
   //add blog post to page
   bpContEl.appendChild(nextBpEl);
+
+  //this is put in an if so that can upon initial window/page load add blog posts without
+  //updating local storage each time (ie so that can conceptually do a single batch
+  //before updating local storage)
+  if(updateLocalStorage) {
+    //update local storage
+    updateLocalStorageBPs(bpContEl);
+  }
+  
 }
 
 export function delBlogPost(bpEl, bpContEl) {
@@ -196,6 +249,9 @@ export function delBlogPost(bpEl, bpContEl) {
   }
   //remove blog post from container
   bpContEl.removeChild(bpEl);
+
+  //update local storage
+  updateLocalStorageBPs(bpContEl);
 }
 
 export function addBtnBlogPostEventHandler(
@@ -218,9 +274,32 @@ export function addBtnBlogPostEventHandler(
   });
 }
 
+//loads blog posts from local storage onto page
+export function addBlogPostsFromLocalStorage(blogPostContSelector=BLOG_POST_CONT_SELECTOR) {
+  let bpContEl = document.querySelector(blogPostContSelector);
+  let savedBPsAsStr = localStorage.getItem(LOCAL_STORAGE_ARR_KEY);
+  if(savedBPsAsStr) {
+    //use dummy bp cont el to parse innerHTML to get children nodes
+    let bpContDummyEl = document.createElement('div');
+    bpContDummyEl.innerHTML = savedBPsAsStr;
+    let updateLocalStorage = false;
+    for(let i = 0; i < bpContDummyEl.children.length; i++) {
+      let currBpChild = bpContDummyEl.children[i];
+      let [currBpTitle, currBpDate, currBpSummary] = getPostFields(currBpChild);
+      //if last iteration, update local storage when adding blog post
+      if(i == bpContDummyEl.children.length - 1) {
+        updateLocalStorage = true;
+      }
+      addBlogPost(currBpTitle, currBpDate, currBpSummary, bpContEl, updateLocalStorage);
+    }
+  }
+}
+
 export function initBlogPost() {
   //remove dialog box if present
   remDialogIfPresent();
+  //add/load/restore any blog post(s) from local storage
+  addBlogPostsFromLocalStorage();
   //add event handler to "Add" button
   addBtnBlogPostEventHandler();
 }
