@@ -1,0 +1,155 @@
+main {
+  line-height: 1.3rem;
+}
+
+/*style blog-post container*/
+main blog-post-cont {
+  display: block;
+  box-shadow: 0.4rem 0.5rem rgb(7, 83, 140);
+  border: 0.2rem solid black;
+  border-radius: 1rem;
+  margin: 1%;
+  padding: 1%;
+  min-width: 50%;
+  max-width: 75%;
+}
+
+/*style blog posts*/ 
+main blog-post-cont blog-post {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: start;
+  border: 0.1rem solid black;
+  border-radius: 1rem;
+  margin: 2%;
+  padding: 1%;
+  font-size: 0.8rem;
+}
+main blog-post-cont blog-post > label {
+  display: block;
+  margin: 1% 1% 0;
+  padding: 1% 2% 1%;
+  font-weight: 500;
+  font-size: 110%;
+}
+main blog-post-cont blog-post > output {
+  display: block;
+  text-indent: 6%;
+  padding: 1%;
+  margin: 0;
+}
+main blog-post-cont blog-post div.postBtns {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 3%;
+  width: 100%;
+}
+main blog-post-cont blog-post div.postBtns > input {
+  padding: 0;
+  margin: 0;
+  padding: 0.5rem;
+  margin-bottom: 1.5%;
+  border-radius: 0.5rem;
+}
+
+/*style add blog posts button*/
+main button#addPost {
+  padding: 0;
+  margin: 0;
+  padding: 0.5rem;
+  margin: 2.5% 0;
+  border-radius: 0.5rem;
+}
+
+/*style dialog box*/
+main dialog#dialAddEdit {
+  /*center dialog box on page*/
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  /*style*/
+  border: 0.1rem solid black;
+  border-radius: 1rem;
+  padding: 2% 5% 1%;
+  margin: 1%;
+  width: fit-content;
+  min-width: 25%;
+  box-sizing: border-box;
+  /*font*/
+  font-size: 0.9rem;
+}
+
+/*move output for error message further down dialog box*/
+main dialog output#dialogRes
+, main dialog label
+, main dialog input
+, main dialog textarea
+{
+  display: block;
+  text-align: start;
+  margin: 1%;
+  padding: 1%;
+}
+main dialog form {
+  display: block;
+  box-sizing: border-box;
+  /* width: 100%; */
+  width: fit-content;
+  margin: 0;
+  padding: 0;
+}
+main dialog label {
+  margin: 0;
+  padding: 0;
+  margin-top: 0.7rem;
+}
+main dialog label#postTitle {
+  margin-top: 0;
+}
+main dialog label#headerTitle {
+  align-self: center;
+  text-align: center;
+  margin-top: 0.2rem;
+}
+/*style dialog box buttons*/
+main dialog div.dialogBtns {
+  margin-top: 0.8rem;
+  /*internal*/
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 3%;
+  width: 100%;
+}
+main dialog div.dialogBtns > input {
+  padding: 0;
+  margin: 0;
+  padding: 0.5rem;
+  margin-bottom: 1.5%;
+  border-radius: 0.5rem;
+}
+/*style output for error msg of dialog box*/
+main dialog output#dialogRes {
+  display: none; /*as opposed to hidden attr in html, as border still
+  shows up for it if just hidden*/ 
+  /* margin: 1rem 0.1rem; */
+  padding: 0.5rem;
+  border: 0.1rem solid black;
+  border-radius: 1rem;
+  width: fit-content;
+  /* max-width: 100%; */
+  /* max-width: 100%;  */
+  box-sizing: border-box;
+  /* width: 10%; */
+  /* width: 8rem; */
+  word-wrap: normal;
+  white-space: normal;
+  text-align: start;
+}
