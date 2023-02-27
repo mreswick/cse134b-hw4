@@ -7,6 +7,7 @@
     <meta name="author" content="Misha Reswick">
     <meta name="description" content="Misha Reswick's personal portfolio website. Learn more
     about his interests, experiences, and current going-ons here at his blog page.">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
     <link rel="stylesheet" type="text/css" href="Assets/styles/base.css">
     <link rel="stylesheet" href="Assets/styles/head_foot.css">
@@ -54,8 +55,12 @@
         <label for="outPostSummary">Summary:</label>
         <output class="outPostSummary"></output>
         <div class="postBtns">
-          <input type="submit" value="Edit" name="editPost" class="editPost">
-          <input type="submit" value="Delete" name="deletePost" class="delPost">
+          <button type="submit" value="Edit" name="editPost" class="editPost" id="editPost">
+            <label for="editPost"><i class="fa fa-pencil" aria-hidden="true"></i></label>
+          </button>
+          <button type="submit" value="Delete" name="deletePost" class="delPost" id="delPost">
+            <label for="delPost"><i class="fa fa-trash-o" aria-hidden="true"></i></label>
+          </button>
         </div>
         
       </blog-post>
