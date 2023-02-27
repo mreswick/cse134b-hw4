@@ -13,10 +13,12 @@
     <link rel="stylesheet" href="Assets/styles/index.css">
     <link rel="stylesheet" href="Assets/styles/blog/styledblog.css">
     <!--Include DOM Purify-->
+    <script type="text/javascript" src="Assets/scripts/dist/purify.min.js"></script>
     <!-- <script type="text/javascript" src="Assets/scripts/dist/purify.min.js"></script> -->
     <!-- <script type="module" src="Assets/scripts/blog.js"></script> -->
     <script type="module">
-      import { initBlogPost } from './Assets/scripts/blog/styledblog.js';
+      //import { initBlogPost } from './Assets/scripts/blog/styledblog.js';
+      import { initBlogPost } from './Assets/scripts/blog/blog.js';
       window.onload = (event) => {
         initBlogPost();
       };
@@ -67,7 +69,9 @@
     <main>
       <h1 title="blogPosts">Blog Posts:</h1>
       <!--Container for blog post-->
-      <blog-post-cont class="blogPostCont" data-num-posts="0"></blog-post-cont>
+      <blog-post-cont class="blogPostCont" data-num-posts="0">
+        <aside style="padding: 1rem;"><em>Info:</em> blog post date times are in UTC.</aside>
+      </blog-post-cont>
       <!--Add blog post button-->
       <button type="button" id="addPost">Add blog post</button>
     </main>

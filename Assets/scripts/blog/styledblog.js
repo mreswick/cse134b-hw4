@@ -5,6 +5,10 @@ const BLOG_POST_TEMPLATE_SELECTOR = 'blog-post';
 const ADD_BTN_SELECTOR = 'button#addPost';
 const LOCAL_STORAGE_ARR_KEY = 'blogPostArrKey';
 
+//the index of (UTC) iso datetime-local string to slice 
+//to get up to and including last minute
+const END_ISO_MIN_IND = 16;
+
 /*
   For use with local storage, CONCEPTUALLY define an array of:
     {
@@ -23,6 +27,25 @@ const LOCAL_STORAGE_ARR_KEY = 'blogPostArrKey';
   thereby achieving an array as children when (re)loading
   the window/page.
 */
+
+
+//gets datetime-local string's date and hours:minutes as string
+function getCurrDateTimeForHTMLInputEl() {
+  return (new Date()).toISOString().slice(0, END_ISO_MIN_IND);
+}
+
+function setDialogDateTime(dialogEl) {
+  let dialogDateEl = dialogEl.querySelector('input#postDate');
+  dialogDateEl.setAttribute('value', getCurrDateTimeForHTMLInputEl());
+  //after setting datetime, set its datetime to readonly
+  dialogDateEl.setAttribute('readonly', true);
+  return dialogEl;
+}
+
+function sanitize(strings, val) {
+  return DOMPurify.sanitize(`${val}`)
+}
+
 
 //update local storage with blog post container content (ie the blog posts:
 //assume that the only children elements of the blog post container
@@ -204,6 +227,8 @@ export function addBlogPostButtonEventHandlers(bpEl, bpContEl) {
     let dialogEl = getNewDialog();
     //populate dialog box fields from blog post element
     setDialogFieldsFromPost(dialogEl, bpEl, 'Edit Post:'); //'New Post:' by default currently
+    //update date of dialog to current date-time:
+    setDialogDateTime(dialogEl);
     //add event listeners to dialogue element for this current blog post
     let errMsg = "<em>Error:</em> please fill in all input fields before submitting this edited blog post.";
     addDialogOkCancBtnHandlers(dialogEl, mainEl, errMsg, setPostFields, bpContEl, bpEl);
@@ -269,6 +294,8 @@ export function addBtnBlogPostEventHandler(
     remDialogIfPresent();
     //clone dialog from template
     let dialogEl = getNewDialog();
+    //update date of dialog to current date-time:
+    setDialogDateTime(dialogEl);
     //add event listeners to dialogue element for this current blog post
     let errMsg = "<em>Error:</em> please fill in all input fields before submitting this new blog post.";
     addDialogOkCancBtnHandlers(dialogEl, mainEl, errMsg, addBlogPost, bpContEl);
@@ -286,7 +313,8 @@ export function addBlogPostsFromLocalStorage(blogPostContSelector=BLOG_POST_CONT
     let bpContDummyEl = document.createElement('div');
     bpContDummyEl.innerHTML = savedBPsAsStr;
     let updateLocalStorage = false;
-    for(let i = 0; i < bpContDummyEl.children.length; i++) {
+    //1st child is an <aside>, so skip over that
+    for(let i = 1; i < bpContDummyEl.children.length; i++) {
       let currBpChild = bpContDummyEl.children[i];
       let [currBpTitle, currBpDate, currBpSummary] = getPostFields(currBpChild);
       //if last iteration, update local storage when adding blog post
