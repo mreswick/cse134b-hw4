@@ -8,11 +8,15 @@
     <meta name="description" content="Misha Reswick's personal portfolio website. Learn more
     about his interests, experiences, and current going-ons here at his native dialogs page.">
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+    <link rel="stylesheet" type="text/css" href="Assets/styles/base.css">
     <link rel="stylesheet" href="Assets/styles/head_foot.css">
     <link rel="stylesheet" href="Assets/styles/index.css">
     <!--Include DOM Purify-->
     <script type="text/javascript" src="Assets/scripts/dist/purify.min.js"></script>
     <script>
+      function sanitizeRes(strings, promptPrefix, promptRes) {
+        return DOMPurify.sanitize(`${promptPrefix}${strings[0]}${promptRes}`)
+      }
       window.onload = (event) => {
         let btnAlert = document.getElementById('btnAlert');
         let btnConfirm = document.getElementById('btnConfirm');
@@ -48,7 +52,7 @@
           let promptRes = DOMPurify.sanitize(window.prompt('What is your name?'));
           let promptResDefault = 'User did not enter anything; please click again.';
           promptRes = promptRes ? promptRes : promptResDefault; 
-          confResEl.innerHTML = DOMPurify.sanitize(`${promptPrefix} ${promptRes}`);
+          confResEl.innerHTML = sanitizeRes`${promptPrefix} ${promptRes}`;
           confResEl.removeAttribute('hidden');
         });
 

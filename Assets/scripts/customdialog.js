@@ -1,5 +1,9 @@
-import { DOMPurify } from 'dompurify';
-
+// import { DOMPurify } from 'dompurify';
+// import DOMPurify from './dist/purify.min.js';
+// import DOMPurify from '../../node_modules/dompurify';
+function sanitizeRes(strings, promptPrefix, promptRes) {
+  return DOMPurify.sanitize(`${promptPrefix}${strings[0]}${promptRes}`)
+}
 function init() {
   let btnAlert = document.getElementById('btnAlert');
   let btnConfirm = document.getElementById('btnConfirm');
@@ -21,17 +25,11 @@ function init() {
     }
     //show alert prompt
     dialogEl = tempDialCont.children[0].cloneNode(true);
-    console.log("dialogEl first child: ");
-    console.log(dialogEl);
     dialogToReplEl = document.querySelector("main dialog");
     if(dialogToReplEl) {
-      console.log("removing dialogToReplEl.");
-      console.log(dialogToReplEl);
       mainEl.removeChild(dialogToReplEl);
     }
     mainEl.appendChild(dialogEl);
-    console.log("dialog el: ");
-    console.log(dialogEl);
   });
   //confirm button
   btnConfirm.addEventListener('click', (event) => {
@@ -47,8 +45,6 @@ function init() {
       mainEl.removeChild(dialogToReplEl);
     }
     mainEl.appendChild(dialogEl);
-    console.log('dialog el: ');
-    console.log(dialogEl);
     //bind logic to buttons of confirm prompt
     let cancBtn = document.getElementById('confCbtn');
     let okBtn = document.getElementById('confOKbtn');
@@ -81,8 +77,6 @@ function init() {
       mainEl.removeChild(dialogToReplEl);
     }
     mainEl.appendChild(dialogEl);
-    console.log('dialog el: ');
-    console.log(dialogEl);
     //bind logic to buttons of confirm prompt
     let cancBtn = document.getElementById('promptCbtn');
     let okBtn = document.getElementById('promptOKbtn');
@@ -97,9 +91,10 @@ function init() {
     okBtn.addEventListener('click', (event) => {
       let textAreaEl = document.querySelector('main textarea');
       promRes = textAreaEl.value ? textAreaEl.value : "User did not enter any input.";
-      promRes = `${promPrefix} ${promRes}`
+      promRes = sanitizeRes`${promPrefix} ${promRes}`
       //show output
-      outputEl.innerHTML = DOMPurify.sanitize(promRes);
+      //outputEl.innerHTML = DOMPurify.sanitize(promRes);
+      outputEl.innerHTML = promRes
       mainEl.appendChild(outputEl);
     });
   });
