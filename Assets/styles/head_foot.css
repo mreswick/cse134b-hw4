@@ -544,6 +544,7 @@ ul.mainNavigation > li {
     /* translate: -100%; */
     /* transition: translate var(--animation-timing); */
     opacity: 0;
+    display: none; /*fix issue of not being able to click search box on smaller than desktop*/
     transition: opacity var(--animation-timing);
     /* translate: -100%; */
     
@@ -562,6 +563,7 @@ ul.mainNavigation > li {
   input#lab:checked ~ nav.sub1mainnav {
     /* translate: 0; */
     opacity: 95%;
+    display: block; /*fix issue of not being able to click search box on smaller than desktop*/
   }
   nav.sub1mainnav ul.upperLevelSubNav1 {
     list-style-type: none;
@@ -635,9 +637,9 @@ and (min-width: 640px) {
   nav.mainNavigation a.homeMain {
     display: block;
   }
-  nav.mainNavigation ul.mainNavigation {
+  /* nav.mainNavigation ul.mainNavigation { */
     /* display: block; */
-  }
+  /* } */
 
 
   /*main nav*/
@@ -715,6 +717,7 @@ and (min-width: 640px) {
     /* translate: -100%; */
     /* transition: translate var(--animation-timing); */
     opacity: 0;
+    display: none; /*fix issue of not being able to click search box on smaller than desktop*/
     transition: opacity var(--animation-timing);
     /* translate: -100%; */
     /* width: 80%; */
@@ -732,6 +735,7 @@ and (min-width: 640px) {
   input#lab:checked ~ nav.sub1mainnav {
     /* translate: 0; */
     opacity: 95%;
+    display: block; /*fix issue of not being able to click search box on smaller than desktop*/
   }
   nav.sub1mainnav ul.upperLevelSubNav1 {
     list-style-type: none;
