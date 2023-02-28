@@ -29,9 +29,9 @@ search-bar i#searchClose {
 search-bar i#searchClose:hover {
   color: rgb(190, 18, 18);
 }
-/* search-results {
-  display: none;
-} */
+search-results {
+  margin-top: 5%;
+}
 
 
 /*brought in / modified from index.css*/
