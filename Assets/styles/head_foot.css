@@ -688,7 +688,7 @@ and (min-width: 640px) {
     margin: 0.9rem;
     padding: 0.6rem;
     top: 0;
-    right: 5%;
+    right: 2%;
   }
   li#mobileSearchIcon:hover {
     background-color: rgba(128,128,128,0.7); /*var(--background-color); but with non-1 opacity*/ 
