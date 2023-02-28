@@ -120,8 +120,6 @@ input#lab {
 .hamMenu::before,
 .hamMenu::after,
 /* .hamMenu input  */
-
-
 span#di
 {
   display: block;
@@ -142,6 +140,15 @@ span#di
   /* transition: 
    rotate var(--animation-timing); */
 }
+/* .hamMenu:hover::before,
+.hamMenu:hover::after,
+span#di:hover { */
+  /*match light blue with rest of main nav*/
+  /* background-color: rgb(0, 166, 255);
+} */
+/* .hamMenu:hover::before ~ span {
+  color: rgb(0, 166, 255);
+} */
 /* .hamMenu input { */
 li#mainnavHam input {
   appearance: none;
@@ -244,6 +251,9 @@ header nav.mainNavigation {
 }
 /*overall main nav grid only if not for small screen*/
 @media only screen and (min-width: 640px) {
+  li#mobileSearchIcon {
+    display: none;
+  }
   header nav.mainNavigation {
     /*grid*/
     display: grid;
@@ -255,7 +265,12 @@ header nav.mainNavigation {
       "botBord botBord botBord botBord";
   }
 }
-
+@media only screen and (max-width: 1008px) and (min-width: 640px) {
+  header nav.mainNavigation {
+    /*give more room to main menu by taking away a little of right space*/ 
+    grid-template-columns: 1fr 1fr 5fr 0.5fr;
+  }
+}
 
 header {
   /*background-color: rgb(210, 210, 210);*/ 
@@ -311,7 +326,7 @@ header ul.mainNavigation {
   margin-top: 0.6em;
   padding: 0.5em;
   padding-left: 1.2rem;
-  margin-right: 2em;
+  /* margin-right: 2em; */
   /* min-width: 1vw; */
   /* margin-right: 2em; */
   height: var(--ham-height);
@@ -349,9 +364,25 @@ ul.mainNavigation > li {
 @media only screen and (min-width: 1008px) {
   /*main nav*/
   header ul.mainNavigation {
-    grid-template-columns: 1fr 1fr 1fr 2fr 18ex;
+    grid-template-columns: 1fr 1fr 1fr 2fr 18ex 1fr;
+    grid-template-rows: 1fr 0.2fr;
     grid-template-areas: 
-      "home bio exp proj intouch"; /*inner grid for menu */
+      "home bio exp proj intouch search"
+      "botBord botBord botBord botBord botBord botBord"; /*inner grid for menu */
+  }
+  hr.navBorder {
+    grid-area: botBord;
+    grid-gap: space-evenly;
+    align-self: center;
+    justify-self: center;
+    border-radius: 0.1rem;
+    border: 0;
+    border-bottom: 0.2rem solid rgb(7, 83, 150);
+    /* border-bottom: 0.2rem solid rgb(9, 80, 100); */
+    /* width: 100%; */
+    width: 100vw;
+    padding-top: 1rem;
+    margin-bottom: 1rem;
   }
   header ul.mainNavigation > li#mainnavProj {
     /* text-align: left;
@@ -375,6 +406,9 @@ ul.mainNavigation > li {
   }
   li#mainnavTouch {
     grid-area: intouch;
+  }
+  li#searchIcon {
+    grid-area: search;
   }
 
   /*submain nav*/
@@ -437,13 +471,35 @@ ul.mainNavigation > li {
 }
 
 @media only screen and (max-width: 1008px) and (min-width: 640px) {
+  header a.homeMain {
+    min-width: fit-content;
+  }
   /*main nav*/
   header ul.mainNavigation {
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 0.2fr;
     grid-template-areas: 
-      "home bio exp ham"; /*inner grid for menu */
+      "home bio exp ham search"
+      "botBord botBord botBord botBord botBord"; /*inner grid for menu */
     align-items: center;
   }
+  hr.navBorder {
+    width: 100%;
+  }
+
+  /* hr.navBorder {
+    grid-area: botBord;
+    align-self: center;
+    justify-self: center;
+    border-radius: 0.1rem;
+    border: 0;
+    border-bottom: 0.2rem solid rgb(7, 83, 150); */
+    /* border-bottom: 0.2rem solid rgb(9, 80, 100); */
+    /* width: 100%; */
+    /* width: 100vw; */
+    /* padding-top: 1rem;
+    margin-bottom: 1rem;
+  } */
   header ul.mainNavigation li {
     display: list-item;
   }
@@ -452,12 +508,19 @@ ul.mainNavigation > li {
     grid-area: home;
   }
   li#mainnavBio {
+    /* padding-left: 0.5rem; */
     grid-area: bio;
   }
   li#mainnavExp {
+    /* padding-left: 0.5rem; */
     grid-area: exp;
   }
+  li#searchIcon {
+    /* padding-left: 0.8rem; */
+    grid-area: search;
+  }
   li#mainnavHam {
+    /* padding-left: 0.8rem; */
     grid-area: ham;
     position: static;
   }
@@ -604,6 +667,34 @@ and (min-width: 640px) {
     grid-area: ham;
     position: static;
   }
+  /*swap which search icon appears*/ 
+  /* li#searchIcon {
+    position: fixed;
+    top: 0;
+    left: 0;
+    margin: 0.5rem;
+    padding: 0.5rem;
+    background-color: transparent;
+
+    
+  } */
+  li#searchIcon {
+    display: none;
+  }
+  li#mobileSearchIcon {
+    position: absolute;
+    list-style-type: none;
+    transform: scale(1.2);
+    margin: 0.9rem;
+    padding: 0.6rem;
+    top: 0;
+    right: 5%;
+  }
+  li#mobileSearchIcon:hover {
+    background-color: rgba(128,128,128,0.7); /*var(--background-color); but with non-1 opacity*/ 
+    border-radius: 0.5rem;
+    opacity: 95%;
+  }
   label.hamMenu {
     display: flex;
   }
@@ -673,6 +764,8 @@ and (min-width: 640px) {
     margin-top: 0.5rem;
   }
 }
+
+/*search icon*/
 
 
 
