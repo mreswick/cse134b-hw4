@@ -17,7 +17,7 @@
     <meta name="description" content="Misha Reswick's personal portfolio website. Contact 
     him here.">
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
-    <link rel="stylesheet" type="text/css" href="Assets/styles/base.css">
+    <!-- <link rel="stylesheet" type="text/css" href="Assets/styles/base.css"> -->
     <link rel="stylesheet" href="Assets/styles/head_foot.css">
     <link rel="stylesheet" href="Assets/styles/get_in_touch.css">
   </head>
@@ -27,39 +27,34 @@
     <header>
       <!--Main navigation menu.-->
       <nav class="mainNavigation" title="Menu for main navigation.">
+        <li id="mobileSearchIcon" title="Click to go to my Search page."><a href="./search_results.html"><i class="fa fa-search" aria-hidden="true"></i></a></li>
         <!-- <div class="emptyMainSpacer"></div> -->
         <a class="homeMain" href="index.html" title="Click to go to Home.">M/</a>
         <ul class="mainNavigation">
           <li id="mainnavHome"><a href="index.html" title="Click to go to Home.">Home</a></li>
           <li id="mainnavBio"><a href="bio.html" title="Click to go to my Bio page.">Bio</a></li>
           <li id="mainnavExp"><a href="experience.html" title="Click to go to my Experience page.">Experience</a></li>
-          <li id="mainnavProj" class="projects" title="Click to go to my Projects.">Projects
+          <li id="mainnavProj" class="projects" title="Click to open my Projects submenu.">Projects
             <ul class="subMainNav">
               <li id="submainnav1"><a href="pastProjects.html" title="Click to go to my Past Projects' page.">Past Projects</a></li>
               <li id="submainnav2"><a href="experiments.html" title="Click to go to my Experiments' page.">Experiments</a></li>
             </ul>
           </li>
           <li id="mainnavTouch"><a href="getInTouch.html" title="Click to stay on my Get in Touch page to contact me.">Get in Touch</a></li>
+          <li id="searchIcon" title="Click to go to my Search page."><a href="./search_results.html"><i class="fa fa-search" aria-hidden="true"></i></a></li>
           <li id="mainnavHam">
             <!--Hamburger menu-->
             <input id="lab" type="checkbox">
             <label class="hamMenu" for="lab">
               <span id="di"></span>
             </label>
-            <!-- <nav class="downNav">
-              <nav>
-                <div>This</div>
-                <div>is</div>
-                <div>the</div>
-                <div>sidebar</div>
-              </nav>
-            </nav> -->
+      
             <nav class="sub1mainnav">
               <ul class="upperLevelSubNav1">
                 <li class="l1" id="mainnavExp2"><a href="experience.html" title="Click to go to my Experience page.">Experience</a></li>
                 <li class="l1">
                   <details>
-                    <summary title="Click for my Projects.">Projects:</summary>
+                    <summary>Projects:</summary>
                       <ul class="lowerLevelSubNav1">
                         <li id="submainnav1_2"><a href="pastProjects.html" title="Click to go to my Past Projects' page.">Past Projects</a></li>
                         <li id="submainnav2_2"><a href="experiments.html" title="Click to go to my Experiments' page.">Experiments</a></li>
