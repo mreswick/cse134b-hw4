@@ -1,9 +1,6 @@
 /*prevent Swiftype from displaying a 
 separate "no results" for search section*/
-/* search-results#searchResCont
-section.st-ui-no-results
- div.st-query-present */
- span.st-ui-type-heading {
+search-results#searchResCont section.st-ui-no-results div.st-query-present span.st-ui-type-heading {
   display: none !important;
  }
 
