@@ -98,6 +98,11 @@ https://www.youtube.com/watch?v=dAIVbLrAb_U*/
   --ham-height: calc(var(--ham-bar-height) * 3 + var(--ham-bar-gap) * 2);
   
 }
+
+nav.sub1mainnav {
+  z-index: 2; /*to try to hide Swiftype search result content beneath sub nav menu*/ 
+}
+
 .hamMenu {
   /* margin-top: 10rem; */
   /*to vertically stack the bars of the hamburger menu*/
