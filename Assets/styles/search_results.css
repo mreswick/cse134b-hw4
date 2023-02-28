@@ -2,9 +2,15 @@ search-bar {
   display: block;
   border: 0.2rem solid rgb(77, 75, 75);
   margin-top: 1%;
+  /* margin-top: 20%; */
   padding: 0 1rem;
   border-radius: 2rem;
   box-shadow:0.2rem 0.2rem rgb(77, 75, 75);
+  /*flex*/
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: start;
 }
 search-bar input#searchIn {
   margin: 1rem;
@@ -13,14 +19,23 @@ search-bar input#searchIn {
   border-style: none;
   appearance: none;
 }
-@media screen and (min-width: 640px) {
+@media screen and (min-width: 1008px) {
   search-bar input#searchIn {
     font-size: 1.1rem;
   }
 }
+@media screen and (max-width: 1008px) and
+(min-width: 640px) {
+  search-bar input#searchIn {
+    font-size: 1rem;
+  }
+}
 @media screen and (max-width: 640px) {
   search-bar input#searchIn {
-    font-size: 0.8rem;
+    font-size: 0.7rem;
+  }
+  search-bar {
+    width: fit-content;
   }
 }
 search-bar i#searchClose {

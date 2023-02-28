@@ -150,5 +150,13 @@
       </nav>
     </footer>
 
+    <script>
+      let inputEl = document.querySelector('input#searchIn');
+      let clearInputEl = document.querySelector('i#searchClose');
+      clearInputEl.addEventListener('click', (event) => {
+        inputEl.value = ""; //effectively, clear input element
+      });
+    </script>
+
   </body>
 </html>
