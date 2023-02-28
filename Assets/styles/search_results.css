@@ -4,6 +4,10 @@ search-results#searchResCont section.st-ui-no-results div.st-query-present span.
   display: none !important;
  }
 
+search-results#searchResCont div.st-query-present div.st-ui-injected-on-page-container a.st-ui-result {
+  z-index: -1; /*to hide under sub navigation main menu(s)*/  
+}
+
 search-bar {
   display: block;
   border: 0.2rem solid rgb(77, 75, 75);
