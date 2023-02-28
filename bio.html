@@ -17,7 +17,8 @@
     <meta name="description" content="Misha Reswick's personal portfolio website. Learn more
     about his backgrounds and interests at this bio page for him.">
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
-    <link rel="stylesheet" type="text/css" href="Assets/styles/base.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- <link rel="stylesheet" type="text/css" href="Assets/styles/base.css"> -->
     <link rel="stylesheet" type="text/css" href="Assets/styles/bio.css">
     <link rel="stylesheet" type="text/css" href="Assets/styles/head_foot.css">
   </head>
@@ -26,6 +27,7 @@
     <header>
       <!--Main navigation menu.-->
       <nav class="mainNavigation" title="Menu for main navigation.">
+        <li id="mobileSearchIcon" title="Click to go to my Search page."><a href="./search_results.html"><i class="fa fa-search" aria-hidden="true"></i></a></li>
         <!-- <div class="emptyMainSpacer"></div> -->
         <a class="homeMain" href="index.html" title="Click to go to Home.">M/</a>
         <ul class="mainNavigation">
@@ -39,20 +41,14 @@
             </ul>
           </li>
           <li id="mainnavTouch"><a href="getInTouch.html" title="Click to go to my Get in Touch page to contact me.">Get in Touch</a></li>
+          <li id="searchIcon" title="Click to go to my Search page."><a href="./search_results.html"><i class="fa fa-search" aria-hidden="true"></i></a></li>
           <li id="mainnavHam">
             <!--Hamburger menu-->
             <input id="lab" type="checkbox">
             <label class="hamMenu" for="lab">
               <span id="di"></span>
             </label>
-            <!-- <nav class="downNav">
-              <nav>
-                <div>This</div>
-                <div>is</div>
-                <div>the</div>
-                <div>sidebar</div>
-              </nav>
-            </nav> -->
+      
             <nav class="sub1mainnav">
               <ul class="upperLevelSubNav1">
                 <li class="l1" id="mainnavExp2"><a href="experience.html" title="Click to go to my Experience page.">Experience</a></li>
