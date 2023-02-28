@@ -100,7 +100,7 @@ https://www.youtube.com/watch?v=dAIVbLrAb_U*/
 }
 
 nav.sub1mainnav {
-  z-index: 2; /*to try to hide Swiftype search result content beneath sub nav menu*/ 
+  z-index: 2; /*to hide Swiftype search result content beneath sub nav menu*/ 
 }
 
 .hamMenu {
