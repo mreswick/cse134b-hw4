@@ -14,8 +14,8 @@
     <!--Include DOM Purify-->
     <script type="text/javascript" src="Assets/scripts/dist/purify.min.js"></script>
     <script>
-      function sanitizeRes(strings, promptPrefix, promptRes) {
-        return DOMPurify.sanitize(`${promptPrefix}${strings[0]}${promptRes}`)
+      function sanitizeRes(_, promptPrefix, promptRes) {
+        return DOMPurify.sanitize(`${promptPrefix} ${promptRes}`)
       }
       window.onload = (event) => {
         let btnAlert = document.getElementById('btnAlert');
@@ -27,33 +27,47 @@
         btnAlert.addEventListener('click', (event) => {
           //hide confirm result print out
           confResEl.hidden = true;
-          //alert
-          window.alert('Alert pressed!');
+          setTimeout(() => {
+            //alert
+            window.alert('Alert pressed!');
+          }, 0);
         });
         //confirm button
         btnConfirm.addEventListener('click', (event) => {
-          const confPrefix = 'Confirm Result:';
-          let confRes = window.confirm('Do you confirm this?');
-          confResEl.innerHTML = `${confPrefix} ${confRes}`;
-          confResEl.removeAttribute('hidden');
+          //hide confirm/prompt result print out
+          confResEl.hidden = true;
+          setTimeout(() => {
+            const confPrefix = 'Confirm Result:';
+            let confRes = window.confirm('Do you confirm this?');
+            confResEl.innerHTML = `${confPrefix} ${confRes}`;
+            confResEl.removeAttribute('hidden');
+          }, 0);
         });
         //prompt button
         btnPrompt.addEventListener('click', (event) => {
-          const promptPrefix = 'Prompt result:';
-          let promptRes = window.prompt('What is your name?');
-          let promptResDefault = 'User did not enter anything; please click again.';
-          promptRes = promptRes ? promptRes : promptResDefault; 
-          confResEl.innerHTML = `${promptPrefix} ${promptRes}`; //note to self: template literal (by) itself still unsafe to injection
-          confResEl.removeAttribute('hidden');
+          //hide confirm/prompt result print out
+          confResEl.hidden = true;
+          setTimeout(() => {
+            const promptPrefix = 'Prompt result:';
+            let promptRes = window.prompt('What is your name?');
+            let promptResDefault = 'User did not enter anything; please click again.';
+            promptRes = promptRes ? promptRes : promptResDefault; 
+            confResEl.innerHTML = `${promptPrefix} ${promptRes}`; //note to self: template literal (by) itself still unsafe to injection
+            confResEl.removeAttribute('hidden');
+          }, 0); 
         });
         //safe prompt button
         btnSaferPrompt.addEventListener('click', (event) => {
-          const promptPrefix = 'Safe prompt result:';
-          let promptRes = DOMPurify.sanitize(window.prompt('What is your name?'));
-          let promptResDefault = 'User did not enter anything; please click again.';
-          promptRes = promptRes ? promptRes : promptResDefault; 
-          confResEl.innerHTML = sanitizeRes`${promptPrefix} ${promptRes}`;
-          confResEl.removeAttribute('hidden');
+          //hide confirm/prompt result print out
+          confResEl.hidden = true;
+          setTimeout(() => {
+            const promptPrefix = 'Safe prompt result:';
+            let promptRes = DOMPurify.sanitize(window.prompt('What is your name?'));
+            let promptResDefault = 'User did not enter anything; please click again.';
+            promptRes = promptRes ? promptRes : promptResDefault; 
+            confResEl.innerHTML = sanitizeRes`${promptPrefix} ${promptRes}`;
+            confResEl.removeAttribute('hidden');
+          }, 0);
         });
 
         // <b onmouseover="alert('pwned')">Roll me</b>

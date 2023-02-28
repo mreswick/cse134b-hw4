@@ -1,8 +1,8 @@
 // import { DOMPurify } from 'dompurify';
 // import DOMPurify from './dist/purify.min.js';
 // import DOMPurify from '../../node_modules/dompurify';
-function sanitizeRes(strings, promptPrefix, promptRes) {
-  return DOMPurify.sanitize(`${promptPrefix}${strings[0]}${promptRes}`)
+function sanitizeRes(_, promptPrefix, promptRes) {
+  return DOMPurify.sanitize(`${promptPrefix} ${promptRes}`)
 }
 function init() {
   let btnAlert = document.getElementById('btnAlert');
@@ -23,13 +23,16 @@ function init() {
     if(outputToHideEl) {
       mainEl.removeChild(outputToHideEl);
     }
-    //show alert prompt
-    dialogEl = tempDialCont.children[0].cloneNode(true);
-    dialogToReplEl = document.querySelector("main dialog");
-    if(dialogToReplEl) {
-      mainEl.removeChild(dialogToReplEl);
-    }
-    mainEl.appendChild(dialogEl);
+
+    setTimeout(() => {
+      //show alert prompt
+      dialogEl = tempDialCont.children[0].cloneNode(true);
+      dialogToReplEl = document.querySelector("main dialog");
+      if(dialogToReplEl) {
+        mainEl.removeChild(dialogToReplEl);
+      }
+      mainEl.appendChild(dialogEl);
+    }, 0);
   });
   //confirm button
   btnConfirm.addEventListener('click', (event) => {
@@ -38,30 +41,32 @@ function init() {
     if(outputToHideEl) {
       mainEl.removeChild(outputToHideEl);
     }
-    //show confirm prompt
-    dialogEl = tempDialCont.children[1].cloneNode(true);
-    dialogToReplEl = document.querySelector('main dialog');
-    if(dialogToReplEl) {
-      mainEl.removeChild(dialogToReplEl);
-    }
-    mainEl.appendChild(dialogEl);
-    //bind logic to buttons of confirm prompt
-    let cancBtn = document.getElementById('confCbtn');
-    let okBtn = document.getElementById('confOKbtn');
-    const confPrefix = 'Confirm Result:';
-    let confRes = "";
-    cancBtn.addEventListener('click', (event) => {
-      //show output
-      confRes = `${confPrefix} False`;
-      outputEl.innerHTML = confRes;
-      mainEl.appendChild(outputEl);
-    });
-    okBtn.addEventListener('click', (event) => {
-      //show output
-      confRes = `${confPrefix} True`
-      outputEl.innerHTML = confRes;
-      mainEl.appendChild(outputEl);
-    });
+    setTimeout(() => {
+      //show confirm prompt
+      dialogEl = tempDialCont.children[1].cloneNode(true);
+      dialogToReplEl = document.querySelector('main dialog');
+      if(dialogToReplEl) {
+        mainEl.removeChild(dialogToReplEl);
+      }
+      mainEl.appendChild(dialogEl);
+      //bind logic to buttons of confirm prompt
+      let cancBtn = document.getElementById('confCbtn');
+      let okBtn = document.getElementById('confOKbtn');
+      const confPrefix = 'Confirm Result:';
+      let confRes = "";
+      cancBtn.addEventListener('click', (event) => {
+        //show output
+        confRes = `${confPrefix} False`;
+        outputEl.innerHTML = confRes;
+        mainEl.appendChild(outputEl);
+      });
+      okBtn.addEventListener('click', (event) => {
+        //show output
+        confRes = `${confPrefix} True`
+        outputEl.innerHTML = confRes;
+        mainEl.appendChild(outputEl);
+      });
+    }, 0);
   });
   //prompt button
   btnPrompt.addEventListener('click', (event) => {
@@ -70,33 +75,35 @@ function init() {
     if(outputToHideEl) {
       mainEl.removeChild(outputToHideEl);
     }
-    //show prompt's prompt
-    dialogEl = tempDialCont.children[2].cloneNode(true);
-    dialogToReplEl = document.querySelector('main dialog');
-    if(dialogToReplEl) {
-      mainEl.removeChild(dialogToReplEl);
-    }
-    mainEl.appendChild(dialogEl);
-    //bind logic to buttons of confirm prompt
-    let cancBtn = document.getElementById('promptCbtn');
-    let okBtn = document.getElementById('promptOKbtn');
-    const promPrefix = 'Prompt Result:';
-    let promRes = "";
-    cancBtn.addEventListener('click', (event) => {
-      promRes = `${promPrefix} User did not enter any input.`;
-      //show output
-      outputEl.innerHTML = DOMPurify.sanitize(promRes);
-      mainEl.appendChild(outputEl);
-    });
-    okBtn.addEventListener('click', (event) => {
-      let textAreaEl = document.querySelector('main textarea');
-      promRes = textAreaEl.value ? textAreaEl.value : "User did not enter any input.";
-      promRes = sanitizeRes`${promPrefix} ${promRes}`
-      //show output
-      //outputEl.innerHTML = DOMPurify.sanitize(promRes);
-      outputEl.innerHTML = promRes
-      mainEl.appendChild(outputEl);
-    });
+    setTimeout(() => {
+      //show prompt's prompt
+      dialogEl = tempDialCont.children[2].cloneNode(true);
+      dialogToReplEl = document.querySelector('main dialog');
+      if(dialogToReplEl) {
+        mainEl.removeChild(dialogToReplEl);
+      }
+      mainEl.appendChild(dialogEl);
+      //bind logic to buttons of confirm prompt
+      let cancBtn = document.getElementById('promptCbtn');
+      let okBtn = document.getElementById('promptOKbtn');
+      const promPrefix = 'Prompt Result:';
+      let promRes = "";
+      cancBtn.addEventListener('click', (event) => {
+        promRes = `${promPrefix} User did not enter any input.`;
+        //show output
+        outputEl.innerHTML = DOMPurify.sanitize(promRes);
+        mainEl.appendChild(outputEl);
+      });
+      okBtn.addEventListener('click', (event) => {
+        let textAreaEl = document.querySelector('main textarea');
+        promRes = textAreaEl.value ? textAreaEl.value : "User did not enter any input.";
+        promRes = sanitizeRes`${promPrefix} ${promRes}`
+        //show output
+        //outputEl.innerHTML = DOMPurify.sanitize(promRes);
+        outputEl.innerHTML = promRes
+        mainEl.appendChild(outputEl);
+      });
+    }, 0);
   });
 }
 
