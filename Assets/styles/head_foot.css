@@ -319,7 +319,7 @@ header ul.mainNavigation {
   /*grid-item*/
   align-self: end;
   /*style*/
-  font-size: 1.5rem;
+  font-size: 1.7rem;
   background-color: rgb(9, 21, 61); 
   /* background-color: green; */
   border-radius: 1em;
@@ -688,7 +688,7 @@ and (min-width: 640px) {
     margin: 0.9rem;
     padding: 0.6rem;
     top: 0;
-    right: 2%;
+    right: 1.5%;
   }
   li#mobileSearchIcon:hover {
     background-color: rgba(128,128,128,0.7); /*var(--background-color); but with non-1 opacity*/ 
