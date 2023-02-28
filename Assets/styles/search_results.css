@@ -4,7 +4,7 @@ search-results#searchResCont
 section.st-ui-no-results
  div.st-query-present
  span.st-ui-type-heading {
-  display: none;
+  display: none !important;
  }
 
 search-bar {
