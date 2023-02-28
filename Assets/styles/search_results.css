@@ -54,7 +54,7 @@ main {
   background-color: white;
   box-shadow: 0.4rem 0.5rem rgb(7, 83, 140);
   margin-top: 1rem;
-  padding: 0 5% 20%;
+  padding: 0 5% 10%;
 }
 @media only screen and (max-width: 640px) {
   main {
