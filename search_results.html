@@ -20,7 +20,8 @@
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
     <!-- <link rel="stylesheet" type="text/css" href="Assets/styles/base.css"> -->
     <link rel="stylesheet" href="Assets/styles/head_foot.css">
-    <link rel="stylesheet" href="Assets/styles/index.css">
+    <!-- <link rel="stylesheet" href="Assets/styles/index.css"> -->
+    <link rel="stylesheet" href="Assets/styles/search_results.css">
   </head>
   <body>
 
@@ -70,13 +71,42 @@
       </nav>
     </header>
 
-    <script type="text/javascript">
+    <!-- <script type="text/javascript">
       (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
       (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
       e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
       })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
       
-      _st('install','MiZLAUoKSpLZoP7zHeVV','2.0.0');
+      _st('install','MiZLAUoKSpLZoP7zHeVV','2.0.0'); -->
+      <!-- <script type="text/javascript">
+        (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+        (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+        e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+        })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+        
+        _st('install','MiZLAUoKSpLZoP7zHeVV','2.0.0');
+      </script> -->
+      <!-- <script type="text/javascript">
+        (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+        (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+        e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+        })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+        
+        _st('install','MiZLAUoKSpLZoP7zHeVV','2.0.0');
+      </script>
+      <script type="text/javascript">
+        window.onload = function initSearch() {
+          documen
+        };
+      </script> -->
+      <script type="text/javascript">
+        (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+        (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+        e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+        })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+        
+        _st('install','MiZLAUoKSpLZoP7zHeVV','2.0.0');
+      </script>
     </script>
     <main>
       <!--Google's CSE (custom search engine)-->
@@ -95,6 +125,17 @@
         _st('install','MiZLAUoKSpLZoP7zHeVV','2.0.0');
       </script> -->
       <!-- <div class="st-search-container"></div> -->
+      <h1>Search:</h1>
+      <search-bar>
+        <input id="searchIn" type="text" class="st-default-search-input" placeholder="Search here...">
+        <label for="searchIn"><i id="searchClose" class="fa fa-times" aria-hidden="true"></i></label>
+      </search-bar>
+      <!-- <div class="st-search-container">
+
+      </div> -->
+      <search-results class="st-search-container">
+
+      </search-results>
       
     </main>
 

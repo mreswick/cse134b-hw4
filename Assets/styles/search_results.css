@@ -1,0 +1,115 @@
+search-bar {
+  display: block;
+  border: 0.2rem solid rgb(77, 75, 75);
+  margin-top: 1%;
+  padding: 0 1rem;
+  border-radius: 2rem;
+  box-shadow:0.2rem 0.2rem rgb(77, 75, 75);
+}
+search-bar input#searchIn {
+  margin: 1rem;
+  margin-top: 5%;
+  outline: 0;
+  border-style: none;
+  appearance: none;
+}
+@media screen and (min-width: 640px) {
+  search-bar input#searchIn {
+    font-size: 1.1rem;
+  }
+}
+@media screen and (max-width: 640px) {
+  search-bar input#searchIn {
+    font-size: 0.8rem;
+  }
+}
+search-bar i#searchClose {
+  color: rgb(0, 166, 255);
+}
+search-bar i#searchClose:hover {
+  color: rgb(190, 18, 18);
+}
+/* search-results {
+  display: none;
+} */
+
+
+/*brought in / modified from index.css*/
+body {
+  /* background-color: rgb(230,230,230); */
+  /* background-color: rgb(100,100,200); */
+  /* background: radial-gradient(to right, rgba(255, 255, 255, 0.5), rgba(0, 0, 0, 0.5) 75%, rgba(255, 255, 255, 0.5)); */
+  background-color: rgb(240, 240, 245);
+}
+
+main {
+  /*flex*/
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /*style*/
+  border: 0.2rem solid black;
+  border-radius: 1rem;
+  margin: 1rem 5% 2rem;
+  background-color: white;
+  box-shadow: 0.4rem 0.5rem rgb(7, 83, 140);
+  margin-top: 1rem;
+  padding: 0 5% 20%;
+}
+@media only screen and (max-width: 640px) {
+  main {
+    margin-left: 2%;
+    margin-right: 2%;
+  }
+}
+
+h1 {
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+  margin-left: 5%;
+  align-self: start;
+  font-size: 3rem;
+}
+
+
+/*animation fly-in for header photo and text,	
+but only if user does not prefer reduced motion*/	
+@media (prefers-reduced-motion: no-preference) {	
+  main {	
+    overflow: hidden;	
+  }	
+}
+
+/*make text larger in article section*/	
+h1 {	
+  /* font-size: 1rem;	
+  line-height: 1.1rem;	
+  transition: font-size 4s 1s;	
+  transition: line-height 4s 1s; */	
+  transition: transform;	
+  transition-delay: 0.2s;	
+  transition-duration: 0.5s;	
+}	
+h1:hover
+{	
+  /* font-size: 1.5rem;	
+  line-height: 1.6rem; */	
+  transform: scale(1.08);	
+}
+
+
+/*for mobile*/
+@media only screen and (min-width: 300px) {
+  /* * {
+    font-size: 4rem;
+  } */
+  h1 {
+    line-height: 3rem;
+  }
+}
+
+body footer#endOfPage {
+  position: absolute;
+}
+
+
