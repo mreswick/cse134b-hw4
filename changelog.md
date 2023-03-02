@@ -13,6 +13,7 @@ The search engine on this page is powered by Swiftype. PLEASE NOTE: I originally
  - Added Assignment #4 dialog and blog pages (at nativeidalogs.html, customdialogs.html, crud.html, and styledcrud.html) to Experiments page, with appropriate styling, as an additional section. This required additional HTML on the  experiments page, and more styling for it for this new section in experiments.css. Like the rest of the pages, this page remains responsive with this new section (ie ok with desktop, tablet/small-laptop, and mobile).
  - Updated line heights and margins on Experiments page (greater line heights for readability, smaller margins to look cleaner).
  - Updated line heights and margins on Home page (index.html and index.css), particularly for mobile, to be more spacious / less crowded.
+ - Tweaked spacing of drop-down sub menu for mobile for main navigation.
 
 ## Summary of changes:
  - ### JS:
