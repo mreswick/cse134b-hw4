@@ -733,8 +733,8 @@ main {
       top: 100%;
       /* left: 10%; */
 
-      width: 100%;
-      left: 0;
+      width: 110%;
+      left: -5%;
     }
     /* .hamMenu:has(input:checked) + nav.sub1mainnav { */
     input#lab:checked ~ nav.sub1mainnav {
