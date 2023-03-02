@@ -44,7 +44,17 @@
         </form>
         <!-- Output for Confirm and Prompt-->
         <output id="dialogRes"></output>
-        
+      </dialog>
+      <!--Alert to confirm deletion of blog post-->
+      <!--Confirm buttion dialog-->
+      <dialog class="dialog" id="confDel">
+        <form method="dialog">
+          <output>Do you confirm you wish to delete this?</output>
+          <div class="dialogBtns">
+            <button id='confCbtn' type="button">Cancel</button>
+            <button id='confOKbtn' type="button">Delete</button>
+          </div>
+        </form>
       </dialog>
       <!--Custom element to represent a blog post-->
       <blog-post class="blogPost" style="display: block;" id="blogPost">
@@ -55,10 +65,10 @@
         <label for="outPostSummary">Summary:</label>
         <output class="outPostSummary"></output>
         <div class="postBtns">
-          <button type="submit" value="Edit" title='Edit this post' name="editPost" class="editPost" id="editPost">
+          <button type="button" value="Edit" title="Edit this post" name="editPost" class="editPost">
             <label for="editPost"><i class="fa fa-pencil" aria-hidden="true"></i></label>
           </button>
-          <button type="submit" value="Delete" title='Delete this post' name="deletePost" class="delPost" id="delPost">
+          <button type="button" value="Delete" title="Delete this post" name="deletePost" class="delPost">
             <label for="delPost"><i class="fa fa-trash-o" aria-hidden="true"></i></label>
           </button>
         </div>

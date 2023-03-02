@@ -1,4 +1,6 @@
-const BP_MAIN_DIALOG_SELECTOR = 'main dialog';
+const BP_MAIN_DIALOG_SELECTOR = 'main dialog#dialAddEdit';
+const BP_MAIN_DIALOG_CONF_DEL_SELECTOR = 'main dialog#confDel';
+const BP_TEMPLATE_DIALOG_CONF_DEL_SELECTOR = 'dialog#confDel';
 const TEMPLATE_SELECTOR = '#dialogRep';
 const BLOG_POST_CONT_SELECTOR = 'main > blog-post-cont';
 const BLOG_POST_TEMPLATE_SELECTOR = 'blog-post';
@@ -133,9 +135,9 @@ export function getNewBlogPost(
 }
 
 //gets new dialog element (clone) from template element
-export function getNewDialog(templateSelector=TEMPLATE_SELECTOR) {
+export function getNewDialog(dialogSelector='dialog#dialAddEdit', templateSelector=TEMPLATE_SELECTOR) {
   let templateContEl = document.querySelector(templateSelector).content;
-  let dialogEl = templateContEl.querySelector('dialog').cloneNode(true);
+  let dialogEl = templateContEl.querySelector(dialogSelector).cloneNode(true);
   return dialogEl;
 }
 
@@ -264,22 +266,44 @@ export function addBlogPost(postTitle, postDate, postSummary, bpContEl, updateLo
   
 }
 
-export function delBlogPost(bpEl, bpContEl) {
-  //blog post container
-  bpContEl.dataset.numPosts = parseInt(bpContEl.dataset.numPosts) - 1;
-  let nthBlogPost = parseInt(bpEl.dataset.nthPost);
-  //decrement blog post number of each blog post after this one
-  let blogPosts = bpContEl.children;
-  for(let i = 0; i < blogPosts.length; i++) {
-    if(parseInt(blogPosts[i].dataset.nthPost) > nthBlogPost) {
-      blogPosts[i].dataset.nthPost -= 1;
-    }
-  }
-  //remove blog post from container
-  bpContEl.removeChild(bpEl);
+export function getDelConfirmDialog(delDialogSelector=BP_TEMPLATE_DIALOG_CONF_DEL_SELECTOR, templateSelector=TEMPLATE_SELECTOR) {
+  return getNewDialog(delDialogSelector, templateSelector);
+}
 
-  //update local storage
-  updateLocalStorageBPs(bpContEl);
+export function delBlogPost(bpEl, bpContEl, 
+  delMainDialogSelector=BP_MAIN_DIALOG_CONF_DEL_SELECTOR) {
+  remDialogIfPresent(delMainDialogSelector);
+  let dialogConfDelEl = getDelConfirmDialog();
+  setTimeout(() => {
+    //show confirm deletion prompt
+    let mainEl = document.querySelector('main');
+    mainEl.appendChild(dialogConfDelEl);
+    dialogConfDelEl.showModal();
+    //add event handlers for the ok and cancel buttons of this dialog element
+    let cancBtn = document.getElementById('confCbtn');
+    let okBtn = document.getElementById('confOKbtn');
+    cancBtn.addEventListener('click', (event) => {
+      remDialogIfPresent(delMainDialogSelector);
+    });
+    okBtn.addEventListener('click', (event) => {
+      //blog post container
+      bpContEl.dataset.numPosts = parseInt(bpContEl.dataset.numPosts) - 1;
+      let nthBlogPost = parseInt(bpEl.dataset.nthPost);
+      //decrement blog post number of each blog post after this one
+      let blogPosts = bpContEl.children;
+      for(let i = 0; i < blogPosts.length; i++) {
+        if(parseInt(blogPosts[i].dataset.nthPost) > nthBlogPost) {
+          blogPosts[i].dataset.nthPost -= 1;
+        }
+      }
+      //remove blog post from container
+      bpContEl.removeChild(bpEl);
+      //update local storage
+      updateLocalStorageBPs(bpContEl);
+      //remove dialog from page
+      remDialogIfPresent(delMainDialogSelector);
+    });
+  }, 0);
 }
 
 export function addBtnBlogPostEventHandler(

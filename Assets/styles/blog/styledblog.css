@@ -69,7 +69,8 @@ main button#addPost {
 }
 
 /*style dialog box*/
-main dialog#dialAddEdit {
+main dialog#dialAddEdit,
+main dialog#confDel {
   /*center dialog box on page*/
   display: flex;
   flex-direction: column;
@@ -89,6 +90,9 @@ main dialog#dialAddEdit {
   box-sizing: border-box;
   /*font*/
   font-size: 0.9rem;
+}
+main dialog#confDel {
+  padding-top: 1%;
 }
 
 /*move output for error message further down dialog box*/
@@ -133,7 +137,8 @@ main dialog div.dialogBtns {
   gap: 3%;
   width: 100%;
 }
-main dialog div.dialogBtns > input {
+main dialog div.dialogBtns > input,
+main dialog div.dialogBtns > button {
   padding: 0;
   margin: 0;
   padding: 0.5rem;

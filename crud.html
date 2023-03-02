@@ -29,7 +29,7 @@
         <form method="dialog">
           <label id="headerTitle">New Post:</label>
           <label for="postTitle">Title:</label>
-          <input type="text" name="postTitle" id="postTitle">
+          <input type="text" name="postTitle" id="postTitle" maxlenth="20">
           <label for="postDate">Date:</label>
           <input type="datetime-local" name="postDate" id="postDate" readonly>
           <label for="postSummary"></label>
@@ -40,8 +40,17 @@
         <!-- Output for Confirm and Prompt-->
         <output id="dialogRes" hidden style="border: 0.2rem solid black; margin: 0.5rem; padding: 0.5rem;"></output>
       </dialog>
+      <!--Alert to confirm deletion of blog post-->
+      <!--Confirm buttion dialog-->
+      <dialog class="dialog" id="confDel">
+        <form method="dialog">
+          <output>Do you confirm you wish to delete this?</output>
+          <button id='confCbtn' type="button">Cancel</button>
+          <button id='confOKbtn' type="button">Delete</button>
+        </form>
+      </dialog>
       <!--Custom element to represent a blog post-->
-      <blog-post class="blogPost" style="display: block;" id="blogPost">
+      <blog-post class="blogPost" style="display: block;">
         <label for="outPostTitle">Post Title:</label>
         <output class="outPostTitle"></output>
         <label for="outPostDate">Date:</label>
