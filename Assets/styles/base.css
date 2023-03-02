@@ -1,0 +1,94 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+:root {
+  font-size: 17px;
+  font-family: "Times New Roman", sans-serif;
+  /*vars*/
+  --box-shadow-color: rgb(7, 83, 140);
+  --box-shadow-main: 0.4rem 0.5rem var(--box-shadow-color);
+  --box-shadow-article: 0.3rem 0.3rem var(--box-shadow-color);
+  --box-shadow-section: 0.2rem 0.2rem var(--box-shadow-color);
+  --link-anchor-color: rgb(0, 0, 100);
+  --link-anchor-hover-color: rgb(7, 83, 150);
+  --border-section: 0.12rem solid black;
+}
+body {
+  background-color: rgb(240, 240, 245);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+main {
+  line-height: 1.1rem;
+  /*font*/
+  font-weight: normal;
+  font-size: 1rem;
+  font-family: 'Montserrat', 'Roboto Slab', 'Times New Roman', sans-serif, serif;
+  /*flex*/
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /*border, sizing, spacing*/ 
+  border: 0.2rem solid black;
+  border-radius: 1rem;
+  margin: 1rem 5% 2rem;
+  background-color: white;
+  box-shadow: var(--box-shadow-main);
+  margin-top: 1rem;
+  padding: 0 3% 0;
+}
+article {
+  /*border, sizing, spacing*/ 
+  background-color: white;
+  border: 0.2rem solid black;
+  border-radius: 2rem;
+  padding: 1rem 5% 2rem;
+  margin: 0.5rem 1% 2rem;
+  box-shadow: var(--box-shadow-article);
+  width: 100%;
+  /*flex container*/
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+main a {
+  font-weight: 700;
+  text-decoration: none;
+  color: var(--link-anchor-color);
+}
+main a:hover,
+main a:active
+{
+  color:var(--link-anchor-hover-color);
+}
+article section {
+  /*sections as flex containers*/
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  /*style*/
+  background-color: white;
+  border: var(--border-section);
+  border-radius: 1.5rem;
+  padding: 1rem 5% 1.5rem;
+  margin: 1rem 0 0;
+  box-shadow: var(--box-shadow-section);
+}
+article figure {
+  background-color: white;
+}
+article section p {
+  text-align: start;
+  text-indent: 2rem;
+  margin-bottom: 1rem;
+}
+
+/*headers*/
+
+
+
+
+
