@@ -108,17 +108,10 @@
   }
   /*Misha info card*/
   ul#mishaInfoCardList {
-    /* position: fixed;
-    right: 5ex;
-    top: 10ex; */
-
-
     width: 300px;
     list-style-type: none;
     text-align: start;
     margin: 0.1rem 0;
-    /* margin-left: 15ex; */
-    /* margin-left: 3%; */
   }
   /*Education*/
   article section#education {
@@ -142,9 +135,14 @@
   article section#education ul#canadaCollege {
     grid-area: canad;
   }
-
-
-
+  /*page break after volunteer section*/
+  article section#volunteer {
+    break-after: page;
+  }
+  /*page break after table of tech skills section*/
+  article section#techSkills {
+    break-after: page;
+  }
 
   article section#education h3 {
     align-self: center;
@@ -168,11 +166,6 @@
   }
   section#work ul, section#volunteer ul {
     margin: 0.2rem 2% 0.1rem 3%;
-    /* text-align: center; */
-    /* display: flex;
-    flex-direction: column;
-    justify-content: start;
-    align-items: center; */
   }
   section#work > ul > li.firstWorkItem, section#volunteer > ul > li.firstWorkItem {
     list-style-type: initial;
@@ -188,8 +181,6 @@
     display: block;
   }
 
-
-
   /*Tech Skills*/
   section#techSkills {
     padding-bottom: 0.3rem;
@@ -204,7 +195,7 @@
   }
   section table#techSkillsTable tbody {
       /*style*/
-      padding: 0.4rem;
+      padding: 0;
   }
 
   section table#techSkillsTable > tr {
@@ -235,21 +226,8 @@
   section table#techSkillsTable th
   {
     /* padding: 1rem; */
-    padding-top: 1rem;
-    padding-bottom: 1rem;
-  }
-  /* - rounded table corners*/
-  section table#techSkillsTable th#langToolColHeader {
-    border-top-left-radius: 1rem;
-  }
-  section table#techSkillsTable th#moreDescripColHeader {
-    border-top-right-radius: 1rem;
-  }
-  section table#techSkillsTable tr#Git td.col1 {
-    border-bottom-left-radius: 1rem;
-  }
-  section table#techSkillsTable tr#Git td.col3 {
-    border-bottom-right-radius: 1rem;
+    padding-top: 0.3rem;
+    padding-bottom: 0.3rem;
   }
 
   /*Lessons Learned*/
@@ -271,7 +249,6 @@
   }
   section#lessonsLearned {
     font-weight: 500;
-    border-radius: 1.5rem;
     padding: 1rem;
   }
 

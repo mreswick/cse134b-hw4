@@ -110,6 +110,26 @@ section pre {
   padding-right: 1rem; */
 }
 
+/*Assignment #4 Dialog + Blog page links*/
+section#blogDialog {
+  background-color: rgb(226, 243, 252);
+  margin-top: 0;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+}
+section#blogDialog p#linksFoundHere {
+  align-self: start;
+  margin-bottom: 0.3rem;
+  width: 100%;
+}
+section#blogDialog ul#blogDialLinksList {
+  list-style-type: disc;
+}
+section#blogDialog ul#blogDialLinksList li {
+  list-style-type: disc;
+  margin-bottom: 0.3rem;
+}
+
 /*canvas experimentation*/
 section#canvasExperimentation {
   background-color: rgb(156, 191, 209);
@@ -158,6 +178,12 @@ main {
     margin-top: 1.5rem;
     margin-left: 7%;
   }
+  section#blogDialog h2 {
+    margin-bottom: 0.5rem;
+  }
+  h2 {
+    line-height: 1.5rem;
+  }
   
 }
 @media only screen and (max-width: 639px) {
@@ -174,6 +200,7 @@ main {
   } */
   article section p {
     text-indent: 3%;
+    line-height: 1.4rem;
   }
   article header p#headP {
     text-indent: 2%;
@@ -209,13 +236,14 @@ main {
   }
   h1, h2 {
     margin-left: 1%;
-    margin-top: 5%;
+    margin-top: 0.3rem;
+    margin-bottom: 0.3rem;
   }
   h1 {
     line-height: 2.4rem;
   }
   h2 {
-    line-height: 2.2rem;
+    line-height: 1.5rem;
   }
   article {
     padding: 1%;
@@ -229,8 +257,6 @@ main {
     overflow-wrap: break-word;
     white-space: normal;
   }
-  
 
 }
-
 
