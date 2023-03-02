@@ -32,6 +32,7 @@ function init() {
         mainEl.removeChild(dialogToReplEl);
       }
       mainEl.appendChild(dialogEl);
+      dialogEl.showModal();
     }, 0);
   });
   //confirm button
@@ -49,6 +50,7 @@ function init() {
         mainEl.removeChild(dialogToReplEl);
       }
       mainEl.appendChild(dialogEl);
+      dialogEl.showModal();
       //bind logic to buttons of confirm prompt
       let cancBtn = document.getElementById('confCbtn');
       let okBtn = document.getElementById('confOKbtn');
@@ -83,6 +85,7 @@ function init() {
         mainEl.removeChild(dialogToReplEl);
       }
       mainEl.appendChild(dialogEl);
+      dialogEl.showModal();
       //bind logic to buttons of confirm prompt
       let cancBtn = document.getElementById('promptCbtn');
       let okBtn = document.getElementById('promptOKbtn');
