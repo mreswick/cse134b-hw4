@@ -25,359 +25,278 @@ main {
   line-height: 1.1rem;
   font-family: 'Montserrat', 'Roboto Slab', 'Times New Roman', sans-serif, serif;
 }
-/*link colors in nav headers*/
-header a, li#mainnavProj {
-  color: white;
-}
-header a:hover, li#mainnavProj:hover
-{
-  /* color:rgb(42, 198, 223); */
-  color: rgb(0, 166, 255);
-  /* color: rgb(0, 153, 255); */
-}
-:root,body {
-  overflow-x: hidden;
-}
+@media only screen {
+  /*link colors in nav headers*/
+  header a, li#mainnavProj {
+    color: white;
+  }
+  header a:hover, li#mainnavProj:hover
+  {
+    /* color:rgb(42, 198, 223); */
+    color: rgb(0, 166, 255);
+    /* color: rgb(0, 153, 255); */
+  }
+  :root,body {
+    overflow-x: hidden;
+  }
 
 
-/* footer */
-hr#footHr {
-  grid-area: botBord;
-  align-self: center;
-  justify-self: center;
-  border: 0;
-  border-bottom: 0.2rem solid rgb(7, 83, 150);
-  /* border-bottom: 0.2rem solid rgb(9, 80, 100); */
-  width: 100%;
-  padding-top: 1rem;
-  margin-bottom: 0;
-}
-footer#endOfPage {
-  font-size: 1rem;
-  font-weight: 500;
-  padding-top: 1.2rem;
-  padding-bottom: 1.1rem;
-  background-color: rgb(126, 157, 184);
-  color: black;
-  text-align: center;
-  line-height: 1.2rem;
-  width: 100vw;
-}
+  /* footer */
+  hr#footHr {
+    grid-area: botBord;
+    align-self: center;
+    justify-self: center;
+    border: 0;
+    border-bottom: 0.2rem solid rgb(7, 83, 150);
+    /* border-bottom: 0.2rem solid rgb(9, 80, 100); */
+    width: 100%;
+    padding-top: 1rem;
+    margin-bottom: 0;
+  }
+  footer#endOfPage {
+    font-size: 1rem;
+    font-weight: 500;
+    padding-top: 1.2rem;
+    padding-bottom: 1.1rem;
+    background-color: rgb(126, 157, 184);
+    color: black;
+    text-align: center;
+    line-height: 1.2rem;
+    width: 100vw;
+  }
 
-footer a {
-  /* color: rgb(7, 83, 150); */
-  color: rgb(0, 0, 100);
-  text-decoration: none;
-}
-footer a:hover
-{
-  color: rgb(7, 83, 150);
-}
-footer a#backToTop {
-  display: inline-block;
-  border: 0.2rem solid rgb(0, 0, 100);
-  border-radius: 2rem;
-  padding: 0.6rem;
-  margin-top: 0.55rem;
-}
-
-
-/*hamburger menu*/
-/*inspired by Web Dev Simplified at:
-https://www.youtube.com/watch?v=dAIVbLrAb_U*/ 
-:root {
-  --ham-bar-width: 60px;
-  --ham-bar-height: 8px;
-  --ham-bar-gap: 6px;
-  --foreground-color: white;
-  --background-color: grey;
-  --ham-x-position: 5px;
-  --ham-y-position: 10px;
-  /*animation*/
-  --animation-timing: 200ms ease-in-out;
-  --ham-height: calc(var(--ham-bar-height) * 3 + var(--ham-bar-gap) * 2);
-  
-}
-
-nav.sub1mainnav {
-  z-index: 2; /*to hide Swiftype search result content beneath sub nav menu*/ 
-}
-
-.hamMenu {
-  /* margin-top: 10rem; */
-  /*to vertically stack the bars of the hamburger menu*/
-  display: flex;
-  flex-direction: column;
-  gap: var(--ham-bar-gap);
-  /*style*/
-  width: max-content; /*width to fit bars*/ 
-  /* position: absolute; */
-  top: var(--ham-x-position);
-  left: var(--ham-y-position);
-  z-index: 2; /*so menu shows over content beneath*/ 
-  cursor: pointer;
-  /*animation*/
-  --ham-x-width: calc(var(--ham-height) * 1.41421356237) /*times sqrt(2), based on height and 45deg*/
-}
-input#lab {
-  display: none;
-}
-.hamMenu::before,
-.hamMenu::after,
-/* .hamMenu input  */
-span#di
-{
-  display: block;
-  content: ""; /*to show up with content*/
-  width: var(--ham-bar-width);
-  height: var(--ham-bar-height);
-  background-color: var(--background-color);
-  border-radius: 2rem;
-  /*transition/animation*/
-  transform-origin: left center;
-  -moz-transform-origin: left center;
-  transition: opacity var(--animation-timing), width var(--animation-timing),
-   rotate var(--animation-timing), translate var(--animation-timing),
-   background-color var(--animation-timing);
-  /* -moz-transition: opacity var(--animation-timing), width var(--animation-timing),
-  rotate var(--animation-timing), translate var(--animation-timing),
-  background-color var(--animation-timing); */
-  /* transition: 
-   rotate var(--animation-timing); */
-}
-/* .hamMenu:hover::before,
-.hamMenu:hover::after,
-span#di:hover { */
-  /*match light blue with rest of main nav*/
-  /* background-color: rgb(0, 166, 255);
-} */
-/* .hamMenu:hover::before ~ span {
-  color: rgb(0, 166, 255);
-} */
-/* .hamMenu input { */
-li#mainnavHam input {
-  appearance: none;
-  -moz-apperance: none;
-  padding: 0;
-  margin: 0;
-  outline: none;
-  pointer-events: none;
-}
-/* .hamMenu input:checked { */
-li#mainnavHam input:checked + label span{
-  /* background-color: lightblue;
-  width: calc(var(--ham-bar-width) + 1rem) */
-  opacity: 0;
-  width: 0;
-}
-/*animation hamburger to X and vice versa*/
-/* .hamMenu:has(input:checked)::before { */
-input:checked ~ .hamMenu::before {
-/* .hamMenu input:checked::before { */
-  rotate: 45deg;
-  background-color: white;
-  width: var(--ham-x-width);
-  /*offset up by height/2 of bar*/ 
-  translate: 0 calc(var(--ham-bar-height) / -2);
-  /* background-color: red; */
-}
-/* input:checked ~ .hamMenu {
-  background-color: red;
-} */
-input:checked ~ .hamMenu::after {
-  background-color: white;
-  rotate: -45deg; 
-  /* rotate the opposite direction*/
-  width: var(--ham-x-width);
-  /*offset down by height/2 of bar*/ 
-  translate: 0 calc(var(--ham-bar-height) / 2);
-}
-/* .hamMenu:has(input:checked)::after { */
-/* .hamMenu input:checked::after { */
-  /* background-color: red; */
-  /* rotate: -45deg;  */
-    /*rotate the opposite direction*/
-  /* width: var(--ham-x-width); */
-  /*offset down by height/2 of bar*/
-  /* translate: 0 calc(var(--ham-bar-height) / 2); */
-/* } */
-
-/*nav menu "sidebar" that slides down*/
-/* nav.downNav { */
-  /* min-height: 100vw; */
-  /* position: absolute; */
-  /*transition in*/
-  /* transition: translate var(--animation-timing);
-  translate: -100%;
-  padding: 0.5rem 1rem;
-  padding-top: calc(var(--ham-height) + 1rem);
-  background-color: var(--foreground-color);
-  color: var(--background-color);
-  max-width: 10rem;
-  min-height: 100vh; */
-/* } */
-/* - select the sidebar if the ham menu is selected*/
-/* .hamMenu:has(input:checked) + .downNav {
-  translate: 0;
-} */
-
-/* ham menu coloring on edges*/
-/* .hamMenu:has(input:checked) { */
-  /*swap foreground and background colors*/ 
-  /* --temp-color: var(--foreground-color);
-  --foreground-color: var(--backgorund-color);
-  --background-color: var(--temp-color); */
-  /* --foreground-color: white;
-  --background-color: grey;
-}  */
-/* .hamMenu:has(input:focus-visible)::before,
-.hamMenu:has(input:focus-visible)::after,
-.hamMenu input:focus-visible {
-  border: 1px solid var(--background-color);
-  box-shadow: 0 0 0 1px var(--foreground-color); *//*achieve a 2nd visual border*/ 
-/* }  */
+  footer a {
+    /* color: rgb(7, 83, 150); */
+    color: rgb(0, 0, 100);
+    text-decoration: none;
+  }
+  footer a:hover
+  {
+    color: rgb(7, 83, 150);
+  }
+  footer a#backToTop {
+    display: inline-block;
+    border: 0.2rem solid rgb(0, 0, 100);
+    border-radius: 2rem;
+    padding: 0.6rem;
+    margin-top: 0.55rem;
+  }
 
 
-/* nav header menu styling */
-header nav.mainNavigation {
-  /*grid*/
-  /* display: grid;
-  grid-template-columns: 1fr 1fr 5fr 1fr;
-  grid-template-rows: 1fr 0.2fr;
-  grid-template-areas:  */
-    /* "headerPic emptySpacer emptySpacer emptySpacer" */
-    /* "homeMain homeMain mainNavigation mainNavigation"
-    "botBord botBord botBord botBord"; */
-  /*font*/
-  font-size: 1.2rem;
-  /*background*/
-  /*background-color: rgb(240, 240, 240);*/ 
-  border-radius: 1em;
-}
-/*overall main nav grid only if not for small screen*/
-@media only screen and (min-width: 640px) {
-  li#mobileSearchIcon {
+  /*hamburger menu*/
+  /*inspired by Web Dev Simplified at:
+  https://www.youtube.com/watch?v=dAIVbLrAb_U*/ 
+  :root {
+    --ham-bar-width: 60px;
+    --ham-bar-height: 8px;
+    --ham-bar-gap: 6px;
+    --foreground-color: white;
+    --background-color: grey;
+    --ham-x-position: 5px;
+    --ham-y-position: 10px;
+    /*animation*/
+    --animation-timing: 200ms ease-in-out;
+    --ham-height: calc(var(--ham-bar-height) * 3 + var(--ham-bar-gap) * 2);
+    
+  }
+
+  nav.sub1mainnav {
+    z-index: 2; /*to hide Swiftype search result content beneath sub nav menu*/ 
+  }
+
+  .hamMenu {
+    /* margin-top: 10rem; */
+    /*to vertically stack the bars of the hamburger menu*/
+    display: flex;
+    flex-direction: column;
+    gap: var(--ham-bar-gap);
+    /*style*/
+    width: max-content; /*width to fit bars*/ 
+    /* position: absolute; */
+    top: var(--ham-x-position);
+    left: var(--ham-y-position);
+    z-index: 2; /*so menu shows over content beneath*/ 
+    cursor: pointer;
+    /*animation*/
+    --ham-x-width: calc(var(--ham-height) * 1.41421356237) /*times sqrt(2), based on height and 45deg*/
+  }
+  input#lab {
     display: none;
   }
+  .hamMenu::before,
+  .hamMenu::after,
+  /* .hamMenu input  */
+  span#di
+  {
+    display: block;
+    content: ""; /*to show up with content*/
+    width: var(--ham-bar-width);
+    height: var(--ham-bar-height);
+    background-color: var(--background-color);
+    border-radius: 2rem;
+    /*transition/animation*/
+    transform-origin: left center;
+    -moz-transform-origin: left center;
+    transition: opacity var(--animation-timing), width var(--animation-timing),
+    rotate var(--animation-timing), translate var(--animation-timing),
+    background-color var(--animation-timing);
+    /* -moz-transition: opacity var(--animation-timing), width var(--animation-timing),
+    rotate var(--animation-timing), translate var(--animation-timing),
+    background-color var(--animation-timing); */
+    /* transition: 
+    rotate var(--animation-timing); */
+  }
+  /* .hamMenu:hover::before,
+  .hamMenu:hover::after,
+  span#di:hover { */
+    /*match light blue with rest of main nav*/
+    /* background-color: rgb(0, 166, 255);
+  } */
+  /* .hamMenu:hover::before ~ span {
+    color: rgb(0, 166, 255);
+  } */
+  /* .hamMenu input { */
+  li#mainnavHam input {
+    appearance: none;
+    -moz-apperance: none;
+    padding: 0;
+    margin: 0;
+    outline: none;
+    pointer-events: none;
+  }
+  /* .hamMenu input:checked { */
+  li#mainnavHam input:checked + label span{
+    /* background-color: lightblue;
+    width: calc(var(--ham-bar-width) + 1rem) */
+    opacity: 0;
+    width: 0;
+  }
+  /*animation hamburger to X and vice versa*/
+  /* .hamMenu:has(input:checked)::before { */
+  input:checked ~ .hamMenu::before {
+  /* .hamMenu input:checked::before { */
+    rotate: 45deg;
+    background-color: white;
+    width: var(--ham-x-width);
+    /*offset up by height/2 of bar*/ 
+    translate: 0 calc(var(--ham-bar-height) / -2);
+    /* background-color: red; */
+  }
+  /* input:checked ~ .hamMenu {
+    background-color: red;
+  } */
+  input:checked ~ .hamMenu::after {
+    background-color: white;
+    rotate: -45deg; 
+    /* rotate the opposite direction*/
+    width: var(--ham-x-width);
+    /*offset down by height/2 of bar*/ 
+    translate: 0 calc(var(--ham-bar-height) / 2);
+  }
+  /* .hamMenu:has(input:checked)::after { */
+  /* .hamMenu input:checked::after { */
+    /* background-color: red; */
+    /* rotate: -45deg;  */
+      /*rotate the opposite direction*/
+    /* width: var(--ham-x-width); */
+    /*offset down by height/2 of bar*/
+    /* translate: 0 calc(var(--ham-bar-height) / 2); */
+  /* } */
+
+  /*nav menu "sidebar" that slides down*/
+  /* nav.downNav { */
+    /* min-height: 100vw; */
+    /* position: absolute; */
+    /*transition in*/
+    /* transition: translate var(--animation-timing);
+    translate: -100%;
+    padding: 0.5rem 1rem;
+    padding-top: calc(var(--ham-height) + 1rem);
+    background-color: var(--foreground-color);
+    color: var(--background-color);
+    max-width: 10rem;
+    min-height: 100vh; */
+  /* } */
+  /* - select the sidebar if the ham menu is selected*/
+  /* .hamMenu:has(input:checked) + .downNav {
+    translate: 0;
+  } */
+
+  /* ham menu coloring on edges*/
+  /* .hamMenu:has(input:checked) { */
+    /*swap foreground and background colors*/ 
+    /* --temp-color: var(--foreground-color);
+    --foreground-color: var(--backgorund-color);
+    --background-color: var(--temp-color); */
+    /* --foreground-color: white;
+    --background-color: grey;
+  }  */
+  /* .hamMenu:has(input:focus-visible)::before,
+  .hamMenu:has(input:focus-visible)::after,
+  .hamMenu input:focus-visible {
+    border: 1px solid var(--background-color);
+    box-shadow: 0 0 0 1px var(--foreground-color); *//*achieve a 2nd visual border*/ 
+  /* }  */
+
+
+  /* nav header menu styling */
   header nav.mainNavigation {
     /*grid*/
-    display: grid;
+    /* display: grid;
     grid-template-columns: 1fr 1fr 5fr 1fr;
     grid-template-rows: 1fr 0.2fr;
-    grid-template-areas: 
+    grid-template-areas:  */
       /* "headerPic emptySpacer emptySpacer emptySpacer" */
-      "homeMain homeMain mainNavigation mainNavigation"
-      "botBord botBord botBord botBord";
+      /* "homeMain homeMain mainNavigation mainNavigation"
+      "botBord botBord botBord botBord"; */
+    /*font*/
+    font-size: 1.2rem;
+    /*background*/
+    /*background-color: rgb(240, 240, 240);*/ 
+    border-radius: 1em;
   }
-}
-@media only screen and (max-width: 1008px) and (min-width: 640px) {
+  /*overall main nav grid only if not for small screen*/
+  @media (min-width: 640px) {
+    li#mobileSearchIcon {
+      display: none;
+    }
+    header nav.mainNavigation {
+      /*grid*/
+      display: grid;
+      grid-template-columns: 1fr 1fr 5fr 1fr;
+      grid-template-rows: 1fr 0.2fr;
+      grid-template-areas: 
+        /* "headerPic emptySpacer emptySpacer emptySpacer" */
+        "homeMain homeMain mainNavigation mainNavigation"
+        "botBord botBord botBord botBord";
+    }
+  }
+  @media (max-width: 1008px) and (min-width: 640px) {
+    header nav.mainNavigation {
+      /*give more room to main menu by taking away a little of right space*/ 
+      grid-template-columns: 1fr 1fr 5fr 0.5fr;
+    }
+  }
+
+  header {
+    /*background-color: rgb(210, 210, 210);*/ 
+    /*background-color: rgb(20,20,20);*/
+    background-color: rgb(9, 20, 30);
+    color: blue;
+  }
   header nav.mainNavigation {
-    /*give more room to main menu by taking away a little of right space*/ 
-    grid-template-columns: 1fr 1fr 5fr 0.5fr;
+    width: 100vw;
   }
-}
-
-header {
-  /*background-color: rgb(210, 210, 210);*/ 
-  /*background-color: rgb(20,20,20);*/
-  background-color: rgb(9, 20, 30);
-  color: blue;
-}
-header nav.mainNavigation {
-  width: 100vw;
-}
-ul.mainNavigation > li > a {
-  text-decoration: none;
-  display: inline-block;
-}
-header li > ul.subMainNav > li a{
-  text-decoration: none;
-  padding-left: 0.4em;
-}
-hr.navBorder {
-  grid-area: botBord;
-  align-self: center;
-  justify-self: center;
-  border-radius: 0.1rem;
-  border: 0;
-  border-bottom: 0.2rem solid rgb(7, 83, 150);
-  /* border-bottom: 0.2rem solid rgb(9, 80, 100); */
-  /* width: 100%; */
-  width: 100vw;
-  padding-top: 1rem;
-  margin-bottom: 1rem;
-}
-header a.homeMain {
-  display: block;
-  grid-area: homeMain;
-  font-size: 6rem;
-  /* font: 'Trebuchet MS'; */
-  padding-bottom: 0;
-  padding-left: 0.6rem;
-  padding-right: 0.6rem;
-  text-decoration: none;
-  justify-self: center;
-}
-/*main nav*/
-header ul.mainNavigation {
-  width: fit-content;
-  /*grid-item*/
-  align-self: end;
-  /*style*/
-  font-size: 1.7rem;
-  background-color: rgb(9, 21, 61); 
-  /* background-color: green; */
-  border-radius: 1em;
-  margin-top: 0.6em;
-  padding: 0.5em;
-  padding-left: 1.2rem;
-  /* margin-right: 2em; */
-  /* min-width: 1vw; */
-  /* margin-right: 2em; */
-  height: var(--ham-height);
-  
-  /*list*/
-  list-style-type: none;
-  /*grid*/
-  display: grid;
-  /* grid-gap: 0.2fr; */
-  grid-gap: 0.8rem;
-  grid-template-rows: 1fr;
-  justify-content: space-between;
-  justify-items: center;
-  align-items: end;
-  position: relative;
-  text-indent: 0;
-  /*align items in center*/
-  align-items: center;
-}
-header div#headerPicWrapper {
-  justify-self: center;
-}
-/* header nav.mainNavigation > div.emptyMainSpacer {
-    grid-area: emptySpacer;
-} */
-/*inner grid for main nav*/
-ul.mainNavigation > li {
-  margin: 0;
-  padding: 0;
-  text-indent: 0;
-  /* border: 0.2rem solid white; */
-  /* border-right: 0.2rem solid white; */
-}
-
-@media only screen and (min-width: 1008px) {
-  /*main nav*/
-  header ul.mainNavigation {
-    grid-template-columns: 1fr 1fr 1fr 2fr 18ex 1fr;
-    grid-template-rows: 1fr 0.2fr;
-    grid-template-areas: 
-      "home bio exp proj intouch search"
-      "botBord botBord botBord botBord botBord botBord"; /*inner grid for menu */
+  ul.mainNavigation > li > a {
+    text-decoration: none;
+    display: inline-block;
+  }
+  header li > ul.subMainNav > li a{
+    text-decoration: none;
+    padding-left: 0.4em;
   }
   hr.navBorder {
     grid-area: botBord;
-    grid-gap: space-evenly;
     align-self: center;
     justify-self: center;
     border-radius: 0.1rem;
@@ -389,392 +308,476 @@ ul.mainNavigation > li {
     padding-top: 1rem;
     margin-bottom: 1rem;
   }
-  header ul.mainNavigation > li#mainnavProj {
-    /* text-align: left;
-    justify-self: left; */
-    padding-left: 1rem;
-  }
-  /* - assign grid cells*/ 
-  li#mainnavHome {
-    grid-area: home;
-  }
-  li#mainnavBio {
-    grid-area: bio;
-  }
-  li#mainnavExp {
-    grid-area: exp;
-  }
-  li#mainnavProj {
-    grid-area: proj;
-    justify-self: start;
-    margin-bottom: 0.1rem;
-  }
-  li#mainnavTouch {
-    grid-area: intouch;
-  }
-  li#searchIcon {
-    grid-area: search;
-  }
-
-  /*submain nav*/
-  li#mainnavProj {
-    display: block;
-  }
-  header ul.subMainNav {
-    /* font-size: 1.3rem; */
-    font-size: 1.4rem;
-    list-style-type: none;
-    text-align: left;
-    padding-left: 0;
-    position: absolute;
-    /* top: bottom; */
-    display: none;
-  }
-  header li:hover > ul.subMainNav
-  {
-    display: block;
-  }
-  header ul.subMainNav:hover {
-    color: rgb(0, 0, 100);
-  }
-  header li > ul.subMainNav li {
-    margin: 0;
-    padding: 0.5rem 0.6rem;
-    padding-right: 0.8rem;
-    z-index: 1;
-    background-color: black; 
-    /* border-top: 0.2rem solid rgb(9, 80, 100); */
-    border-top: 0.2rem solid rgb(7, 83, 150);
-  }
-
-  /* li#submainnav1 { */
-    /*extra space for top submenu list item*/
-    /* margin: 0.1rem; */
-  /* } */
-  li#submainnav2 {
-    padding-bottom: 0.6rem;
-  }
-
-  /*curved for submenu*/
-  /* li#submainnav1 > a {
-    border-top-left-radius: 0.6rem;
-    border-top-right-radius: 0.6rem;
-  } */
-  li#submainnav2 {
-    border-bottom-left-radius: 0.6rem;
-    border-bottom-right-radius: 0.6rem;
-  }
-
-  /*ham styling*/ 
-  li#mainnavHam, 
-  label.hamMenu {
-    display: none;
-  }
-  nav.sub1mainnav {
-    display:none;
-  }
-}
-
-@media only screen and (max-width: 1008px) and (min-width: 640px) {
   header a.homeMain {
-    min-width: fit-content;
-  }
-  /*main nav*/
-  header ul.mainNavigation {
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-    grid-template-rows: 1fr 0.2fr;
-    grid-template-areas: 
-      "home bio exp ham search"
-      "botBord botBord botBord botBord botBord"; /*inner grid for menu */
-    align-items: center;
-  }
-  hr.navBorder {
-    width: 100%;
-  }
-
-  /* hr.navBorder {
-    grid-area: botBord;
-    align-self: center;
-    justify-self: center;
-    border-radius: 0.1rem;
-    border: 0;
-    border-bottom: 0.2rem solid rgb(7, 83, 150); */
-    /* border-bottom: 0.2rem solid rgb(9, 80, 100); */
-    /* width: 100%; */
-    /* width: 100vw; */
-    /* padding-top: 1rem;
-    margin-bottom: 1rem;
-  } */
-  header ul.mainNavigation li {
-    display: list-item;
-  }
-
-  li#mainnavHome {
-    grid-area: home;
-  }
-  li#mainnavBio {
-    /* padding-left: 0.5rem; */
-    grid-area: bio;
-  }
-  li#mainnavExp {
-    /* padding-left: 0.5rem; */
-    grid-area: exp;
-  }
-  li#searchIcon {
-    /* padding-left: 0.8rem; */
-    grid-area: search;
-  }
-  li#mainnavHam {
-    /* padding-left: 0.8rem; */
-    grid-area: ham;
-    position: static;
-  }
-  label.hamMenu {
-    display: flex;
-  }
-
-  /* li#mainnavHome,
-  li#mainnavBio,
-  li#mainnavExp, */
-  li#mainnavProj,
-  li#mainnavTouch {
-    display: none;
-  }
-
-  nav.mainNavigation {
-    position: relative;
-  }
-  /*sub nav menu*/
-  nav.sub1mainnav {
-    /* translate: -100%; */
-    /* transition: translate var(--animation-timing); */
-    opacity: 0;
-    display: none; /*fix issue of not being able to click search box on smaller than desktop*/
-    transition: opacity var(--animation-timing);
-    /* translate: -100%; */
-    
-    position: absolute;
-    width: 80%;
-    /* padding: 1rem; */
-    top: 100%;
-    /* left: 50%;  */
-    left: 10%;
-
-    overflow-wrap: anywhere;
-    white-space: normal;
-
-  }
-  /* .hamMenu:has(input:checked) + nav.sub1mainnav { */
-  input#lab:checked ~ nav.sub1mainnav {
-    /* translate: 0; */
-    opacity: 95%;
-    display: block; /*fix issue of not being able to click search box on smaller than desktop*/
-  }
-  nav.sub1mainnav ul.upperLevelSubNav1 {
-    list-style-type: none;
-    background-color: rgb(9, 21, 61); 
-    border-bottom-left-radius: 1.5rem;
-    border-bottom-right-radius: 1.5rem;
-    padding: 1rem;
-  }
-  nav.sub1mainnav ul.upperLevelSubNav1 li.l1 {
-    padding: 1.3rem;
-    /* background-color: rgb(6, 22, 72);  */
-    /* background-color: rgb(7, 83, 150); */
-    background-color: rgb(3, 51, 94);
-    text-align: center;
-    border-radius: 1.5rem;
-    /* border: 0.1rem solid black; */
-    border: 0.1rem solid white;
-    color: white;
-    margin-bottom: 0.5rem;
-  }
-  nav.sub1mainnav ul.upperLevelSubNav1 li.l1 a{
-    text-decoration: none;
-  }
-  nav.sub1mainnav ul.upperLevelSubNav1 details ul.lowerLevelSubNav1 li {
-    list-style-type: none;
-    border: 0.15rem solid white;
-    padding: 1.2rem;
-    border-radius: 1.5rem;
-    margin-top: 0.5rem;
-  }
-  li#mainnavExp2 {
-    display: none;
-  }
-}
-
-@media only screen and (min-width: 1008px) {
-  :root {
-    font-size: 16px;
-  }
-  footer#endOfPage {
-    font-size: 16px;
-  }
-}
-@media only screen and (max-width: 1008px)
-and (min-width: 640px) {
-  :root {
-    font-size: 19px;
-  }
-  footer#endOfPage {
-    font-size: 19px;
-  }
-}
-@media only screen and (max-width: 640px) {
-  :root {
-    font-size: 21px;
-  }
-  footer#endOfPage {
-    font-size: 21px;
-  }
-  a.homeMain {
-    margin-left: 2rem;
-    margin-right: 2rem;
-  }
-  /*display M above menu*/
-  nav.mainNavigation {
-    display: flex;
-    flex-direction: column;
-    justify-content: start;
-    align-items: center;
-  }
-  nav.mainNavigation a.homeMain {
     display: block;
+    grid-area: homeMain;
+    font-size: 6rem;
+    /* font: 'Trebuchet MS'; */
+    padding-bottom: 0;
+    padding-left: 0.6rem;
+    padding-right: 0.6rem;
+    text-decoration: none;
+    justify-self: center;
   }
-  /* nav.mainNavigation ul.mainNavigation { */
-    /* display: block; */
-  /* } */
-
-
   /*main nav*/
   header ul.mainNavigation {
-    /*align to give more room*/
-    justify-self: center;
-    align-self: center;
-    margin-left: 0;
-    margin-right: 0;
-
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-areas: 
-      "home bio ham"; /*inner grid for menu */
+    width: fit-content;
+    /*grid-item*/
+    align-self: end;
+    /*style*/
+    font-size: 1.7rem;
+    background-color: rgb(9, 21, 61); 
+    /* background-color: green; */
+    border-radius: 1em;
+    margin-top: 0.6em;
+    padding: 0.5em;
+    padding-left: 1.2rem;
+    /* margin-right: 2em; */
+    /* min-width: 1vw; */
+    /* margin-right: 2em; */
+    height: var(--ham-height);
+    
+    /*list*/
+    list-style-type: none;
+    /*grid*/
+    display: grid;
+    /* grid-gap: 0.2fr; */
+    grid-gap: 0.8rem;
+    grid-template-rows: 1fr;
+    justify-content: space-between;
+    justify-items: center;
+    align-items: end;
+    position: relative;
+    text-indent: 0;
+    /*align items in center*/
     align-items: center;
   }
-  header ul.mainNavigation li {
-    display: list-item;
+  header div#headerPicWrapper {
+    justify-self: center;
   }
-
-  li#mainnavHome {
-    grid-area: home;
-  }
-  li#mainnavBio {
-    grid-area: bio;
-  }
-  li#mainnavHam {
-    grid-area: ham;
-    position: static;
-  }
-  /*swap which search icon appears*/ 
-  /* li#searchIcon {
-    position: fixed;
-    top: 0;
-    left: 0;
-    margin: 0.5rem;
-    padding: 0.5rem;
-    background-color: transparent;
-
-    
+  /* header nav.mainNavigation > div.emptyMainSpacer {
+      grid-area: emptySpacer;
   } */
-  li#searchIcon {
-    display: none;
-  }
-  li#mobileSearchIcon {
-    position: absolute;
-    list-style-type: none;
-    transform: scale(1.2);
-    margin: 0.9rem;
-    padding: 0.6rem;
-    top: 0;
-    right: 1.5%;
-  }
-  li#mobileSearchIcon:hover {
-    background-color: rgba(128,128,128,0.7); /*var(--background-color); but with non-1 opacity*/ 
-    border-radius: 0.5rem;
-    opacity: 95%;
-  }
-  label.hamMenu {
-    display: flex;
+  /*inner grid for main nav*/
+  ul.mainNavigation > li {
+    margin: 0;
+    padding: 0;
+    text-indent: 0;
+    /* border: 0.2rem solid white; */
+    /* border-right: 0.2rem solid white; */
   }
 
-  /* li#mainnavHome,
-  li#mainnavBio,*/
-  li#mainnavExp,
-  li#mainnavProj,
-  li#mainnavTouch {
-    display: none;
+  @media (min-width: 1008px) {
+    /*main nav*/
+    header ul.mainNavigation {
+      grid-template-columns: 1fr 1fr 1fr 2fr 18ex 1fr;
+      grid-template-rows: 1fr 0.2fr;
+      grid-template-areas: 
+        "home bio exp proj intouch search"
+        "botBord botBord botBord botBord botBord botBord"; /*inner grid for menu */
+    }
+    hr.navBorder {
+      grid-area: botBord;
+      grid-gap: space-evenly;
+      align-self: center;
+      justify-self: center;
+      border-radius: 0.1rem;
+      border: 0;
+      border-bottom: 0.2rem solid rgb(7, 83, 150);
+      /* border-bottom: 0.2rem solid rgb(9, 80, 100); */
+      /* width: 100%; */
+      width: 100vw;
+      padding-top: 1rem;
+      margin-bottom: 1rem;
+    }
+    header ul.mainNavigation > li#mainnavProj {
+      /* text-align: left;
+      justify-self: left; */
+      padding-left: 1rem;
+    }
+    /* - assign grid cells*/ 
+    li#mainnavHome {
+      grid-area: home;
+    }
+    li#mainnavBio {
+      grid-area: bio;
+    }
+    li#mainnavExp {
+      grid-area: exp;
+    }
+    li#mainnavProj {
+      grid-area: proj;
+      justify-self: start;
+      margin-bottom: 0.1rem;
+    }
+    li#mainnavTouch {
+      grid-area: intouch;
+    }
+    li#searchIcon {
+      grid-area: search;
+    }
+
+    /*submain nav*/
+    li#mainnavProj {
+      display: block;
+    }
+    header ul.subMainNav {
+      /* font-size: 1.3rem; */
+      font-size: 1.4rem;
+      list-style-type: none;
+      text-align: left;
+      padding-left: 0;
+      position: absolute;
+      /* top: bottom; */
+      display: none;
+    }
+    header li:hover > ul.subMainNav
+    {
+      display: block;
+    }
+    header ul.subMainNav:hover {
+      color: rgb(0, 0, 100);
+    }
+    header li > ul.subMainNav li {
+      margin: 0;
+      padding: 0.5rem 0.6rem;
+      padding-right: 0.8rem;
+      z-index: 1;
+      background-color: black; 
+      /* border-top: 0.2rem solid rgb(9, 80, 100); */
+      border-top: 0.2rem solid rgb(7, 83, 150);
+    }
+
+    /* li#submainnav1 { */
+      /*extra space for top submenu list item*/
+      /* margin: 0.1rem; */
+    /* } */
+    li#submainnav2 {
+      padding-bottom: 0.6rem;
+    }
+
+    /*curved for submenu*/
+    /* li#submainnav1 > a {
+      border-top-left-radius: 0.6rem;
+      border-top-right-radius: 0.6rem;
+    } */
+    li#submainnav2 {
+      border-bottom-left-radius: 0.6rem;
+      border-bottom-right-radius: 0.6rem;
+    }
+
+    /*ham styling*/ 
+    li#mainnavHam, 
+    label.hamMenu {
+      display: none;
+    }
+    nav.sub1mainnav {
+      display:none;
+    }
   }
 
-  nav.mainNavigation {
-    position: relative;
-  }
-  /*sub nav menu*/
-  nav.sub1mainnav {
-    /* translate: -100%; */
-    /* transition: translate var(--animation-timing); */
-    opacity: 0;
-    display: none; /*fix issue of not being able to click search box on smaller than desktop*/
-    transition: opacity var(--animation-timing);
-    /* translate: -100%; */
-    /* width: 80%; */
-    position: absolute;
-    
-    /* padding: 1rem; */
-    /* left: 50%;  */
-    top: 100%;
-    /* left: 10%; */
+  @media (max-width: 1008px) and (min-width: 640px) {
+    header a.homeMain {
+      min-width: fit-content;
+    }
+    /*main nav*/
+    header ul.mainNavigation {
+      grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+      grid-template-rows: 1fr 0.2fr;
+      grid-template-areas: 
+        "home bio exp ham search"
+        "botBord botBord botBord botBord botBord"; /*inner grid for menu */
+      align-items: center;
+    }
+    hr.navBorder {
+      width: 100%;
+    }
 
-    width: 130%;
-    left: -15%;
+    /* hr.navBorder {
+      grid-area: botBord;
+      align-self: center;
+      justify-self: center;
+      border-radius: 0.1rem;
+      border: 0;
+      border-bottom: 0.2rem solid rgb(7, 83, 150); */
+      /* border-bottom: 0.2rem solid rgb(9, 80, 100); */
+      /* width: 100%; */
+      /* width: 100vw; */
+      /* padding-top: 1rem;
+      margin-bottom: 1rem;
+    } */
+    header ul.mainNavigation li {
+      display: list-item;
+    }
+
+    li#mainnavHome {
+      grid-area: home;
+    }
+    li#mainnavBio {
+      /* padding-left: 0.5rem; */
+      grid-area: bio;
+    }
+    li#mainnavExp {
+      /* padding-left: 0.5rem; */
+      grid-area: exp;
+    }
+    li#searchIcon {
+      /* padding-left: 0.8rem; */
+      grid-area: search;
+    }
+    li#mainnavHam {
+      /* padding-left: 0.8rem; */
+      grid-area: ham;
+      position: static;
+    }
+    label.hamMenu {
+      display: flex;
+    }
+
+    /* li#mainnavHome,
+    li#mainnavBio,
+    li#mainnavExp, */
+    li#mainnavProj,
+    li#mainnavTouch {
+      display: none;
+    }
+
+    nav.mainNavigation {
+      position: relative;
+    }
+    /*sub nav menu*/
+    nav.sub1mainnav {
+      /* translate: -100%; */
+      /* transition: translate var(--animation-timing); */
+      opacity: 0;
+      display: none; /*fix issue of not being able to click search box on smaller than desktop*/
+      transition: opacity var(--animation-timing);
+      /* translate: -100%; */
+      
+      position: absolute;
+      width: 80%;
+      /* padding: 1rem; */
+      top: 100%;
+      /* left: 50%;  */
+      left: 10%;
+
+      overflow-wrap: anywhere;
+      white-space: normal;
+
+    }
+    /* .hamMenu:has(input:checked) + nav.sub1mainnav { */
+    input#lab:checked ~ nav.sub1mainnav {
+      /* translate: 0; */
+      opacity: 95%;
+      display: block; /*fix issue of not being able to click search box on smaller than desktop*/
+    }
+    nav.sub1mainnav ul.upperLevelSubNav1 {
+      list-style-type: none;
+      background-color: rgb(9, 21, 61); 
+      border-bottom-left-radius: 1.5rem;
+      border-bottom-right-radius: 1.5rem;
+      padding: 1rem;
+    }
+    nav.sub1mainnav ul.upperLevelSubNav1 li.l1 {
+      padding: 1.3rem;
+      /* background-color: rgb(6, 22, 72);  */
+      /* background-color: rgb(7, 83, 150); */
+      background-color: rgb(3, 51, 94);
+      text-align: center;
+      border-radius: 1.5rem;
+      /* border: 0.1rem solid black; */
+      border: 0.1rem solid white;
+      color: white;
+      margin-bottom: 0.5rem;
+    }
+    nav.sub1mainnav ul.upperLevelSubNav1 li.l1 a{
+      text-decoration: none;
+    }
+    nav.sub1mainnav ul.upperLevelSubNav1 details ul.lowerLevelSubNav1 li {
+      list-style-type: none;
+      border: 0.15rem solid white;
+      padding: 1.2rem;
+      border-radius: 1.5rem;
+      margin-top: 0.5rem;
+    }
+    li#mainnavExp2 {
+      display: none;
+    }
   }
-  /* .hamMenu:has(input:checked) + nav.sub1mainnav { */
-  input#lab:checked ~ nav.sub1mainnav {
-    /* translate: 0; */
-    opacity: 95%;
-    display: block; /*fix issue of not being able to click search box on smaller than desktop*/
+
+  @media (min-width: 1008px) {
+    :root {
+      font-size: 16px;
+    }
+    footer#endOfPage {
+      font-size: 16px;
+    }
   }
-  nav.sub1mainnav ul.upperLevelSubNav1 {
-    list-style-type: none;
-    background-color: rgb(9, 21, 61); 
-    border-radius: 1.5rem;
-    /* border-bottom-left-radius: 1.5rem;
-    border-bottom-right-radius: 1.5rem; */
-    padding: 1rem;
+  @media (max-width: 1008px)
+  and (min-width: 640px) {
+    :root {
+      font-size: 19px;
+    }
+    footer#endOfPage {
+      font-size: 19px;
+    }
   }
-  nav.sub1mainnav ul.upperLevelSubNav1 li.l1 {
-    padding: 1.3rem;
-    /* background-color: rgb(6, 22, 72);  */
-    /* background-color: rgb(7, 83, 150); */
-    background-color: rgb(3, 51, 94);
-    text-align: center;
-    border-radius: 1.5rem;
-    /* border: 0.1rem solid black; */
-    border: 0.1rem solid white;
-    color: white;
-    margin-bottom: 0.5rem;
+  @media (max-width: 640px) {
+    :root {
+      font-size: 21px;
+    }
+    footer#endOfPage {
+      font-size: 21px;
+    }
+    a.homeMain {
+      margin-left: 2rem;
+      margin-right: 2rem;
+    }
+    /*display M above menu*/
+    nav.mainNavigation {
+      display: flex;
+      flex-direction: column;
+      justify-content: start;
+      align-items: center;
+    }
+    nav.mainNavigation a.homeMain {
+      display: block;
+    }
+    /* nav.mainNavigation ul.mainNavigation { */
+      /* display: block; */
+    /* } */
+
+
+    /*main nav*/
+    header ul.mainNavigation {
+      /*align to give more room*/
+      justify-self: center;
+      align-self: center;
+      margin-left: 0;
+      margin-right: 0;
+
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-template-areas: 
+        "home bio ham"; /*inner grid for menu */
+      align-items: center;
+    }
+    header ul.mainNavigation li {
+      display: list-item;
+    }
+
+    li#mainnavHome {
+      grid-area: home;
+    }
+    li#mainnavBio {
+      grid-area: bio;
+    }
+    li#mainnavHam {
+      grid-area: ham;
+      position: static;
+    }
+    /*swap which search icon appears*/ 
+    /* li#searchIcon {
+      position: fixed;
+      top: 0;
+      left: 0;
+      margin: 0.5rem;
+      padding: 0.5rem;
+      background-color: transparent;
+
+      
+    } */
+    li#searchIcon {
+      display: none;
+    }
+    li#mobileSearchIcon {
+      position: absolute;
+      list-style-type: none;
+      transform: scale(1.2);
+      margin: 0.9rem;
+      padding: 0.6rem;
+      top: 0;
+      right: 1.5%;
+    }
+    li#mobileSearchIcon:hover {
+      background-color: rgba(128,128,128,0.7); /*var(--background-color); but with non-1 opacity*/ 
+      border-radius: 0.5rem;
+      opacity: 95%;
+    }
+    label.hamMenu {
+      display: flex;
+    }
+
+    /* li#mainnavHome,
+    li#mainnavBio,*/
+    li#mainnavExp,
+    li#mainnavProj,
+    li#mainnavTouch {
+      display: none;
+    }
+
+    nav.mainNavigation {
+      position: relative;
+    }
+    /*sub nav menu*/
+    nav.sub1mainnav {
+      /* translate: -100%; */
+      /* transition: translate var(--animation-timing); */
+      opacity: 0;
+      display: none; /*fix issue of not being able to click search box on smaller than desktop*/
+      transition: opacity var(--animation-timing);
+      /* translate: -100%; */
+      /* width: 80%; */
+      position: absolute;
+      
+      /* padding: 1rem; */
+      /* left: 50%;  */
+      top: 100%;
+      /* left: 10%; */
+
+      width: 130%;
+      left: -15%;
+    }
+    /* .hamMenu:has(input:checked) + nav.sub1mainnav { */
+    input#lab:checked ~ nav.sub1mainnav {
+      /* translate: 0; */
+      opacity: 95%;
+      display: block; /*fix issue of not being able to click search box on smaller than desktop*/
+    }
+    nav.sub1mainnav ul.upperLevelSubNav1 {
+      list-style-type: none;
+      background-color: rgb(9, 21, 61); 
+      border-radius: 1.5rem;
+      /* border-bottom-left-radius: 1.5rem;
+      border-bottom-right-radius: 1.5rem; */
+      padding: 1rem;
+    }
+    nav.sub1mainnav ul.upperLevelSubNav1 li.l1 {
+      padding: 1.3rem;
+      /* background-color: rgb(6, 22, 72);  */
+      /* background-color: rgb(7, 83, 150); */
+      background-color: rgb(3, 51, 94);
+      text-align: center;
+      border-radius: 1.5rem;
+      /* border: 0.1rem solid black; */
+      border: 0.1rem solid white;
+      color: white;
+      margin-bottom: 0.5rem;
+    }
+    nav.sub1mainnav ul.upperLevelSubNav1 li.l1 a{
+      text-decoration: none;
+    }
+    nav.sub1mainnav ul.upperLevelSubNav1 details ul.lowerLevelSubNav1 li {
+      list-style-type: none;
+      border: 0.15rem solid white;
+      padding: 1.2rem;
+      border-radius: 1.5rem;
+      margin-top: 0.5rem;
+    }
   }
-  nav.sub1mainnav ul.upperLevelSubNav1 li.l1 a{
-    text-decoration: none;
-  }
-  nav.sub1mainnav ul.upperLevelSubNav1 details ul.lowerLevelSubNav1 li {
-    list-style-type: none;
-    border: 0.15rem solid white;
-    padding: 1.2rem;
-    border-radius: 1.5rem;
-    margin-top: 0.5rem;
-  }
+
+  /*search icon*/
 }
 
-/*search icon*/
 
 
 
