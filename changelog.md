@@ -23,9 +23,7 @@ The search engine on this page is powered by Swiftype. PLEASE NOTE: I originally
   - Search page added (search_results.html), with custom search bar (styled in Assets/styles/search_results.css).
   - Search icon added to main navigation and main navigation menus (nested) updated appropriately for desktop, 
     tablet/small-laptop, and mobile. When clicked, this redirects to the Search page.
-  - Experience page has newly-added media queries (in new Assets/styles/print/print_experience.css)
-    to change the page layout for printing. This is thus visible only if one goes to print the page,
-    but turns that page into a printable resume and lessons learned for me.
+  - Experience page has newly-added media queries (in new Assets/styles/print/print_experience.css) to change the page layout for printing. This is thus visible only if one goes to print the page, but turns that page into a printable resume and lessons learned for me.
   - Assignment #4 pages added as links in new section to Experiments page. Minimal styling is added the page for each to keep the theme of the site.
   - Minor edits + bug fixes (such as spacing and line heights for mobile on various site pages to make them less crowded and look cleaner). 
   - (All content was already in place, so there was no placeholder content to replace.)
